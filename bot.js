@@ -1,7 +1,7 @@
-var Discord = require('discord.io');
+var Discord = require('discord.js');
 var logger = require('winston');
 var auth = require('./auth.json');
-
+require('dotenv').config();
 
 
 // Configure logger settings
@@ -13,84 +13,23 @@ logger.add(new logger.transports.Console, {
 logger.level = 'debug';
 
 // Initialize Discord Bot
-const bot = new Discord.Client({
-    token: auth.token,
-    autorun: true
-});
+const client = new Discord.Client();
 
-var randomint =function(x, y) {
-    if (x == y) {
-        return x;
-    }
-    else if (y > x) {
-        z = Math.abs(y - x);
-        q = Math.ceil(Math.random() * (z + 1));
+client.on('ready', () => {
+    console.log(`\nLogged in as ${client.user.tag}!\n`);
+})
 
-        return q;
-    }
-    else {
-        z = Math.abs(x - y)+1;
-        q = Math.ceil(Math.random() * z+1) - 1 + y;
-        return q;
-    }
-}
-
-var sendmessage = function (x, channelID) {
-
-    bot.sendMessage({
-        to: channelID,
-        message: x
-    },500);
-
-}
-
-var sendcodemessage = function (x, channelID) {
-
-    bot.sendMessage({
-        to: channelID,
-        message:"```"+ x+"```"
-    }, 500);
-
-}
-var sendmessageatplayer = function (x, channelID, userID) {
-
-    bot.sendMessage({
-        to: channelID,
-        message: "<@" + userID + ">\n" + x 
-    }, 500);
-
-}
-var sendcodemessageatplayer = function (x, channelID, userID) {
-
-    bot.sendMessage({
-        to: channelID,
-        message: "<@" + userID + ">"+"```" + x + "```"
-    }, 500);
-
-}
-async function clear() {
-    msg.delete();
-    const fetched = await msg.channel.fetchMessages({ limit: 99 });
-    msg.channel.bulkDelete(fetched);
-}
-
-bot.on('ready', function (evt) {
-    logger.info('Connected');
-    logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');
-});
-
-bot.on('message', function (user, userID, channelID, message,evt) {
-    // Our bot needs to know if it will execute a command
+client.on('message', message => {
+        // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
-    if (message.substring(0, 1) == '!') {
-        var args = message.substring(1).split(' ');
+    if (message.content.substring(0, 1) == '!') {
+        var args = message.content.substring(1).split(' ');
         var cmd = args[0];
         cmd = cmd.toLowerCase();
         args = args.splice(1);
 
         if (cmd == 'ping') {
-            sendcodemessage('pong!', channelID);
+            sendcodemessage('pong!', message);
 
         }
 
@@ -108,7 +47,7 @@ bot.on('message', function (user, userID, channelID, message,evt) {
 
             for (i = 0; i < args.length; i++) {
                 if (args[i].length > 15) {
-                    sendcodemessage("Number too big, brain too small :(", channelID);
+                    sendcodemessage("Number too big, brain too small :(", message);
                     return;
                 }
                 for (o = 0; o < args[i].length; o++) {
@@ -163,7 +102,7 @@ bot.on('message', function (user, userID, channelID, message,evt) {
             for (i = 0; i < txtlist.length; i++) {
                 for (o = 0; o < txtlist[i].length; o++) {
                     if (!alphanum.includes(txtlist[i][o])) {
-                        sendcodemessage('Invalid syntax, use proper variables. Eg: "!r 2d6"', channelID);
+                        sendcodemessage('Invalid syntax, use proper variables. Eg: "!r 2d6"', message);
                         return;
                     }
                 }
@@ -192,7 +131,7 @@ bot.on('message', function (user, userID, channelID, message,evt) {
                     else {
                         var dicemultiple = parseInt(numbers[0]);
                         if (dicemultiple > 400) {
-                            sendcodemessage("Too many die, I want die x.x", channelID);
+                            sendcodemessage("Too many die, I want die x.x", message);
                             return;
                         }
 
@@ -218,8 +157,8 @@ bot.on('message', function (user, userID, channelID, message,evt) {
             if (eval(finaltext)) {
                 var dis = displaytext + "\n\nTotal: " + eval(finaltext);
 
-                
-                
+
+
 
                 if (dis.length < 1990) {
                     if (hasHashtag) {
@@ -229,15 +168,15 @@ bot.on('message', function (user, userID, channelID, message,evt) {
 
 
                         dis += "\n" + printtext + "\n";
-                        sendmessageatplayer(dis, channelID, userID);
+                        sendmessageatplayer(dis, message);
                     }
                     else {
-                        sendcodemessageatplayer(dis, channelID, userID);
+                        sendcodemessageatplayer(dis, message);
                     }
-                    
+
                 }
                 else {
-                    sendcodemessageatplayer("Wtf too many characters man, try less stuff", channelID, userID);
+                    sendcodemessageatplayer("Wtf too many characters man, try less stuff", message);
                 }
             }
 
@@ -245,7 +184,7 @@ bot.on('message', function (user, userID, channelID, message,evt) {
 
         } //rolling end
         else if (cmd == 'pong') {
-            sendcodemessage('dude what the fuck', channelID);
+            sendcodemessage('dude what the fuck', message);
 
         }
         else if (cmd == 'syntax' || cmd == 'help' || cmd == 'h') {
@@ -255,38 +194,86 @@ bot.on('message', function (user, userID, channelID, message,evt) {
                 '`!r` or `!roll` - Rolls dice. Usage examples:  `!r d20`  ,  `!r 2d10+5` ,  `!r 5+3*2 $Test-words`\n' +
                 "`!h` or `!help` - Displays help menu.\n" +
                 "`!l` or `!link` - Link to add bot to server.";
-            sendmessage(msg, channelID);
+            sendmessage(msg, message);
 
         }
         else if (cmd == 'easteregg') {
-            sendcodemessage('Tell the GM "I found the easter egg!" for inspiration :)', channelID);
+            sendcodemessage('Tell the GM "I found the easter egg!" for inspiration :)', message);
 
         }
 
         else if (cmd == 'link') {
 
             sendmessage("**Click on the link to add me to your server!**" +
-                "\nhttps://discordapp.com/oauth2/authorize?&client_id=678342914618818577&scope=bot&permissions=8", channelID);
+                "\nhttps://discordapp.com/oauth2/authorize?&client_id=678342914618818577&scope=bot&permissions=8", message);
 
         }
         else if (cmd == 'purge' || cmd == "p") {
 
-            
 
-            sendmessageatplayer(bot, channelID, userID);
+            sendmessageatplayer(bot, message);
 
-            //if (message.member.roles.has(allowedRole.id)) {
-            //    // allowed access to command
-            //    clear();
-            //}
-            //else {
-            //    // not allowed access
-            //    sendmessageatplayer("You have no permissions to do this my dude", channelID, userID);
-            //}
-           
-                
         }
 
 
     }
-});
+})
+
+client.login(auth.token);
+
+
+
+
+var randomint = function (x, y) {
+    if (x == y) {
+        return x;
+    }
+    else if (y > x) {
+        z = Math.abs(y - x);
+        q = Math.ceil(Math.random() * (z + 1));
+
+        return q;
+    }
+    else {
+        z = Math.abs(x - y) + 1;
+        q = Math.ceil(Math.random() * z + 1) - 1 + y;
+        return q;
+    }
+}
+
+var sendmessage = function (x, message) {
+
+    const channel = message.channel;
+    channel.send(x);
+
+}
+
+var sendcodemessage = function (x, message) {
+
+    const channel = message.channel;
+    channel.send("```" + x + "```");
+
+
+}
+
+var sendmessageatplayer = function (x, message) {
+
+    const channel = message.channel;
+    var ID = message.author;
+    channel.send(" ID "+"\n"+x);
+
+
+}
+var sendcodemessageatplayer = function (x, message) {
+
+    const channel = message.channel;
+    var ID = message.author;
+    channel.send( ID  +"\n```" + x + "```");
+
+
+}
+async function clear() {
+    msg.delete();
+    const fetched = await msg.channel.fetchMessages({ limit: 99 });
+    msg.channel.bulkDelete(fetched);
+}
