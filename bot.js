@@ -4,6 +4,29 @@ var auth = require('./auth.json');
 require('dotenv').config();
 
 
+//File save system
+const fs = require('fs') //importing file save
+var xpPath = 'file path to json here';
+var xpRead = fs.readFileSync(xpPath);
+var xpFile = JSON.parse(xpRead); //ready for use
+var userId = message.author.id //user id here
+
+if (!xpFile[userId]) { //this checks if data for the user has already been created
+    xpFile[userId] = { xpp: 0, xppr: 0, currentRole: "" }; //if not, create it
+    fs.writeFileSync(xpPath, JSON.stringify(xpFile, null, 2));
+} else {
+    //as an example, I will give the owner of the id 50 xp and the role "Awesome Role"
+    var xppVar = Number(xpFile.xpp) + 50 //add 50 to their original xp
+    var xpprVar = Number(xpFile.xppr)
+    var roleToGive = "Awesome Role"
+    xpFile[userId] = { xpp: xppVar, xppr: xpprVar, currentRole: roleToGive };
+    fs.writeFileSync(xpPath, JSON.stringify(xpFile, null, 2));
+    console.log(`Changed that player's xp to ${xppVar} and gave him the role ${roleToGive}`)
+
+}
+//File save system end
+
+
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -190,7 +213,7 @@ client.on('message', message => {
         else if (cmd == 'syntax' || cmd == 'help' || cmd == 'h') {
             var msg = "**__Bot commands:__**\n" +
                 "`!ping` - Pings the bot to check if it's online.\n" +
-                "`!pong` - ...pongs the bot to check if it's online?\n" +
+                //"`!pong` - ...pongs the bot to check if it's online?\n" +
                 '`!r` or `!roll` - Rolls dice. Usage examples:  `!r d20`  ,  `!r 2d10+5` ,  `!r 5+3*2 $Test-words`\n' +
                 "`!h` or `!help` - Displays help menu.\n" +
                 "`!l` or `!link` - Link to add bot to server.";
@@ -202,7 +225,7 @@ client.on('message', message => {
 
         }
 
-        else if (cmd == 'link') {
+        else if (cmd == 'link' || cmd == "l") {
 
             sendmessage("**Click on the link to add me to your server!**" +
                 "\nhttps://discordapp.com/oauth2/authorize?&client_id=678342914618818577&scope=bot&permissions=8", message);
@@ -210,8 +233,17 @@ client.on('message', message => {
         }
         else if (cmd == 'purge' || cmd == "p") {
 
-
-            sendmessageatplayer(bot, message);
+            let allowedRole = message.guild.roles.find("name", "GMs");
+            if (message.member.roles.has(allowedRole.id)) {
+                // allowed access to command
+                
+                clear(message);
+                sendmessageatplayer("Messages purged lol", message);
+            } else {
+                // not allowed access
+                sendmessageatplayer("You're too weak to use this command :(", message);
+            }
+            
 
         }
 
@@ -260,7 +292,7 @@ var sendmessageatplayer = function (x, message) {
 
     const channel = message.channel;
     var ID = message.author;
-    channel.send(" ID "+"\n"+x);
+    channel.send(ID +"\n"+x);
 
 
 }
@@ -272,8 +304,9 @@ var sendcodemessageatplayer = function (x, message) {
 
 
 }
-async function clear() {
-    msg.delete();
-    const fetched = await msg.channel.fetchMessages({ limit: 99 });
-    msg.channel.bulkDelete(fetched);
+async function clear(message) {
+    message.delete();
+    const fetched = await message.channel.fetchMessages({ limit: 99 });
+    message.channel.bulkDelete(fetched);
 }
+
