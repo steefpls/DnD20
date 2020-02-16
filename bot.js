@@ -196,7 +196,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         }
                     }
 
-                    
                 }
                 else {
                     finaltext += txtlist[i] + " ";
@@ -216,12 +215,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             }
 
             
-
-
-
-
-
-
 
         } //rolling end
         else if (cmd == 'pong') {
