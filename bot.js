@@ -229,10 +229,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
         }
         else if (cmd == 'syntax' || cmd == 'help' || cmd == 'h') {
-            message = "Bot commands:\n\n!ping - Pings the bot to check if it's online.\n" +
-                '!r or !roll - Rolls dice. Usage examples: "!r d20" , "!r 2d10+5", "!r 5+3*2 $Test-words"\n' +
-                "!h or !help - Displays help menu.";
-            sendcodemessage(message, channelID);
+            message = "**__Bot commands:__**\n`!ping` - Pings the bot to check if it's online.\n" +
+                '`!r` or `!roll` - Rolls dice. Usage examples: `!r d20` , `!r 2d10+5`, `!r 5+3*2 $Test-words`\n' +
+                "`!h` or `!help` - Displays help menu.";
+            sendmessage(message, channelID);
 
         }
         else if (cmd == 'easteregg') {
