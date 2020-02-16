@@ -4,7 +4,6 @@ var auth = require('./auth.json');
 
 
 
-
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -14,7 +13,7 @@ logger.add(new logger.transports.Console, {
 logger.level = 'debug';
 
 // Initialize Discord Bot
-var bot = new Discord.Client({
+const bot = new Discord.Client({
     token: auth.token,
     autorun: true
 });
@@ -53,6 +52,14 @@ var sendcodemessage = function (x, channelID) {
     }, 500);
 
 }
+var sendmessageatplayer = function (x, channelID, userID) {
+
+    bot.sendMessage({
+        to: channelID,
+        message: "<@" + userID + ">\n" + x 
+    }, 500);
+
+}
 var sendcodemessageatplayer = function (x, channelID, userID) {
 
     bot.sendMessage({
@@ -61,7 +68,11 @@ var sendcodemessageatplayer = function (x, channelID, userID) {
     }, 500);
 
 }
-
+async function clear() {
+    msg.delete();
+    const fetched = await msg.channel.fetchMessages({ limit: 99 });
+    msg.channel.bulkDelete(fetched);
+}
 
 bot.on('ready', function (evt) {
     logger.info('Connected');
@@ -69,7 +80,7 @@ bot.on('ready', function (evt) {
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
-bot.on('message', function (user, userID, channelID, message, evt) {
+bot.on('message', function (user, userID, channelID, message,evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
@@ -91,7 +102,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             var finaltext = "";
             var number = "";
             var displaytext = "";
-            
+
             var operator = "";
             var txtlist = [];
 
@@ -111,13 +122,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         printtext += args[i][o];
                     }
                 }
-                
+
             }
-            
+
             var n = parsetxt.length;
 
             for (i = 0; i < n; i++) {
-                
+
                 prevoperator = operator;
                 var currentalpha = parsetxt[i];
 
@@ -127,7 +138,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         txtlist.push(number.toLowerCase());
                     }
                 }
-                    
+
                 else {
                     if (number != '') {
                         txtlist.push(number);
@@ -136,7 +147,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     txtlist.push(currentalpha);
                     number = "";
                 }
-               
+
 
             }
             for (i = 0; i < txtlist.length; i++) {
@@ -145,9 +156,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     finaltext += " ";
                 }
             }
-           
-            
-            
+
+
+
             var alphanum = "1234567890*+-/dD";
             for (i = 0; i < txtlist.length; i++) {
                 for (o = 0; o < txtlist[i].length; o++) {
@@ -161,10 +172,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 displaytext += "Rolling: " + finaltext + "...\n\n";
             }
             else {
-                displaytext += "Rolling: " + finaltext + "..." + "\n" + printtext + "\n\n";
+                displaytext += "Rolling: " + finaltext + "...\n\n";
             }
 
-            
+
 
             finaltext = "";
             for (i = 0; i < txtlist.length; i++) {
@@ -176,7 +187,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     if (!numbers[0]) {
                         var randvar = randomint(1, parseInt(numbers[1]));
                         finaltext += randvar + " ";
-                        displaytext += "(" +randvar + ") ";
+                        displaytext += "(" + randvar + ") ";
                     }
                     else {
                         var dicemultiple = parseInt(numbers[0]);
@@ -188,11 +199,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         for (x = 0; x < dicemultiple; x++) {
                             var randvar2 = randomint(1, parseInt(numbers[1]));
                             finaltext += randvar2 + " ";
-                            displaytext += "("+randvar2 + ") ";
+                            displaytext += "(" + randvar2 + ") ";
                             if (x < dicemultiple - 1) {
                                 finaltext += "+ ";
                             }
-                            
+
                         }
                     }
 
@@ -201,20 +212,36 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     finaltext += txtlist[i] + " ";
                     displaytext += txtlist[i] + " ";
                 }
-                
+
             }
 
             if (eval(finaltext)) {
                 var dis = displaytext + "\n\nTotal: " + eval(finaltext);
+
+                
+                
+
                 if (dis.length < 1990) {
-                    sendcodemessageatplayer(dis, channelID, userID);
+                    if (hasHashtag) {
+                        dis = "```" + dis + "```";
+
+                        printtext.replace("$","");
+
+
+                        dis += "\n" + printtext + "\n";
+                        sendmessageatplayer(dis, channelID, userID);
+                    }
+                    else {
+                        sendcodemessageatplayer(dis, channelID, userID);
+                    }
+                    
                 }
                 else {
                     sendcodemessageatplayer("Wtf too many characters man, try less stuff", channelID, userID);
                 }
             }
 
-            
+
 
         } //rolling end
         else if (cmd == 'pong') {
@@ -222,15 +249,44 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
         }
         else if (cmd == 'syntax' || cmd == 'help' || cmd == 'h') {
-            message = "**__Bot commands:__**\n`!ping` - Pings the bot to check if it's online.\n" +
-                '`!r` or `!roll` - Rolls dice. Usage examples: `!r d20` , `!r 2d10+5`, `!r 5+3*2 $Test-words`\n' +
-                "`!h` or `!help` - Displays help menu.";
-            sendmessage(message, channelID);
+            var msg = "**__Bot commands:__**\n" +
+                "`!ping` - Pings the bot to check if it's online.\n" +
+                "`!pong` - ...pongs the bot to check if it's online?\n" +
+                '`!r` or `!roll` - Rolls dice. Usage examples:  `!r d20`  ,  `!r 2d10+5` ,  `!r 5+3*2 $Test-words`\n' +
+                "`!h` or `!help` - Displays help menu.\n" +
+                "`!l` or `!link` - Link to add bot to server.";
+            sendmessage(msg, channelID);
 
         }
         else if (cmd == 'easteregg') {
             sendcodemessage('Tell the GM "I found the easter egg!" for inspiration :)', channelID);
 
         }
+
+        else if (cmd == 'link') {
+
+            sendmessage("**Click on the link to add me to your server!**" +
+                "\nhttps://discordapp.com/oauth2/authorize?&client_id=678342914618818577&scope=bot&permissions=8", channelID);
+
+        }
+        else if (cmd == 'purge' || cmd == "p") {
+
+            
+
+            sendmessageatplayer(bot, channelID, userID);
+
+            //if (message.member.roles.has(allowedRole.id)) {
+            //    // allowed access to command
+            //    clear();
+            //}
+            //else {
+            //    // not allowed access
+            //    sendmessageatplayer("You have no permissions to do this my dude", channelID, userID);
+            //}
+           
+                
+        }
+
+
     }
 });
