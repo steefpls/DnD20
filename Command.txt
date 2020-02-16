@@ -1,1 +1,0 @@
-nodemon --inspect bot.js
