@@ -275,16 +275,20 @@ client.on('message', message => {
                 sendmessage(m, message);
                 
             }
-            else if (args[0][0] == '<') {//check gold of specific player
-                var userid = args[0];
-                userid = userid.replace(/[\\<>@#&!]/g, "");
+            else if (args[0]) {//check gold of specific player
+                if (args[0][0] == '<') {//check gold of specific player
+                    var userid = args[0];
+                    userid = userid.replace(/[\\<>@#&!]/g, "");
 
-                checkgolddisplay(message, userid);
+                    checkgolddisplay(message, userid);
+
+
+                }
                 
                 
             }
             else {  //errorhandling
-                sendmessage("Wrong syntax. Try `!gold add 'x amount here'`", message);
+                sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
                 sendmessage(args, message);
             }
             
