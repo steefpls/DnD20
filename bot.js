@@ -158,10 +158,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 }
             }
             if (!hasHashtag) {
-                sendcodemessage("Rolling: " + finaltext + "...", channelID);
+                displaytext += "Rolling: " + finaltext + "...\n\n";
             }
             else {
-                sendcodemessage("Rolling: " + finaltext + "..." + "\n" + printtext, channelID);
+                displaytext += "Rolling: " + finaltext + "..." + "\n" + printtext + "\n\n";
             }
 
             
