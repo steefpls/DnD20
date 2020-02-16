@@ -1,0 +1,12 @@
+{
+  "name": "DnD20",
+  "version": "1.0.0",
+  "description": "A downtime handling bot for PSF Westmarches.",
+  "main": "bot.js",
+  "author": "Steef",
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "save": "^2.4.0",
+    "winston": "^3.2.1"
+  }
+}
