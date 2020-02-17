@@ -241,7 +241,7 @@ client.on('message', message => {
                     setGolddisplay(message, Number(args[1]));
                 }
                 else {
-                    sendmessage("Wrong syntax. Try `!gold set 50`", message);
+                    sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
                 }
                 
             }
@@ -251,7 +251,7 @@ client.on('message', message => {
                     addGolddisplay(message, Number(args[1]));
                 }
                 else {
-                    sendmessage("Wrong syntax. Try `!gold add 50`", message);
+                    sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
                 }
             }
             else if (args[0] == 'remove') {//remove command selected
@@ -259,13 +259,13 @@ client.on('message', message => {
                     removeGolddisplay(message, Number(args[1]));
                 }
                 else {
-                    sendmessage("Wrong syntax. Try `!gold remove 50`", message);
+                    sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
                 }
             }
             else if (args[0] == 'help' || args[0] == 'h') {//help command selected
                 
                 var m = "**__Gold commands:__**\n" +
-                    "`!g` or `!gold` as the prefix.\n"+
+                    "`!g` or `!gold` shows your gold balance.\n"+
                     "`!g @username` - Checks gold of user.\n" +
                     //"`!pong` - ...pongs the bot to check if it's online?\n" +
                     "`!g add x` - Adds 'x'gp to you.\n" +
@@ -287,9 +287,8 @@ client.on('message', message => {
                 
                 
             }
-            else {  //errorhandling
-                sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
-                sendmessage(args, message);
+            else {  // just !g
+                checkgolddisplay(message, message.author.id);
             }
             
         }
