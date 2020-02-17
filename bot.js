@@ -220,7 +220,7 @@ client.on('message', message => {
                 "\nhttps://discordapp.com/oauth2/authorize?&client_id=678342914618818577&scope=bot&permissions=8", message);
 
         }
-        else if (cmd == 'purge' || cmd == "p") {
+        else if (cmd == 'purge') {
 
             let allowedRole = message.guild.roles.find("name", "GMs");
             if (message.member.roles.has(allowedRole.id)) {
@@ -292,10 +292,47 @@ client.on('message', message => {
             }
             
         }
+        else if (cmd == 'test') {
+
+            
+            
+            
+
+
+        }
     }
 })
 
 client.login(auth.token);
+
+var checkIfMention = function (message) {
+    var idbool = false;
+    var pee = getUserIDfromMessage(message);
+
+    if (pee != "undefined") {
+        idbool = true;
+    }
+    return idbool;
+}
+
+var getUserIDfromAt = function (atUser) {
+
+    var at = String(atUser);
+    at = at.replace(/[\\<>@#&!]/g, "");
+    return at;
+
+}
+
+var getAtfromMessage = function (message) {
+    var clientstring = message.mentions.members.first();
+    return clientstring;
+}
+
+var getUserIDfromMessage = function (message) {
+    var id = getUserIDfromAt(getAtfromMessage(message));
+    return id;
+}
+
 
 var checkgolddisplay = function (message, userID) {
     
