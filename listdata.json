@@ -1,68 +1,68 @@
 {
   "LootTable1": {
     "Name": "1 Day Exploration",
-    "Range": [ 10, 30, 68, 84, 95, 99, 100 ],
+    "Range": [ 10, 30, 60, 84, 95, 99, 100 ],
     "Copper": [ "d100", "10d100", "15d100", "20d100", "25d100", "50d100", "50d100" ],
     "Silver": [ "0", "d20", "2d20", "8d6", "10d6", "10d6", "10d6" ],
     "Gold": [ "0", "1d6*5", "1d6*10", "3d6*5", "3d6*10", "3d6*10", "3d6*10" ],
-    "Platinum": [ "0", "0", "0", "0", "0", "3d6", "3d6" ],
+    "Platinum": [ "0", "0", "0", "0", "d4", "3d6", "3d6" ],
 
-    "MagicTables": [ "0", "0", "0", "0", "0", "A", "A,B" ],
-    "MagicTimes": [ "0", "0", "0", "0", "0", "d4", "1d4,1" ]
+    "MagicTables": [ "0", "0", "0", "0", "A", "A", "A,B" ],
+    "MagicTimes": [ "0", "0", "0", "0", "d2", "d4", "d4,1" ]
 
   },
 
   "LootTable2": {
     "Name": "2 Day Exploration",
-    "Range": [ 10, 30, 68, 84, 95, 99, 100 ],
-    "Copper": [ "d100", "10d100", "15d100", "20d100", "25d100", "50d100", "50d100" ],
-    "Silver": [ "0", "d20", "2d20", "8d6", "10d6", "10d6", "10d6" ],
-    "Gold": [ "0", "1d6*5", "1d6*10", "3d6*5", "3d6*10", "3d6*10", "3d6*10" ],
-    "Platinum": [ "0", "0", "0", "0", "0", "3d6", "3d6" ],
+    "Range": [ 10, 30, 58, 81, 93, 98, 100 ],
+    "Copper": [ "d100", "20d100", "30d100", "40d100", "50d100", "75d100", "75d100" ],
+    "Silver": [ "0", "2d20", "4d20", "14d6", "21d6", "28d6", "28d6" ],
+    "Gold": [ "0", "2d6*5", "2d6*10", "6d6*5", "6d6*10", "6d6*10", "6d6*10" ],
+    "Platinum": [ "0", "0", "0", "d4", "2d6", "4d6", "5d6" ],
 
-    "MagicTables": [ "0", "0", "0", "0", "0", "A", "A,B" ],
-    "MagicTimes": [ "0", "0", "0", "0", "0", "1", "1d4,1" ]
+    "MagicTables": [ "0", "0", "0", "A", "A", "A,B", "A,B" ],
+    "MagicTimes": [ "0", "0", "0", "1", "d2", "d4,1", "d6,d4" ]
 
 
   },
   "LootTable3": {
     "Name": "3 Day Exploration",
-    "Range": [ 10, 30, 68, 84, 95, 99, 100 ],
-    "Copper": [ "d100", "10d100", "15d100", "20d100", "25d100", "50d100", "50d100" ],
-    "Silver": [ "0", "d20", "2d20", "8d6", "10d6", "10d6", "10d6" ],
-    "Gold": [ "0", "1d6*5", "1d6*10", "3d6*5", "3d6*10", "3d6*10", "3d6*10" ],
-    "Platinum": [ "0", "0", "0", "0", "0", "3d6", "3d6" ],
+    "Range": [ 11, 30, 57, 80, 90, 97, 100 ],
+    "Copper": [ "d100", "30d100", "45d100", "60d100", "75d100", "100d100", "100d100" ],
+    "Silver": [ "0", "4d6", "8d6", "16d6", "24d6", "30d6", "30d6" ],
+    "Gold": [ "0", "3d6*5", "3d6*10", "7d6*5", "7d6*10", "8d6*10", "8d6*10" ],
+    "Platinum": [ "0", "0", "d2", "d6", "3d6", "6d6", "8d6" ],
 
-    "MagicTables": [ "0", "0", "0", "0", "0", "A", "A,B" ],
-    "MagicTimes": [ "0", "0", "0", "0", "0", "1", "1d4,1" ]
+    "MagicTables": [ "0", "0", "A", "A", "A,B", "A,B", "A,B" ],
+    "MagicTimes": [ "0", "0", "1", "d2", "d4,1", "d6,d4", "d8,d6" ]
 
 
 
   },
   "LootTable4": {
     "Name": "4 Day Exploration",
-    "Range": [ 10, 30, 68, 84, 95, 99, 100 ],
-    "Copper": [ "d100", "10d100", "15d100", "20d100", "25d100", "50d100", "50d100" ],
-    "Silver": [ "0", "d20", "2d20", "8d6", "10d6", "10d6", "10d6" ],
-    "Gold": [ "0", "1d6*5", "1d6*10", "3d6*5", "3d6*10", "3d6*10", "3d6*10" ],
-    "Platinum": [ "0", "0", "0", "0", "0", "3d6", "3d6" ],
+    "Range": [ 11, 29, 55, 79, 91, 96, 100 ],
+    "Copper": [ "0", "50d100", "60d100", "75d100", "100d100", "150d100", "150d100" ],
+    "Silver": [ "d6", "4d6", "9d6", "18d6", "27d6", "36d6", "36d6" ],
+    "Gold": [ "0", "3d6*5", "3d6*10", "9d6*5", "9d6*10", "9d6*10", "9d6*10" ],
+    "Platinum": [ "0", "d2", "d6", "2d6", "4d6", "7d6", "9d6" ],
 
-    "MagicTables": [ "0", "0", "0", "0", "0", "A", "A,B" ],
-    "MagicTimes": [ "0", "0", "0", "0", "0", "1", "1d6,d4" ]
+    "MagicTables": [ "0", "A", "A", "A", "A,B", "A,B", "A,B,C" ],
+    "MagicTimes": [ "0", "1", "d2", "d4", "d6,d2", "d8,d4", "d10,d6,d2" ]
 
 
 
   },
   "LootTable5": {
     "Name": "5 Day Exploration",
-    "Range": [ 10, 30, 68, 84, 95, 99, 100 ],
-    "Copper": [ "d100", "10d100", "15d100", "20d100", "25d100", "50d100", "50d100" ],
-    "Silver": [ "0", "d20", "2d20", "8d6", "10d6", "10d6", "10d6" ],
-    "Gold": [ "0", "1d6*5", "1d6*10", "3d6*5", "3d6*10", "3d6*10", "3d6*10" ],
-    "Platinum": [ "0", "0", "0", "0", "0", "3d6", "3d6" ],
+    "Range": [ 12, 28, 55, 83, 94, 99, 100 ],
+    "Copper": [ "0", "30d100", "45d100", "60d100", "75d100", "150d100", "150d100" ],
+    "Silver": [ "0", "5d6", "10d6", "20d6", "30d6", "40d6", "40d6" ],
+    "Gold": [ "0", "3d6*5", "3d6*10", "10d6*5", "10d6*10", "10d6*10", "10d6*10" ],
+    "Platinum": [ "d2-1", "d2", "d6", "2d6", "5d6", "10d6", "10d6" ],
 
-    "MagicTables": [ "0", "0", "0", "0", "0", "A", "A,B,C" ],
-    "MagicTimes": [ "0", "0", "0", "0", "0", "1", "1d6,1d4,1" ]
+    "MagicTables": [ "0", "A", "A", "A,B", "A,B", "A,B,C", "A,B,C,D" ],
+    "MagicTimes": [ "0", "d2", "d4", "d6,d2", "d8,d4", "d10,d4,1", "d12,d6,d4,1" ]
 
 
   },
@@ -70,55 +70,91 @@
   "MagicTableA": {
     "Name": "Magic Table A",
     "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
-    "Rewards": [ "Potion0", "Scroll0", "Potion1", "Scroll1", "Scroll2", "Greater Healing", "Bag of holding", "Driftglobe" ]
+    "Rewards": [ "Potion0", "Scroll0", "Potion1", "Scroll1", "Scroll2", "Potion2", "Bag of holding", "Driftglobe" ]
 
 
   },
 
   "MagicTableB": {
     "Name": "Magic Table B",
-    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
-    "Rewards": [ "Potion0", "Scroll0", "Potion1", "Scroll1", "Scroll2", "Greater Healing", "Bag of holding", "Driftglobe" ]
+    "Range": [ 15,22,29,34,39,44,49,54,59,64,67,70,73,75,77,79,81,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 ],
+    "Rewards": [ "Potion of Greater Healing", "Potion0", "Potion0", "+1 Ammunition", "Potion1", "Potion1", "Potion1", "Potion of Water Breathing", "Scroll2", "Scroll3", "Potion1", "Potion2", "Bag of Holding", "Keoghtom's Ointment", "Oil of slipperiness", "Dust of Disappearance", "Dust of Dryness", "Dust of Sneezing and Choking", "Elemental Gem", "Philter of Love", "Alchemy Jug", "Cap of Water Breathing", "Cloak of the Manta Ray", "Driftglobe", "Goggles of Night", "Helm of Comprehending Languages", "Immovable Rod", "Lantern of Revealing", "Mariner's armor", "Potion of Poison", "Robe of Useful Items", "Rope of Climbing", "Saddle of the cavalier", "Wand of Magic Detection", "Wand of Secrets" ]
 
   },
+  "MagicTableC": {
+    "Name": "Magic Table C",
+    "Range": [ 15,22,27,32,37,42,47,52,57,62,67,72,75,78,81,84,87,89,91,92,93,94,95,96,97,98,99,100 ],
+    "Rewards": [ "Potion of Superior Healing", "Scroll3", "+2 Ammunition", "Potion2", "Potion2", "Potion2", "Potion2", "Potion3", "Potion of Heroism", "Potion of Invulnerability", "Potion of Mind Reading", "Scroll4", "Elixir of Health", "Oil of Etherealness", "Potion of Fire Giant Strength", "Quaal's Feather Token", "Scroll of Protection", "Bag of Beans", "Bead of Force", "Chime of Opening", "Decanter of Endless Water", "Eyes of Minute Seeing", "Folding Boat", "Heward's Handy Haversack", "Horseshoes of Speed", "Necklace of Fireballs", "Periapt of Health", "A pair of Sending Stones" ]
+
+
+  },
+
+  "MagicTableD": {
+    "Name": "Magic Table D",
+    "Range": [ 20, 40, 50, 60, 70, 80, 90, 95, 99,100 ],
+    "Rewards": [ "Potion of Supreme Healing", "Potion2", "Potion3", "Scroll3", "Scroll4", "+3 Ammunition", "Ring of Water Walking", "Bag of Devouring", "Periapt of Wound Closure","Winged boots" ]
+
+  },
+
+
 
 
 
 
   "PotionTable0": {
     "Name": "Potion Table 0",
-    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
-    "Rewards": [ "Potion of A", "Potion of B", "Potion of V", "Potion of D", "Potion of E", "Potion of F", "Potion of G", "Potion of H" ]
-
-
+    "Rewards": [ "Animal Friendship", "Climbing", "Diminution", "Hill Giant Strength", "Growth", "Mind Reading", "Heroism", "Water Breathing", "Poison", "Healing", "Healing", "Healing", "Healing", "Healing" ]
   },
 
   "PotionTable1": {
     "Name": "Potion Table 1",
-    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
-    "Rewards": [ "PotionA", "PotionB", "PotionC", "PotionD", "PotionE", "PotionF", "PotionG", "PotionH" ]
+    "Rewards": [ "Stone Giant Strength", "Invisibility", "Radiant Resistance", "Psychic Resistance", "Poison Resistance", "Necrotic Resistance", "Force Resistance", "Fire Resistance", "Acid Resistance", "Cold Resistance", "Greater Healing", "Greater Healing", "Greater Healing" ]
+
+  },
+  "PotionTable2": {
+    "Name": "Potion Table 2",
+    "Rewards": [ "Flying", "Gaseous Form", "Fire Giant Strength", "Speed", "Superior Healing", "Superior Healing" ]
+
 
   },
 
+  "PotionTable3": {
+    "Name": "Potion Table 3",
+    "Rewards": [ "Cloud Giant Strength", "Supreme Healing", "Clairvoyance"]
+
+  },
+
+
+
+
+
+
+
   "ScrollTable0": {
     "Name": "Scroll Table 0",
-    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
-    "Rewards": [ "Scroll of A", "Scroll of B", "Scroll of C", "Scroll of D", "Scroll of E", "Scroll of F", "Scroll of G", "Scroll of H" ]
-
-
+    "Rewards": [ "Acid Splash", "Blade Ward", "Chill Touch", "Control Flames", "Create Bonfire", "Eldritch Blast", "Fire Bolt", "Friends", "Guidance", "Light", "Mage Hand", "Mending", "Minor Illusion", "Mold Earth", "Poison Spray", "Prestidigitation", "Produce Flame", "Ray of Frost", "Resistance", "Shape Water", "Shocking Grasp", "Spare the Dying", "Thaumaturgy", "True Strike", "Vicious Mockery" ]
   },
 
   "ScrollTable1": {
     "Name": "Scroll Table 1",
-    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
-    "Rewards": [ "ScrollA", "ScrollB", "ScrollC", "ScrollD", "ScrollE", "ScrollF", "ScrollG", "ScrollH" ]
+    "Rewards": [ "Absorb Elements", "Alarm", "Armor of Agathys", "Bane", "Bless", "Burning Hands", "Ceremony", "Charm Person", "Command", "Comprehend Languages", "Create or Destroy Water", "Cure Wounds", "Detect Magic", "Detect Poison and Disease", "Disguise Self", "Dissonant Whispers", "Entangle", "Faerie Fire", "False Life", "Goodberry", "Fog Cloud", "Grease", "Guiding Bolt", "Healing Word", "Hellish Rebuke", "Hunter's Mark", "Ice Knife", "Identify", "Illusory Script", "Inflict Wounds", "Jump", "Longstrider", "Mage Armor", "Magic Missile", "Purify Food and Drink", "Ray of Sickness", "Sanctuary", "Shield", "Shield of Faith", "Sleep", "Speak with Animals", "Thunderwave", "Witch Bolt" ]
 
   },
   "ScrollTable2": {
     "Name": "Scroll Table 2",
-    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
-    "Rewards": [ "ScrollAA", "ScrollBB", "ScrollCC", "ScrollDD", "ScrollEE", "ScrollFF", "ScrollGG", "ScrollHH" ]
+    "Rewards": [ "Aid", "Alter Self", "Barkskin", "Blindness/Deafness", "Blur", "Calm Emotions", "Continual Flame", "Crown of Madness", "Darkness", "Darkvision", "Detect Thoughts", "Dragon's Breath", "Earthbind", "Enhance Ability", "Enlarge/Reduce", "Enthrall", "Flame Blade", "Flaming Sphere", "Gentle Repose", "Gust of Wind", "Heat Metal", "Hold Person", "Invisibility", "Knock", "Lesser Restoration", "Levitate", "Locate Object", "Magic Mouth", "Magic Weapon", "Mind Spike", "Mirror Image", "Misty Step", "Moonbeam", "Pass Without Trace", "Prayer of Healing", "Protection from Poison", "Ray of Enfeeblement", "Scorching Ray", "See Invisibility", "Shadow Blade", "Shatter", "Silence", "Spider Climb", "Suggestion", "Warding Bond", "Web", "Zone of Truth" ]
+
+  },
+  "ScrollTable3": {
+    "Name": "Scroll Table 3",
+    "Rewards": [ "Animate Dead", "Aura of Vitality", "Beacon of Hope", "Bestow Curse", "Blink", "Call Lightning", "Clairvoyance", "Conjure Animals", "Counterspell", "Create Food and Water", "Daylight", "Dispel Magic", "Elemental Weapon", "Enemies Abound", "Fear", "Feign Death", "Fireball", "Flame Arrows", "Fly", "Gaseous Form", "Glyph of Warding", "Haste", "Hypnotic Pattern", "Tiny Hut", "Lightning Bolt", "Major Image", "Mass Healing Word", "Minute Meteors", "Nondetection", "Phantom Steed", "Plant Growth", "Protection from Energy", "Remove Curse", "Revivify", "Slow", "Speak with Dead", "Speak with Plants", "Spirit Guardians", "Stinking Cloud", "Thunder Step", "Tidal Wave", "Tongues", "Vampiric Touch", "Water Walk", "Wind Wall", "Water Breathing" ]
+
+  },
+  "ScrollTable4": {
+    "Name": "Scroll Table 4",
+    "Rewards": [ "Arcane Eye", "Aura of Life", "Aura of Purity", "Banishment", "Blight", "Charm Monster", "Compulsion", "Confusion", "Control Water", "Death Ward", "Dimension Door", "Divination", "Dominate Beast", "Elemental Bane", "Fabricate", "Find Greater Steed", "Fire Shield", "Freedom of Movement", "Grasping Vine", "Greater Invisibility", "Hallucinatory Terrain", "Ice Storm", "Locate Creature", "Private Sanctum", "Resilient Sphere", "Polymorph", "Stone Shape", "Stoneskin", "Storm Sphere", "Vitriolic Sphere", "Wall of Fire", "Watery Sphere" ]
 
   }
+
 
 }

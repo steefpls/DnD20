@@ -57,6 +57,7 @@ client.on('message', message => {
                 "`!ping` - Pings the bot to check if it's online.\n" +
                 //"`!pong` - ...pongs the bot to check if it's online?\n" +
                 '`!r` or `!roll` - Rolls dice. Usage examples:  `!r d20`  ,  `!r 2d10+5` ,  `!r 5+3*2 $Test-words`\n' +
+                '`!e x` or `!explore x` - Do exploration. Replace x with number of days, 1-5.\n' +
                 "`!gold help` - Displays gold help menu.\n" +
                 "`!h` or `!help` - Displays help menu.\n" +
                 "`!l` or `!link` - Link to add bot to server.";
@@ -223,22 +224,24 @@ client.on('message', message => {
                 }
 
                 if (rewardstext == "") {
-                    rewardstext == "Absolutely nothing :(";
+                    rewardstext = "Absolutely nothing :(";
                 }
                 else {
                     rewardstext += "\nTotal gold value: \n";
-                    copp += 10 * silv + 100 * gold + 1000 * plat;
-                    if (Math.floor(copp / 100) != 0) {
-                        rewardstext += (Math.floor(copp / 100) + Math.floor(Math.floor(copp / 10)/10)) + " gold\n";
-                        copp = Math.floor(copp / 100);
+                    moneylist = convertToGold(plat, gold, silv, copp);
+                    gold = moneylist[0];
+                    silv = moneylist[1];
+                    copp = moneylist[2];
+                    
+                    if (gold != 0) {
+                        rewardstext += gold + " gold\n";
                     }
-                    if (Math.floor(copp / 10) != 0) {
-                        rewardstext += Math.floor(copp / 10) + " silver\n";
-                        copp = Math.floor(copp / 10);
+                    if (silv != 0) {
+                        rewardstext += silv + " silver\n";
+                        
                     }
                     if (copp !=0) {
                         rewardstext += copp + " copper\n\n";
-                        copp = 0;
                     }
                         
                 }
@@ -249,39 +252,59 @@ client.on('message', message => {
                     var RolledTables = table.MagicTables[tier];
                     var RolledTimes = table.MagicTimes[tier];
                     var MagicTable;
+
                     RolledTables = RolledTables.split(",");
                     RolledTimes = RolledTimes.split(",");
                     var MagicRewards = [];
+                    var FilterList = [];
+                    var FilterNumber = [];
 
                     for (k = 0; k < RolledTables.length; k++) {
-
+                        var TableToRollOn = RolledTables[k];
                         noOfTimes = rolldice(RolledTimes[k]);
                         rewardstext += "Rolling on Magic table " + RolledTables[k] + ", " + "(" + noOfTimes + ") " + RolledTimes[k] + " time(s).\n";
-                        MagicTable = listFile["MagicTable" + RolledTables[k]];
+                        MagicTable = "MagicTable" + TableToRollOn;
 
                         for (s = 0; s < noOfTimes; s++) {
-                            RolledItem = RollTable(MagicTable);
-
-                            if (RolledItem.startsWith("Potion")) {
-                                potTier = RolledItem[RolledItem.length - 1];
-                                potlist = "PotionTable" + potTier;
-                                RolledItem = RollTableFromName(potlist);
+                            RolledItem = RollTableFromName(MagicTable);
+                            if (RolledItem != undefined) {
+                                if (RolledItem.startsWith("Potion") && !isNaN(RolledItem[RolledItem.length - 1])) {
+                                    potTier = RolledItem[RolledItem.length - 1];
+                                    potlist = "PotionTable" + potTier;
+                                    RolledItem = "Potion of " + RollScrollPotFromName(potlist);
+                                }
+                                else if (RolledItem.startsWith("Scroll") && !isNaN(RolledItem[RolledItem.length - 1])) {
+                                    scrollTier = RolledItem[RolledItem.length - 1];
+                                    scrolllist = "ScrollTable" + scrollTier;
+                                    RolledItem = "Scroll of " + RollScrollPotFromName(scrolllist);
+                                }
+                                MagicRewards.push(RolledItem);
                             }
-                            else if (RolledItem.startsWith("Scroll")) {
-                                scrollTier = RolledItem[RolledItem.length - 1];
-                                scrolllist = "ScrollTable" + scrollTier;
-                                RolledItem = RollTableFromName(scrolllist);
-                            }
 
-
-                            MagicRewards.push(RolledItem);
 
                         }
 
                     }
+                    for (h = 0; h < MagicRewards.length; h++) {
+                        if (!FilterList.includes(MagicRewards[h])) {
+                            FilterList.push(MagicRewards[h]);
+                            FilterNumber.push(1);
+                        }
+                        else {
+                            FilterNumber[FilterList.indexOf(MagicRewards[h])] = FilterNumber[FilterList.indexOf(MagicRewards[h])] + 1;
+                        }
+
+
+                    }
+                    var finalRewards = "";
+                    for (nn = 0; nn < FilterList.length; nn++) {
+                        finalRewards += FilterList[nn] + " x" + FilterNumber[nn]+"\n";
+                    }
+
+
                     rewardstext += "\n";
 
-                    rewardstext += MagicRewards;
+                    rewardstext += finalRewards;
                 }
 
 
@@ -318,6 +341,13 @@ client.on('message', message => {
 
 
 client.login(auth.token);
+var RollScrollPot = function (Table) {
+    return Table.Rewards[randomint(1, Table.Rewards.length-1)];
+}
+var RollScrollPotFromName = function (TableName) {
+    var tab = listFile[TableName];
+    return RollScrollPot(tab);
+}
 
 var RollTable = function (Table) {
 
@@ -910,3 +940,19 @@ async function clear(message) {
     message.channel.bulkDelete(fetched);
 }
 
+var convertToGold = function (plat, gold, silv, copp) {
+
+    copp += 10 * silv + 100 * gold + 1000 * plat;
+    silv = 0;
+    gold = 0;
+    plat = 0;
+
+    silv = Math.floor(copp / 10);
+    copp = copp % 10;
+
+    gold = Math.floor(silv / 10);
+    silv = silv % 10;
+
+
+    return [gold, silv, copp];
+}
