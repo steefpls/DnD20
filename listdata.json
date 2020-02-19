@@ -1,0 +1,124 @@
+{
+  "LootTable1": {
+    "Name": "1 Day Exploration",
+    "Range": [ 10, 30, 68, 84, 95, 99, 100 ],
+    "Copper": [ "d100", "10d100", "15d100", "20d100", "25d100", "50d100", "50d100" ],
+    "Silver": [ "0", "d20", "2d20", "8d6", "10d6", "10d6", "10d6" ],
+    "Gold": [ "0", "1d6*5", "1d6*10", "3d6*5", "3d6*10", "3d6*10", "3d6*10" ],
+    "Platinum": [ "0", "0", "0", "0", "0", "3d6", "3d6" ],
+
+    "MagicTables": [ "0", "0", "0", "0", "0", "A", "A,B" ],
+    "MagicTimes": [ "0", "0", "0", "0", "0", "d4", "1d4,1" ]
+
+  },
+
+  "LootTable2": {
+    "Name": "2 Day Exploration",
+    "Range": [ 10, 30, 68, 84, 95, 99, 100 ],
+    "Copper": [ "d100", "10d100", "15d100", "20d100", "25d100", "50d100", "50d100" ],
+    "Silver": [ "0", "d20", "2d20", "8d6", "10d6", "10d6", "10d6" ],
+    "Gold": [ "0", "1d6*5", "1d6*10", "3d6*5", "3d6*10", "3d6*10", "3d6*10" ],
+    "Platinum": [ "0", "0", "0", "0", "0", "3d6", "3d6" ],
+
+    "MagicTables": [ "0", "0", "0", "0", "0", "A", "A,B" ],
+    "MagicTimes": [ "0", "0", "0", "0", "0", "1", "1d4,1" ]
+
+
+  },
+  "LootTable3": {
+    "Name": "3 Day Exploration",
+    "Range": [ 10, 30, 68, 84, 95, 99, 100 ],
+    "Copper": [ "d100", "10d100", "15d100", "20d100", "25d100", "50d100", "50d100" ],
+    "Silver": [ "0", "d20", "2d20", "8d6", "10d6", "10d6", "10d6" ],
+    "Gold": [ "0", "1d6*5", "1d6*10", "3d6*5", "3d6*10", "3d6*10", "3d6*10" ],
+    "Platinum": [ "0", "0", "0", "0", "0", "3d6", "3d6" ],
+
+    "MagicTables": [ "0", "0", "0", "0", "0", "A", "A,B" ],
+    "MagicTimes": [ "0", "0", "0", "0", "0", "1", "1d4,1" ]
+
+
+
+  },
+  "LootTable4": {
+    "Name": "4 Day Exploration",
+    "Range": [ 10, 30, 68, 84, 95, 99, 100 ],
+    "Copper": [ "d100", "10d100", "15d100", "20d100", "25d100", "50d100", "50d100" ],
+    "Silver": [ "0", "d20", "2d20", "8d6", "10d6", "10d6", "10d6" ],
+    "Gold": [ "0", "1d6*5", "1d6*10", "3d6*5", "3d6*10", "3d6*10", "3d6*10" ],
+    "Platinum": [ "0", "0", "0", "0", "0", "3d6", "3d6" ],
+
+    "MagicTables": [ "0", "0", "0", "0", "0", "A", "A,B" ],
+    "MagicTimes": [ "0", "0", "0", "0", "0", "1", "1d6,d4" ]
+
+
+
+  },
+  "LootTable5": {
+    "Name": "5 Day Exploration",
+    "Range": [ 10, 30, 68, 84, 95, 99, 100 ],
+    "Copper": [ "d100", "10d100", "15d100", "20d100", "25d100", "50d100", "50d100" ],
+    "Silver": [ "0", "d20", "2d20", "8d6", "10d6", "10d6", "10d6" ],
+    "Gold": [ "0", "1d6*5", "1d6*10", "3d6*5", "3d6*10", "3d6*10", "3d6*10" ],
+    "Platinum": [ "0", "0", "0", "0", "0", "3d6", "3d6" ],
+
+    "MagicTables": [ "0", "0", "0", "0", "0", "A", "A,B,C" ],
+    "MagicTimes": [ "0", "0", "0", "0", "0", "1", "1d6,1d4,1" ]
+
+
+  },
+
+  "MagicTableA": {
+    "Name": "Magic Table A",
+    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
+    "Rewards": [ "Potion0", "Scroll0", "Potion1", "Scroll1", "Scroll2", "Greater Healing", "Bag of holding", "Driftglobe" ]
+
+
+  },
+
+  "MagicTableB": {
+    "Name": "Magic Table B",
+    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
+    "Rewards": [ "Potion0", "Scroll0", "Potion1", "Scroll1", "Scroll2", "Greater Healing", "Bag of holding", "Driftglobe" ]
+
+  },
+
+
+
+
+  "PotionTable0": {
+    "Name": "Potion Table 0",
+    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
+    "Rewards": [ "Potion of A", "Potion of B", "Potion of V", "Potion of D", "Potion of E", "Potion of F", "Potion of G", "Potion of H" ]
+
+
+  },
+
+  "PotionTable1": {
+    "Name": "Potion Table 1",
+    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
+    "Rewards": [ "PotionA", "PotionB", "PotionC", "PotionD", "PotionE", "PotionF", "PotionG", "PotionH" ]
+
+  },
+
+  "ScrollTable0": {
+    "Name": "Scroll Table 0",
+    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
+    "Rewards": [ "Scroll of A", "Scroll of B", "Scroll of C", "Scroll of D", "Scroll of E", "Scroll of F", "Scroll of G", "Scroll of H" ]
+
+
+  },
+
+  "ScrollTable1": {
+    "Name": "Scroll Table 1",
+    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
+    "Rewards": [ "ScrollA", "ScrollB", "ScrollC", "ScrollD", "ScrollE", "ScrollF", "ScrollG", "ScrollH" ]
+
+  },
+  "ScrollTable2": {
+    "Name": "Scroll Table 2",
+    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
+    "Rewards": [ "ScrollAA", "ScrollBB", "ScrollCC", "ScrollDD", "ScrollEE", "ScrollFF", "ScrollGG", "ScrollHH" ]
+
+  }
+
+}
