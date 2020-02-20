@@ -25,6 +25,9 @@ var listPath = "./listdata.json";
 var listRead = fs.readFileSync(listPath);
 var listFile = JSON.parse(listRead); //ready for use
 
+
+
+
 client.on('ready', () => {
     console.log(`\nLogged in as ${client.user.tag}!\n`);
 })
@@ -325,7 +328,7 @@ client.on('message', message => {
 
 
 
-
+           
 
 
 
@@ -334,7 +337,7 @@ client.on('message', message => {
         }
 
         else if (cmd == 'test' || cmd == 't') {       //Testing
-            
+            sendmessage(listFile.LootTable2.Name, message);
         }
     }
 })
