@@ -315,32 +315,39 @@ client.on('message', message => {
 
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-           
-
-
-
-
             sendcodemessageatplayer(disptext, message);
         }
 
         else if (cmd == 'test' || cmd == 't') {       //Testing
-            sendmessage(listFile.LootTable2.Name, message);
+            sendmessage(listFile.LootTable3.Nigger.NameList, message);
         }
     }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 client.login(auth.token);
