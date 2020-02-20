@@ -120,11 +120,8 @@
 
   "PotionTable3": {
     "Name": "Potion Table 3",
-    "Rewards": [ "Cloud Giant Strength", "Supreme Healing", "Clairvoyance" ],
-    "Nigger": {
-      "NameList": ["Dashawn", "Shaniqua"]
+    "Rewards": [ "Cloud Giant Strength", "Supreme Healing", "Clairvoyance" ]
 
-    }
 
   },
 

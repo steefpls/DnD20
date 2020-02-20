@@ -319,7 +319,7 @@ client.on('message', message => {
         }
 
         else if (cmd == 'test' || cmd == 't') {       //Testing
-            sendmessage(listFile.LootTable3.Nigger.NameList, message);
+            sendmessage("No test case currently implemented", message);
         }
     }
 })
