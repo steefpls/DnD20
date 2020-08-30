@@ -61,8 +61,8 @@
     "Gold": [ "0", "3d6*5", "3d6*10", "10d6*5", "10d6*10", "10d6*10", "10d6*10" ],
     "Platinum": [ "d2-1", "d2", "d6", "2d6", "5d6", "10d6", "10d6" ],
 
-    "MagicTables": [ "0", "A", "A", "A,B", "A,B", "A,B,C", "A,B,C,D" ],
-    "MagicTimes": [ "0", "d2", "d4", "d6,d2", "d8,d4", "d10,d4,1", "d12,d6,d4,1" ]
+    "MagicTables": [ "X", "Z", "A", "A,B", "A,B", "A,B,C", "A,B,C,D" ],
+    "MagicTimes": [ "1", "1", "d4", "d6,d2", "d8,d4", "d10,d4,1", "d12,d6,d4,1" ]
 
 
   },
@@ -77,13 +77,13 @@
 
   "MagicTableB": {
     "Name": "Magic Table B",
-    "Range": [ 15,22,29,34,39,44,49,54,59,64,67,70,73,75,77,79,81,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 ],
+    "Range": [ 15, 22, 29, 34, 39, 44, 49, 54, 59, 64, 67, 70, 73, 75, 77, 79, 81, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100 ],
     "Rewards": [ "Potion of Greater Healing", "Potion0", "Potion0", "+1 Ammunition", "Potion1", "Potion1", "Potion1", "Potion of Water Breathing", "Scroll2", "Scroll3", "Potion1", "Potion2", "Bag of Holding", "Keoghtom's Ointment", "Oil of slipperiness", "Dust of Disappearance", "Dust of Dryness", "Dust of Sneezing and Choking", "Elemental Gem", "Philter of Love", "Alchemy Jug", "Cap of Water Breathing", "Cloak of the Manta Ray", "Driftglobe", "Goggles of Night", "Helm of Comprehending Languages", "Immovable Rod", "Lantern of Revealing", "Mariner's armor", "Potion of Poison", "Robe of Useful Items", "Rope of Climbing", "Saddle of the cavalier", "Wand of Magic Detection", "Wand of Secrets" ]
 
   },
   "MagicTableC": {
     "Name": "Magic Table C",
-    "Range": [ 15,22,27,32,37,42,47,52,57,62,67,72,75,78,81,84,87,89,91,92,93,94,95,96,97,98,99,100 ],
+    "Range": [ 15, 22, 27, 32, 37, 42, 47, 52, 57, 62, 67, 72, 75, 78, 81, 84, 87, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100 ],
     "Rewards": [ "Potion of Superior Healing", "Scroll3", "+2 Ammunition", "Potion2", "Potion2", "Potion2", "Potion2", "Potion3", "Potion of Heroism", "Potion of Invulnerability", "Potion of Mind Reading", "Scroll4", "Elixir of Health", "Oil of Etherealness", "Potion of Fire Giant Strength", "Quaal's Feather Token", "Scroll of Protection", "Bag of Beans", "Bead of Force", "Chime of Opening", "Decanter of Endless Water", "Eyes of Minute Seeing", "Folding Boat", "Heward's Handy Haversack", "Horseshoes of Speed", "Necklace of Fireballs", "Periapt of Health", "A pair of Sending Stones" ]
 
 
@@ -91,8 +91,27 @@
 
   "MagicTableD": {
     "Name": "Magic Table D",
-    "Range": [ 20, 40, 50, 60, 70, 80, 90, 95, 99,100 ],
-    "Rewards": [ "Potion of Supreme Healing", "Potion2", "Potion3", "Scroll3", "Scroll4", "+3 Ammunition", "Ring of Water Walking", "Bag of Devouring", "Periapt of Wound Closure","Winged boots" ]
+    "Range": [ 20, 40, 50, 60, 70, 80, 90, 95, 99, 100 ],
+    "Rewards": [ "Potion of Supreme Healing", "Potion2", "Potion3", "Scroll3", "Scroll4", "+3 Ammunition", "Ring of Water Walking", "Bag of Devouring", "Periapt of Wound Closure", "Winged boots" ]
+
+  },
+
+  "MagicTableX": {
+    "Name": "The injury table",
+    "Range": [ 30, 100 ],
+    "Rewards": [ "You suffer a heavy injury.", "You suffer a moderate injury." ]
+
+  },
+  "MagicTableY": {
+    "Name": "The injury table",
+    "Range": [ 30, 100 ],
+    "Rewards": [ "You suffer a moderate injury.", "You suffer a light injury." ]
+
+  },
+  "MagicTableZ": {
+    "Name": "The injury table",
+    "Range": [ 50, 100 ],
+    "Rewards": [ "You suffer a light injury.", "You manage to dodge RNG's wrath and suffer no injuries." ]
 
   },
 
