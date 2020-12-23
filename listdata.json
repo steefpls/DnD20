@@ -1,4 +1,33 @@
 {
+  "ShopTable": {
+    "Name": "Shop Tables",
+    "Common": [ "Commonitem 1", "Commonitem 2", "Spell Scroll0" ],
+    "Uncommon": [ "Adamantine Armor", "+1 Ammunition", "Amulet of Proof against Detection and Location", "Bag of Holding", "Bag of Tricks", "Boots of Elvenkind", "Boots of Striding and Springing", "Boots of the Winterlands", "Bracers of Archery", "Brooch of Shielding", "Broom of Flying", "Circlet of Blasting", "Cloak of Elvenkind", "Cloak of Protection", "Cloak of the Manta Ray", "Decanter of Endless Water", "Deck of Illusions", "Dust of Disappearance", "Dust of Dryness", "Dust of Sneezing and Choking", "Efficient Quiver", "Elemental Gem", "Eversmoking Bottle", "Eyes of Charming", "Eyes of Minute Seeing", "Eyes of the Eagle", "Figurine of Wondrous Power", "Gauntlets of Ogre Power", "Gem of Brightness", "Gloves of Missile Snaring", "Gloves of Swimming and Climbing", "Goggles of Night", "Hat of Disguise", "Headband of Intellect", "Helm of Comprehending Languages", "Helm of Telepathy", "Immovable Rod", "Javelin of Lightning", "Lantern of Revealing", "Medallion of Thoughts", "Mithral Armor", "Necklace of Adaptation", "Oil of Slipperiness", "Pearl of Power", "Periapt of Health", "Periapt of Wound Closure", "Philter of Love", "Pipes of Haunting", "Pipes of the Sewers", "Potion of Animal Friendship", "Potion of Giant Strength", "Potion of Growth", "Potion of Healing", "Potion of Poison", "Potion of Resistance", "Potion of Water Breathing", "Restorative Ointment", "Ring of Jumping", "Ring of Mind Shielding", "Ring of Swimming", "Ring of Warmth", "Ring of Water Walking", "Robe of Useful Items", "Rope of Climbing", "+1 Shield", "Slippers of Spider Climbing", "Spell Scroll", "Staff of the Python", "Stone of Good Luck (Luckstone)", "Trident of Fish Command", "Wand of Magic Detection", "Wand of Magic Missiles", "Wand of Secrets", "Wand of the War Mage", "Wand of Web", "+1 Weapon", "Wind Fan", "Winged Boots" ],
+    "Rare": [],
+    "VRare": [],
+    "Legendary": [],
+
+    "CommonTimes": [ "5d4" ],
+    "UncommonTimes": [ "3d4" ],
+    "RareTimes": [ "2d4" ],
+    "VRareTimes": [ "1d4" ],
+    "LegendayTimes": [ "1d2-1" ],
+
+    "CommonPrice": [ "1d100+50" ],
+    "RarePrice": [ "2d4" ],
+    "VRarePrice": [ "1d4" ],
+    "LegendarPrice": [ "1d2-1" ]
+
+  },
+
+
+
+
+
+
+
+
+
   "LootTable1": {
     "Name": "1 Day Exploration",
     "Range": [ 10, 30, 60, 84, 95, 99, 100 ],
@@ -55,14 +84,14 @@
   },
   "LootTable5": {
     "Name": "5 Day Exploration",
-    "Range": [ 12, 28, 55, 83, 94, 99, 100 ],
-    "Copper": [ "0", "30d100", "45d100", "60d100", "75d100", "150d100", "150d100" ],
-    "Silver": [ "0", "5d6", "10d6", "20d6", "30d6", "40d6", "40d6" ],
-    "Gold": [ "0", "3d6*5", "3d6*10", "10d6*5", "10d6*10", "10d6*10", "10d6*10" ],
-    "Platinum": [ "d2-1", "d2", "d6", "2d6", "5d6", "10d6", "10d6" ],
+    "Range": [ 12, 28, 55, 79, 94, 99, 100 ],
+    "Copper": [ "0", "6d100", "12d100", "25d100", "50d100", "75d100", "150d100" ],
+    "Silver": [ "0", "5d6", "10d6", "20d6", "10d6", "20d6", "40d6" ],
+    "Gold": [ "0", "2d6*5", "2d6*10", "5d6*5", "5d6*10", "5d6*10", "10d6*10" ],
+    "Platinum": [ "d2-1", "d2", "d6", "d6", "2d6", "5d6", "10d6" ],
 
-    "MagicTables": [ "X", "Z", "A", "A,B", "A,B", "A,B,C", "A,B,C,D" ],
-    "MagicTimes": [ "1", "1", "d4", "d6,d2", "d8,d4", "d10,d4,1", "d12,d6,d4,1" ]
+    "MagicTables": [ "X", "Z", "A", "A", "A,B", "A,B,C", "A,B,C,D" ],
+    "MagicTimes": [ "1", "1", "1", "d2", "d4,1", "d6,d2,1", "d10,d4,d2,1" ]
 
 
   },
@@ -70,7 +99,7 @@
   "MagicTableA": {
     "Name": "Magic Table A",
     "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
-    "Rewards": [ "Potion0", "Scroll0", "Potion1", "Scroll1", "Scroll2", "Potion2", "Bag of holding", "Driftglobe" ]
+    "Rewards": [ "Potion0", "Scroll0", "Potion1", "Scroll1", "Scroll2", "Potion2", "Bag of Rocks", "Driftglobe" ]
 
 
   },
@@ -78,7 +107,7 @@
   "MagicTableB": {
     "Name": "Magic Table B",
     "Range": [ 15, 22, 29, 34, 39, 44, 49, 54, 59, 64, 67, 70, 73, 75, 77, 79, 81, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100 ],
-    "Rewards": [ "Potion of Greater Healing", "Potion0", "Potion0", "+1 Ammunition", "Potion1", "Potion1", "Potion1", "Potion of Water Breathing", "Scroll2", "Scroll3", "Potion1", "Potion2", "Bag of Holding", "Keoghtom's Ointment", "Oil of slipperiness", "Dust of Disappearance", "Dust of Dryness", "Dust of Sneezing and Choking", "Elemental Gem", "Philter of Love", "Alchemy Jug", "Cap of Water Breathing", "Cloak of the Manta Ray", "Driftglobe", "Goggles of Night", "Helm of Comprehending Languages", "Immovable Rod", "Lantern of Revealing", "Mariner's armor", "Potion of Poison", "Robe of Useful Items", "Rope of Climbing", "Saddle of the cavalier", "Wand of Magic Detection", "Wand of Secrets" ]
+    "Rewards": [ "Potion of Greater Healing", "Potion0", "Potion0", "+1 Ammunition", "Potion1", "Potion1", "Potion1", "Potion of Water Breathing", "Scroll2", "Scroll3", "Potion1", "Potion2", "Bag of Rocks", "Keoghtom's Ointment", "Oil of slipperiness", "Dust of Disappearance", "Dust of Dryness", "Dust of Sneezing and Choking", "Elemental Gem", "Philter of Love", "Alchemy Jug", "Cap of Water Breathing", "Cloak of the Manta Ray", "Driftglobe", "Goggles of Night", "Helm of Comprehending Languages", "Immovable Rod", "Lantern of Revealing", "Mariner's armor", "Potion of Poison", "Robe of Useful Items", "Rope of Climbing", "Saddle of the cavalier", "Wand of Magic Detection", "Wand of Secrets" ]
 
   },
   "MagicTableC": {

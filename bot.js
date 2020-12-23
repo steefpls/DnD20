@@ -43,113 +43,173 @@ client.on('message', message => {
 
         if (cmd == 'ping') {
             sendcodemessage('pong!', message);
-
+            return;
         }
 
-        else if (cmd == 'r' || cmd == 'roll') { //If rolling
+        //else if (cmd == 'br') {
 
-            rolldicedisplay(message, args);
+        //    sendmessage('``` ```', message);
+        //    clear(message);
+        //    return;
+        //}
 
-        } //rolling end
+        //else if (cmd == 'r' || cmd == 'roll') { //If rolling
+
+        //    rolldicedisplay(message, args);
+        //    return;
+
+        //} //rolling end
         else if (cmd == 'pong') {
             sendcodemessage('dude what the fuck', message);
+            return;
 
         }
+        //else if (cmd == 'syntax' || cmd == 'help' || cmd == 'h') {
+        //    var msg = "**__Bot commands:__**\n" +
+        //        "`!ping` - Pings the bot to check if it's online.\n" +
+        //        //"`!pong` - ...pongs the bot to check if it's online?\n" +
+        //        '`!r` or `!roll` - Rolls dice. Usage examples:  `!r d20`  ,  `!r 2d10+5` ,  `!r 5+3*2 $Test-words`\n' +
+        //        '`!e x` or `!explore x` - Do exploration. Replace x with number of days, 1-5.\n' +
+        //        "`!gold help` - Displays gold help menu.\n" +
+        //        "`!h` or `!help` - Displays help menu.\n" +
+        //        "`!l` or `!link` - Link to add bot to server.";
+        //    sendmessage(msg, message);
+        //    return;
+
+        //}
         else if (cmd == 'syntax' || cmd == 'help' || cmd == 'h') {
             var msg = "**__Bot commands:__**\n" +
                 "`!ping` - Pings the bot to check if it's online.\n" +
-                //"`!pong` - ...pongs the bot to check if it's online?\n" +
-                '`!r` or `!roll` - Rolls dice. Usage examples:  `!r d20`  ,  `!r 2d10+5` ,  `!r 5+3*2 $Test-words`\n' +
+                "`!pong` - ...pongs the bot to check if it's online?\n" +
                 '`!e x` or `!explore x` - Do exploration. Replace x with number of days, 1-5.\n' +
-                "`!gold help` - Displays gold help menu.\n" +
                 "`!h` or `!help` - Displays help menu.\n" +
                 "`!l` or `!link` - Link to add bot to server.";
             sendmessage(msg, message);
+            return;
 
         }
+
         else if (cmd == 'easteregg') {
             sendcodemessage('Tell the GM "I found the easter egg!" for inspiration :)', message);
-
+            return;
         }
 
         else if (cmd == 'link' || cmd == "l") {
 
             sendmessage("**Click on the link to add me to your server!**" +
                 "\nhttps://discordapp.com/oauth2/authorize?&client_id=678342914618818577&scope=bot&permissions=8", message);
-
+            return;
         }
-        else if (cmd == 'purge') {
+        //else if (cmd == 'purge') {
 
-            let allowedRole = message.guild.roles.find("name", "GMs");
-            if (message.member.roles.has(allowedRole.id)) {
-                // allowed access to command
+        //    let allowedRole = message.guild.roles.find("name", "GMs");
+        //    if (message.member.roles.has(allowedRole.id)) {
+        //        // allowed access to command
 
-                clear(message);
-                sendmessageatplayer("Messages purged lol", message);
-            } else {
-                // not allowed access
-                sendmessageatplayer("You're too weak to use this command :(", message);
+        //        clear(message);
+        //        sendmessageatplayer("Messages purged lol", message);
+        //    } else {
+        //        // not allowed access
+        //        sendmessageatplayer("You're too weak to use this command :(", message);
+        //    }
+        //    return;
+
+        //}
+        //else if (cmd == 'gold' || cmd == 'g') {       //Gold stufdf
+        //    if (args[0] == 'set') {   // setgold command selected
+        //        if (!isNaN(args[1])) {
+        //            setGolddisplay(message, Number(args[1]));
+                    
+        //        }
+        //        else {
+        //            sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
+        //        }
+
+        //    }
+        //    else if (args[0] == 'add') {// addgold command selected
+
+        //        if (!isNaN(args[1])) {
+        //            addGolddisplay(message, Number(args[1]));
+                    
+        //        }
+        //        else {
+        //            sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
+        //        }
+        //    }
+        //    else if (args[0] == 'remove') {//remove command selected
+        //        if (!isNaN(args[1])) {
+        //            removeGolddisplay(message, Number(args[1]));
+        //        }
+        //        else {
+        //            sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
+        //        }
+        //    }
+        //    else if (args[0] == 'help' || args[0] == 'h') {//help command selected
+
+        //        var m = "**__Gold commands:__**\n" +
+        //            "`!g` or `!gold` shows your gold balance.\n" +
+        //            "`!g @username` - Checks gold of user.\n" +
+        //            //"`!pong` - ...pongs the bot to check if it's online?\n" +
+        //            "`!g add x` - Adds 'x'gp to you.\n" +
+        //            "`!g remove x` - Removes 'x'gp from you.\n" +
+        //            "`!g set x` - Set your gold to 'x'gp.\n" +
+        //            "`!g help` - Displays gold commands.\n";
+        //        sendmessage(m, message);
+
+        //    }
+        //    else if (args[0]) {//check gold of specific player
+        //        if (args[0][0] == '<') {//check gold of specific player
+        //            var userid = args[0];
+        //            userid = userid.replace(/[\\<>@#&!]/g, "");
+
+        //            checkgolddisplay(message, userid);
+
+
+        //        }
+
+
+        //    }
+        //    else {  // just !g
+        //        checkgolddisplay(message, message.author.id);
+        //    }
+        //    return;
+        //}
+        else if (cmd == 'newshop' || cmd == 'ns') {
+            var ShopText = "";
+            var ShopItems = [];
+            table = listFile["ShopTable"];
+
+            ShopText += "Generating New Shop...\n\n";
+
+            //Common Table Calculation Code
+            var CommonItemList = [];
+            var CommonNo = rolldice(table.CommonTimes);
+            ShopText += "Rolling on Common Magic Items Table " + table.CommonTimes + " ( " + CommonNo + " )" + " times.\n\n";
+            //Rolling on common table
+            for (k = 0; k < CommonNo; k++) {
+                CommonItemList.push( table.Common[rolldice("1d" + (table.Common.length))-1]);
             }
-
-
-        }
-        else if (cmd == 'gold' || cmd == 'g') {       //Gold stufdf
-            if (args[0] == 'set') {   // setgold command selected
-                if (!isNaN(args[1])) {
-                    setGolddisplay(message, Number(args[1]));
+            //Sorting CommonItemList
+            var List1 = [];
+            var timesList = [];
+            for (k = 0; k < CommonItemList.length; k++) {
+                if (!List1.includes(CommonItemList[k])) {
+                    List1.push(CommonItemList[k]);
+                    timesList.push(1);
                 }
                 else {
-                    sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
-                }
-
-            }
-            else if (args[0] == 'add') {// addgold command selected
-
-                if (!isNaN(args[1])) {
-                    addGolddisplay(message, Number(args[1]));
-                }
-                else {
-                    sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
+                    timesList[List1.indexOf(CommonItemList[k])] = timesList[List1.indexOf(CommonItemList[k])] + 1;
                 }
             }
-            else if (args[0] == 'remove') {//remove command selected
-                if (!isNaN(args[1])) {
-                    removeGolddisplay(message, Number(args[1]));
-                }
-                else {
-                    sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
-                }
-            }
-            else if (args[0] == 'help' || args[0] == 'h') {//help command selected
 
-                var m = "**__Gold commands:__**\n" +
-                    "`!g` or `!gold` shows your gold balance.\n" +
-                    "`!g @username` - Checks gold of user.\n" +
-                    //"`!pong` - ...pongs the bot to check if it's online?\n" +
-                    "`!g add x` - Adds 'x'gp to you.\n" +
-                    "`!g remove x` - Removes 'x'gp from you.\n" +
-                    "`!g set x` - Set your gold to 'x'gp.\n" +
-                    "`!g help` - Displays gold commands.\n";
-                sendmessage(m, message);
+            ShopText += List1;
 
-            }
-            else if (args[0]) {//check gold of specific player
-                if (args[0][0] == '<') {//check gold of specific player
-                    var userid = args[0];
-                    userid = userid.replace(/[\\<>@#&!]/g, "");
+            //Push final Message
+            sendmessage(ShopText, message);
 
-                    checkgolddisplay(message, userid);
-
-
-                }
-
-
-            }
-            else {  // just !g
-                checkgolddisplay(message, message.author.id);
-            }
 
         }
+
         else if (cmd == 'explore' || cmd == 'e') {
 
             roll = randomint(1, 100);
@@ -316,10 +376,14 @@ client.on('message', message => {
             }
 
             sendcodemessageatplayer(disptext, message);
+            return;
         }
 
         else if (cmd == 'test' || cmd == 't') {       //Testing
-            sendmessage("No test case currently implemented", message);
+            //sendmessage("No test case currently implemented", message);
+
+
+            return;
         }
     }
 })
@@ -738,19 +802,21 @@ var addGolddisplay = function (message, x) {
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var disp = "New user to this command, new file created\n\n";
         disp += "Adding " + x + "gp to " + message.author + "...\n\n" +
-            "Total gold: " + dataFile[userId].Gold + "gp";
+            "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(disp, message);
 
     }
 
     else {
         var gp = Number(dataFile[userId].Gold);
+        var ogp = gp;
         var Name = dataFile[userId].Name;
         gp += x;
         dataFile[userId] = { Name: Name, Gold: gp, };
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var q = "Adding " + x + "gp to " + message.author + "...\n\n" +
-            "Total gold: " + dataFile[userId].Gold + "gp";
+            "*Original gold: " + ogp + "gp*\n\n"+
+            "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(q, message);
 
     }
@@ -763,24 +829,26 @@ var removeGolddisplay = function (message, x) {
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var disp = "New user to this command, new file created\n\n";
         disp += "Can't remove more gold than " + message.author + "has. Setting to 0gp...\n\n" +
-            "Total gold: " + dataFile[userId].Gold + "gp";
+            "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(disp, message);
 
     }
 
     else {
         var gp = Number(dataFile[userId].Gold);
+        var ogp = gp;
         var Name = dataFile[userId].Name;
         if (gp >= x) {
             gp -= x;
             dataFile[userId] = { Name: Name, Gold: gp, };
             fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
             var q = "Removing " + x + "gp from " + message.author + "...\n\n" +
-                "Total gold: " + dataFile[userId].Gold + "gp";
+                "*Original gold: "+ ogp+"gp*\n\n"+
+                "**Total gold: __" + dataFile[userId].Gold + "gp__**";
             sendmessage(q, message);
         }
         else {
-            sendmessage("Can't remove more gold than you have, baka.", message);
+            sendmessage("Can't remove more gold than you have, b-baka.", message);
         }
         
 
@@ -795,18 +863,20 @@ var setGolddisplay = function (message, x) {
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var disp = "New user to this command, new file created.\n\n";
         disp += "Setting " + message.author + "'s gp to " + x + "...\n\n" +
-            "Total gold: " + dataFile[userId].Gold + "gp";
+            "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(disp, message);
     }
 
     else {
         var gp = Number(dataFile[userId].Gold);
+        var ogp = gp;
         var Name = dataFile[userId].Name;
         gp = x;
         dataFile[userId] = { Name: Name, Gold: gp, };
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
-        var d = "Setting " + message.author + "'s gp to "+x+"...\n\n" +
-            "Total gold: " + dataFile[userId].Gold + "gp";
+        var d = "Setting " + message.author + "'s gp to " + x + "...\n\n" +
+            "*Original gold: " + ogp + "gp*\n\n"+
+            "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(d, message);
 
     }
