@@ -177,17 +177,29 @@ client.on('message', message => {
         else if (cmd == 'newshop' || cmd == 'ns') {
             var ShopText = "";
             var ShopItems = [];
-            table = listFile["ShopTable"];
+            var table = listFile["ShopTable"];
 
-            ShopText += "Generating New Shop...\n\n";
+            ShopText += "_Generating New Shop..._\n\n";
 
-            //Common Table Calculation Code
+            //--------------------------Common Table Calculation Code--------------------------
             var CommonItemList = [];
             var CommonNo = rolldice(table.CommonTimes);
-            ShopText += "Rolling on Common Magic Items Table " + table.CommonTimes + " ( " + CommonNo + " )" + " times.\n\n";
+            ShopText += "__Rolling on Common Magic Items Table " + table.CommonTimes + " **( " + CommonNo + " )**" + " times.__\n\n";
             //Rolling on common table
             for (k = 0; k < CommonNo; k++) {
-                CommonItemList.push( table.Common[rolldice("1d" + (table.Common.length))-1]);
+                var tempitem = table.Common[rolldice("1d" + (table.Common.length)) - 1];
+                if (tempitem == "SpellScroll0") {
+                    tempitem = "Scroll of "+ RollScrollPotFromName("ScrollTable0");
+                }
+                if (tempitem == "SpellScroll1") {
+                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable1");
+                }
+                if (tempitem == "Commonitem0") {
+                    tempitem = RollScrollPotFromName("ItemTable0");
+                }
+                
+
+                CommonItemList.push(tempitem);
             }
             //Sorting CommonItemList
             var List1 = [];
@@ -201,8 +213,66 @@ client.on('message', message => {
                     timesList[List1.indexOf(CommonItemList[k])] = timesList[List1.indexOf(CommonItemList[k])] + 1;
                 }
             }
+            //Pushing item multiples to the list
+            //var pricelist = [];
+            //for (i = 0; i < List1.length; i++) {
+            //    pricelist.push( rolldice(table.CommonPrice));
+            //}
+            
 
-            ShopText += List1;
+            for (h = 0; h < List1.length; h++) {
+                var newnewprice = rolldice(table.CommonPrice);
+                ShopText += "_"+timesList[h] + "x_\t" + List1[h] + "\t" +"_"+ newnewprice + "gp_\n";
+            }
+            //-------------------COMMON END---------------------
+            ShopText += "\n"
+            //--------------------------Uncommon Table Calculation Code--------------------------
+            var UncommonItemList = [];
+            var UncommonNo = rolldice(table.UncommonTimes);
+            ShopText += "__Rolling on Uncommon Magic Items Table " + table.UncommonTimes + " **( " + UncommonNo + " )**" + " times.__\n\n";
+            //Rolling on common table
+            for (k = 0; k < UncommonNo; k++) {
+                var tempitem = table.Uncommon[rolldice("1d" + (table.Uncommon.length)) - 1];
+                if (tempitem == "SpellScroll0") {
+                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable0");
+                }
+                if (tempitem == "Commonitem0") {
+                    tempitem = RollScrollPotFromName("ConsumableTable0");
+                }
+
+
+                UncommonItemList.push(tempitem);
+            }
+            //Sorting CommonItemList
+            var List1 = [];
+            var timesList = [];
+            for (k = 0; k < UncommonItemList.length; k++) {
+                if (!List1.includes(UncommonItemList[k])) {
+                    List1.push(UncommonItemList[k]);
+                    timesList.push(1);
+                }
+                else {
+                    timesList[List1.indexOf(UncommonItemList[k])] = timesList[List1.indexOf(UncommonItemList[k])] + 1;
+                }
+            }
+            //Pushing item multiples to the list
+            //var pricelist = [];
+            //for (i = 0; i < List1.length; i++) {
+            //    pricelist.push( rolldice(table.CommonPrice));
+            //}
+
+
+            for (h = 0; h < List1.length; h++) {
+                var newnewprice = rolldice(table.UncommonPrice);
+                ShopText += "_" + timesList[h] + "x_\t" + List1[h] + "\t" + "_" + newnewprice + "gp_\n";
+            }
+            //-------------------COMMON END---------------------
+
+
+
+
+
+
 
             //Push final Message
             sendmessage(ShopText, message);
@@ -381,7 +451,7 @@ client.on('message', message => {
 
         else if (cmd == 'test' || cmd == 't') {       //Testing
             //sendmessage("No test case currently implemented", message);
-
+            sendmessage("" + randomint(1, 3), message);
 
             return;
         }
@@ -415,6 +485,9 @@ client.on('message', message => {
 
 
 client.login(auth.token);
+
+
+
 var RollScrollPot = function (Table) {
     return Table.Rewards[randomint(1, Table.Rewards.length-1)];
 }

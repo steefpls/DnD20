@@ -1,7 +1,7 @@
 {
   "ShopTable": {
     "Name": "Shop Tables",
-    "Common": [ "Commonitem 1", "Commonitem 2", "Spell Scroll0" ],
+    "Common": [ "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Potion of Healing", "Potion of Healing", "Potion of Healing", "SpellScroll0", "SpellScroll1" ],
     "Uncommon": [ "Adamantine Armor", "+1 Ammunition", "Amulet of Proof against Detection and Location", "Bag of Holding", "Bag of Tricks", "Boots of Elvenkind", "Boots of Striding and Springing", "Boots of the Winterlands", "Bracers of Archery", "Brooch of Shielding", "Broom of Flying", "Circlet of Blasting", "Cloak of Elvenkind", "Cloak of Protection", "Cloak of the Manta Ray", "Decanter of Endless Water", "Deck of Illusions", "Dust of Disappearance", "Dust of Dryness", "Dust of Sneezing and Choking", "Efficient Quiver", "Elemental Gem", "Eversmoking Bottle", "Eyes of Charming", "Eyes of Minute Seeing", "Eyes of the Eagle", "Figurine of Wondrous Power", "Gauntlets of Ogre Power", "Gem of Brightness", "Gloves of Missile Snaring", "Gloves of Swimming and Climbing", "Goggles of Night", "Hat of Disguise", "Headband of Intellect", "Helm of Comprehending Languages", "Helm of Telepathy", "Immovable Rod", "Javelin of Lightning", "Lantern of Revealing", "Medallion of Thoughts", "Mithral Armor", "Necklace of Adaptation", "Oil of Slipperiness", "Pearl of Power", "Periapt of Health", "Periapt of Wound Closure", "Philter of Love", "Pipes of Haunting", "Pipes of the Sewers", "Potion of Animal Friendship", "Potion of Giant Strength", "Potion of Growth", "Potion of Healing", "Potion of Poison", "Potion of Resistance", "Potion of Water Breathing", "Restorative Ointment", "Ring of Jumping", "Ring of Mind Shielding", "Ring of Swimming", "Ring of Warmth", "Ring of Water Walking", "Robe of Useful Items", "Rope of Climbing", "+1 Shield", "Slippers of Spider Climbing", "Spell Scroll", "Staff of the Python", "Stone of Good Luck (Luckstone)", "Trident of Fish Command", "Wand of Magic Detection", "Wand of Magic Missiles", "Wand of Secrets", "Wand of the War Mage", "Wand of Web", "+1 Weapon", "Wind Fan", "Winged Boots" ],
     "Rare": [],
     "VRare": [],
@@ -11,12 +11,13 @@
     "UncommonTimes": [ "3d4" ],
     "RareTimes": [ "2d4" ],
     "VRareTimes": [ "1d4" ],
-    "LegendayTimes": [ "1d2-1" ],
+    "LegendaryTimes": [ "1d2-1" ],
 
-    "CommonPrice": [ "1d100+50" ],
-    "RarePrice": [ "2d4" ],
-    "VRarePrice": [ "1d4" ],
-    "LegendarPrice": [ "1d2-1" ]
+    "CommonPrice": [ "1d50+50" ],
+    "UncommonPrice": ["1d250+150"],
+    "RarePrice": [ "1d1000+500" ],
+    "VRarePrice": [ "1d1500+1500" ],
+    "LegendaryPrice": [ "1d5000+5000" ] 
 
   },
 
@@ -203,7 +204,11 @@
     "Name": "Scroll Table 4",
     "Rewards": [ "Arcane Eye", "Aura of Life", "Aura of Purity", "Banishment", "Blight", "Charm Monster", "Compulsion", "Confusion", "Control Water", "Death Ward", "Dimension Door", "Divination", "Dominate Beast", "Elemental Bane", "Fabricate", "Find Greater Steed", "Fire Shield", "Freedom of Movement", "Grasping Vine", "Greater Invisibility", "Hallucinatory Terrain", "Ice Storm", "Locate Creature", "Private Sanctum", "Resilient Sphere", "Polymorph", "Stone Shape", "Stoneskin", "Storm Sphere", "Vitriolic Sphere", "Wall of Fire", "Watery Sphere" ]
 
+  },
+
+  "ItemTable0": {
+    "Name": "Item Table 0",
+    "Rewards": ["Bead of Nourishment", "Bead of Refreshment", "Armblade","Band of Loyalty", "Boots of False Tracks", "Breathing Bubble", "Candle of the Deep","Charlatan's Die", "Chest of Preserving", "Cleansing Stone", "Cloak of Billowing", "Cloak of Many Fashions", "Clothes of Mending", "Clockwork Amulet", "Coin of Delving", "Dark Shard Amulet", "Dread Helm", "Ear Horn of Hearing", "Enduring Spellbook", "Erstaz Eye", "Everbright Lantern", "Feather Token", "Fernian Ash Focus", "Hat of Vermin", "Hat of Wizardry", "Heward's Handy Spice Pouch", "Horn of Silent Alarm", "Illuminator's Tattoo", "Imbued Wood Focus", "Instrument of Illusions", "Instrument of Scribing", "Irian Rosewood Focus", "Keycharm", "Kythrian Manchineel Focus", "Lamannian Oak Focus", "Lantern of Tracking", "Lock of Trickery","Mabaran Ebony Focus", "Masquerade Tattoo", "Moodmark Paint", "Moon-Touched Sword", "Armblade", "Armor of Gleaming","Band of Loyalty", "Mystery Key", "Orb of Direction", "Orb of Gonging", "Orb of Shielding", "Orb of Time", "Perfume of Bewitching", "Pipe of Rememberance", "Pipe of Smoke Monsters", "Pole of Angling", "Pole of Collapsing", "Pot of Awakening", "Potion of Climbing", "Potion of Comprehension", "Potion of Watchful Rest", "Pressure Capsule", "Prosthetic Limb", "Risian Pine Focus", "Rope of Mending", "Ruby of the War Mage", "Scribe's Pen", "Shavarran Birch Focus", "Shield of Expression", "Smoldering Armor", "Spellshard", "Spellwrought Tattoo", "Spyglass of Clairvoyance", "Staff of Adornment", "Staff of Birdcalls", "Staff of Flowers", "Talking Doll", "Tankard of Plenty", "Tankard of Sobriety", "Thermal Cube", "Unbreakable Arrow", "Veteran's Cane", "Walloping Ammunition", "Wand of Conducting", "Wand of Pyrotechnics", "Wand of Scowls", "Wand of Smiles", "Wand Sheath", "Xorian Wenge Focus"]
+
   }
-
-
 }
