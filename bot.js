@@ -35,7 +35,7 @@ client.on('ready', () => {
 client.on('messageUpdate', (oldMessage, newMessage) => {
     const messageauth = oldMessage.author;
     if (messageauth != "<@261302296103747584>") {
-        if (oldMessage.channel.name === 'character-xp-log' || oldMessage.channel.name === 'gold-transaction-log') {
+        if (oldMessage.channel.name === 'character-transaction-log' || oldMessage.channel.name === 'gold-transaction-log') {
             const sendtochannel = oldMessage.guild.channels.find(ch => ch.name === 'character-log-archive');
             sendtochannel.send("**__Message edited from:__\n**  " + oldMessage.content + " \n\n__**To:**__\n " + newMessage.content + " \n\n _This message was edited by " + newMessage.author.username + " in <#" + newMessage.channel.id + ">_\n\n` `");
         }
@@ -51,7 +51,7 @@ client.on('message', message => {
     const messageauth = message.author;
     if (messageauth != "<@261302296103747584>") {
         // && messageauth!="<@261302296103747584>"
-        if (message.channel.name === 'character-xp-log' || message.channel.name === 'gold-transaction-log') {
+        if (message.channel.name === 'character-transaction-log' || message.channel.name === 'gold-transaction-log') {
             sendtochannel.send("**__Message logged:__**\n" + message.content + "\n\n _This message was sent by " + message.author.username + " in <#" + message.channel.id + ">_\n\n` `");
         }
     }
@@ -65,7 +65,16 @@ client.on('message', message => {
             sendcodemessage('pong!', message);
             return;
         }
-
+        if (cmd == 'rpg') {
+            
+            var parsemessagepls = message.content;
+            var tempmessage = "";
+            for(kk = 1; kk<parsemessagepls.length;kk++){
+                tempmessage+= parsemessagepls[kk];
+            }
+            sendmessage(tempmessage, message);
+            return;
+        }
         //else if (cmd == 'br') {
 
         //    sendmessage('``` ```', message);
