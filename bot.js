@@ -26,10 +26,13 @@ var listRead = fs.readFileSync(listPath);
 var listFile = JSON.parse(listRead); //ready for use
 
 
-
+setInterval(function () {
+    console.log(`Pulling ${client.channels.get("792913101460340776").name} data to stay active\n\n`);
+    console.log(`Bot is online at:\n ${new Date(Date.now())}!\n\n`);    
+}, 60000);
 
 client.on('ready', () => {
-    console.log(`\nLogged in as ${client.user.tag}!\n`);
+    console.log(`\nLogged in as ${client.user.tag} at:\n ${new Date(Date.now())}!\n\n`);
 })
 
 client.on('messageUpdate', (oldMessage, newMessage) => {
@@ -37,12 +40,13 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
     if (messageauth != "<@261302296103747584>") {
         if (oldMessage.channel.name === 'character-transaction-log' || oldMessage.channel.name === 'gold-transaction-log') {
             const sendtochannel = oldMessage.guild.channels.find(ch => ch.name === 'character-log-archive');
+            
             sendtochannel.send("**__Message edited from:__\n**  " + oldMessage.content + " \n\n__**To:**__\n " + newMessage.content + " \n\n _This message was edited by " + newMessage.author.username + " in <#" + newMessage.channel.id + ">_\n\n` `");
         }
     }
 })
 
-
+//When Message in server
 client.on('message', message => {
         // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
@@ -65,56 +69,41 @@ client.on('message', message => {
             sendcodemessage('pong!', message);
             return;
         }
-        if (cmd == 'rpg') {
-            
-            var parsemessagepls = message.content;
-            var tempmessage = "";
-            for(kk = 1; kk<parsemessagepls.length;kk++){
-                tempmessage+= parsemessagepls[kk];
-            }
-            sendmessage(tempmessage, message);
+        
+        else if (cmd == 'br') {
+
+            sendmessage('``` ```', message);
+            clear(message);
             return;
         }
-        //else if (cmd == 'br') {
 
-        //    sendmessage('``` ```', message);
-        //    clear(message);
-        //    return;
-        //}
+        else if (cmd == 'r' || cmd == 'roll') { //If rolling
 
-        //else if (cmd == 'r' || cmd == 'roll') { //If rolling
+            rolldicedisplay(message, args);
+            return;
 
-        //    rolldicedisplay(message, args);
-        //    return;
-
-        //} //rolling end
+        } //rolling end
         else if (cmd == 'pong') {
             sendcodemessage('dude what the fuck', message);
             return;
 
         }
-        //else if (cmd == 'syntax' || cmd == 'help' || cmd == 'h') {
-        //    var msg = "**__Bot commands:__**\n" +
-        //        "`!ping` - Pings the bot to check if it's online.\n" +
-        //        //"`!pong` - ...pongs the bot to check if it's online?\n" +
-        //        '`!r` or `!roll` - Rolls dice. Usage examples:  `!r d20`  ,  `!r 2d10+5` ,  `!r 5+3*2 $Test-words`\n' +
-        //        '`!e x` or `!explore x` - Do exploration. Replace x with number of days, 1-5.\n' +
-        //        "`!gold help` - Displays gold help menu.\n" +
-        //        "`!h` or `!help` - Displays help menu.\n" +
-        //        "`!l` or `!link` - Link to add bot to server.";
-        //    sendmessage(msg, message);
-        //    return;
-
-        //}
         else if (cmd == 'syntax' || cmd == 'help' || cmd == 'h') {
+            
             var msg = "**__Bot commands:__**\n" +
                 "`!ping` - Pings the bot to check if it's online.\n" +
                 "`!pong` - ...pongs the bot to check if it's online?\n" +
+                '`!r` or `!roll` - Rolls dice. Usage examples:  `!r d20`  ,  `!r 2d10+5` ,  `!r 5+3*2 $Test-words`\n' +
+                '`!e x` or `!explore x` - Do exploration. Replace x with number of days, 1-5.\n' +
+                "`!gold help` - Displays gold help menu.\n" +
                 "`!h` or `!help` - Displays help menu.\n" +
+                "`!ns` - Generates new shop. (Admin Only)\n" +
+                "`!l` or `!link` - Link to add bot to server.";
             sendmessage(msg, message);
             return;
 
         }
+        
 
         else if (cmd == 'easteregg') {
             sendcodemessage('Tell the GM "I found the easter egg!" for inspiration :)', message);
@@ -127,80 +116,80 @@ client.on('message', message => {
                 "\nhttps://discordapp.com/oauth2/authorize?&client_id=678342914618818577&scope=bot&permissions=8", message);
             return;
         }
-        //else if (cmd == 'purge') {
+        else if (cmd == 'purge') {
 
-        //    let allowedRole = message.guild.roles.find("name", "GMs");
-        //    if (message.member.roles.has(allowedRole.id)) {
-        //        // allowed access to command
+            let allowedRole = message.guild.roles.find("name", "GMs");
+            if (message.member.roles.has(allowedRole.id)) {
+                // allowed access to command
 
-        //        clear(message);
-        //        sendmessageatplayer("Messages purged lol", message);
-        //    } else {
-        //        // not allowed access
-        //        sendmessageatplayer("You're too weak to use this command :(", message);
-        //    }
-        //    return;
+                clear(message);
+                sendmessageatplayer("Messages purged lol", message);
+            } else {
+                // not allowed access
+                sendmessageatplayer("You're too weak to use this command :(", message);
+            }
+            return;
 
-        //}
-        //else if (cmd == 'gold' || cmd == 'g') {       //Gold stufdf
-        //    if (args[0] == 'set') {   // setgold command selected
-        //        if (!isNaN(args[1])) {
-        //            setGolddisplay(message, Number(args[1]));
+        }
+        else if (cmd == 'gold' || cmd == 'g') {       //Gold stufdf
+            if (args[0] == 'set') {   // setgold command selected
+                if (!isNaN(args[1])) {
+                    setGolddisplay(message, Number(args[1]));
                     
-        //        }
-        //        else {
-        //            sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
-        //        }
+                }
+                else {
+                    sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
+                }
 
-        //    }
-        //    else if (args[0] == 'add') {// addgold command selected
+            }
+            else if (args[0] == 'add') {// addgold command selected
 
-        //        if (!isNaN(args[1])) {
-        //            addGolddisplay(message, Number(args[1]));
+                if (!isNaN(args[1])) {
+                    addGolddisplay(message, Number(args[1]));
                     
-        //        }
-        //        else {
-        //            sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
-        //        }
-        //    }
-        //    else if (args[0] == 'remove') {//remove command selected
-        //        if (!isNaN(args[1])) {
-        //            removeGolddisplay(message, Number(args[1]));
-        //        }
-        //        else {
-        //            sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
-        //        }
-        //    }
-        //    else if (args[0] == 'help' || args[0] == 'h') {//help command selected
+                }
+                else {
+                    sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
+                }
+            }
+            else if (args[0] == 'remove') {//remove command selected
+                if (!isNaN(args[1])) {
+                    removeGolddisplay(message, Number(args[1]));
+                }
+                else {
+                    sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
+                }
+            }
+            else if (args[0] == 'help' || args[0] == 'h') {//help command selected
 
-        //        var m = "**__Gold commands:__**\n" +
-        //            "`!g` or `!gold` shows your gold balance.\n" +
-        //            "`!g @username` - Checks gold of user.\n" +
-        //            //"`!pong` - ...pongs the bot to check if it's online?\n" +
-        //            "`!g add x` - Adds 'x'gp to you.\n" +
-        //            "`!g remove x` - Removes 'x'gp from you.\n" +
-        //            "`!g set x` - Set your gold to 'x'gp.\n" +
-        //            "`!g help` - Displays gold commands.\n";
-        //        sendmessage(m, message);
+                var m = "**__Gold commands:__**\n" +
+                    "`!g` or `!gold` shows your gold balance.\n" +
+                    "`!g @username` - Checks gold of user.\n" +
+                    //"`!pong` - ...pongs the bot to check if it's online?\n" +
+                    "`!g add x` - Adds 'x'gp to you.\n" +
+                    "`!g remove x` - Removes 'x'gp from you.\n" +
+                    "`!g set x` - Set your gold to 'x'gp.\n" +
+                    "`!g help` - Displays gold commands.\n";
+                sendmessage(m, message);
 
-        //    }
-        //    else if (args[0]) {//check gold of specific player
-        //        if (args[0][0] == '<') {//check gold of specific player
-        //            var userid = args[0];
-        //            userid = userid.replace(/[\\<>@#&!]/g, "");
+            }
+            else if (args[0]) {//check gold of specific player
+                if (args[0][0] == '<') {//check gold of specific player
+                    var userid = args[0];
+                    userid = userid.replace(/[\\<>@#&!]/g, "");
 
-        //            checkgolddisplay(message, userid);
-
-
-        //        }
+                    checkgolddisplay(message, userid);
 
 
-        //    }
-        //    else {  // just !g
-        //        checkgolddisplay(message, message.author.id);
-        //    }
-        //    return;
-        //}
+                }
+
+
+            }
+            else {  // just !g
+                checkgolddisplay(message, message.author.id);
+            }
+            return;
+        }
         else if (cmd == 'newshop' || cmd == 'ns') {
 
 
