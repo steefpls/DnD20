@@ -1152,7 +1152,7 @@ var getUserIDfromMessage = function (message) {
 var checkgolddisplay = function (message, userID) {
     
     if (!dataFile[userID]) { //this checks if data for the user has already been created
-        sendmessage("User not in database :(", message);
+        sendmessage("User does not exist, use the `!gold add 0` to create user.", message);
     }
 
     else {
@@ -1165,9 +1165,9 @@ var checkgolddisplay = function (message, userID) {
 var addGolddisplay = function (message, x) {
     var userId = message.author.id //user id here
     if (!dataFile[userId]) { //this checks if data for the user has already been created
-        dataFile[userId] = { Name: message.author.username, Gold: x, }; //if not, create it
+        dataFile[userId] = { Name: message.author.username, Gold: 0 }; //if not, create it
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
-        var disp = "New user to this command, new file created\n\n";
+        var disp = "New user to this command, new file created.\n\n";
         disp += "Adding " + x + "gp to " + message.author + "...\n\n" +
             "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(disp, message);
@@ -1179,7 +1179,7 @@ var addGolddisplay = function (message, x) {
         var ogp = gp;
         var Name = dataFile[userId].Name;
         gp += x;
-        dataFile[userId] = { Name: Name, Gold: gp, };
+        dataFile[userId] = { Name: Name, Gold: gp };
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var q = "Adding " + x + "gp to " + message.author + "...\n\n" +
             "*Original gold: " + ogp + "gp*\n\n"+
@@ -1192,9 +1192,9 @@ var addGolddisplay = function (message, x) {
 var removeGolddisplay = function (message, x) {
     var userId = message.author.id //user id here
     if (!dataFile[userId]) { //this checks if data for the user has already been created
-        dataFile[userId] = { Name: message.author.username, Gold: x, }; //if not, create it
+        dataFile[userId] = { Name: message.author.username, Gold: x }; //if not, create it
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
-        var disp = "New user to this command, new file created\n\n";
+        var disp = "New user to this command, new file created.\n\n";
         disp += "Can't remove more gold than " + message.author + "has. Setting to 0gp...\n\n" +
             "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(disp, message);
@@ -1207,7 +1207,7 @@ var removeGolddisplay = function (message, x) {
         var Name = dataFile[userId].Name;
         if (gp >= x) {
             gp -= x;
-            dataFile[userId] = { Name: Name, Gold: gp, };
+            dataFile[userId] = { Name: Name, Gold: gp };
             fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
             var q = "Removing " + x + "gp from " + message.author + "...\n\n" +
                 "*Original gold: "+ ogp+"gp*\n\n"+
@@ -1226,7 +1226,7 @@ var removeGolddisplay = function (message, x) {
 var setGolddisplay = function (message, x) {
     var userId = message.author.id //user id here
     if (!dataFile[userId]) { //this checks if data for the user has already been created
-        dataFile[userId] = { Name: message.author.username, Gold: x, }; //if not, create it
+        dataFile[userId] = { Name: message.author.username, Gold: x }; //if not, create it
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var disp = "New user to this command, new file created.\n\n";
         disp += "Setting " + message.author + "'s gp to " + x + "...\n\n" +
@@ -1239,7 +1239,7 @@ var setGolddisplay = function (message, x) {
         var ogp = gp;
         var Name = dataFile[userId].Name;
         gp = x;
-        dataFile[userId] = { Name: Name, Gold: gp, };
+        dataFile[userId] = { Name: Name, Gold: gp };
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var d = "Setting " + message.author + "'s gp to " + x + "...\n\n" +
             "*Original gold: " + ogp + "gp*\n\n"+
@@ -1275,7 +1275,7 @@ var addGold = function (userId, x) {
         var gp = Number(dataFile[userId].Gold);
         var Name = dataFile[userId].Name;
         gp += x;
-        dataFile[userId] = { Name: Name, Gold: gp, };
+        dataFile[userId] = { Name: Name, Gold: gp };
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var q = "Adding " + x + "gp to " + message.author + "...\n\n" +
             "Total gold: " + dataFile[userId].Gold + "gp";
@@ -1287,7 +1287,7 @@ var addGold = function (userId, x) {
 
 var removeGold = function (userId, x) {
     if (!dataFile[userId]) { //this checks if data for the user has already been created
-        var disp = "User does not exist.";
+        var disp = "User does not exist, use the `!gold add` to create user.";
         console.log(disp);
     }
 
@@ -1296,7 +1296,7 @@ var removeGold = function (userId, x) {
         var Name = dataFile[userId].Name;
         if (gp >= x) {
             gp -= x;
-            dataFile[userId] = { Name: Name, Gold: gp, };
+            dataFile[userId] = { Name: Name, Gold: gp };
             fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
             var q = "Removing " + x + "gp from " + message.author + "...\n\n" +
                 "Total gold: " + dataFile[userId].Gold + "gp";
@@ -1313,7 +1313,7 @@ var removeGold = function (userId, x) {
 
 var setGold = function (userId, x) {
     if (!dataFile[userId]) { //this checks if data for the user has already been created
-        var disp = "User does not exist.";
+        var disp = "User does not exist, use the `!gold add` to create user.";
         console.log(disp);
     }
 
@@ -1321,7 +1321,7 @@ var setGold = function (userId, x) {
         var gp = Number(dataFile[userId].Gold);
         var Name = dataFile[userId].Name;
         gp = x;
-        dataFile[userId] = { Name: Name, Gold: gp, };
+        dataFile[userId] = { Name: Name, Gold: gp };
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var d = "Setting " + message.author + "'s gp to " + x + "...\n\n" +
             "Total gold: " + dataFile[userId].Gold + "gp";
