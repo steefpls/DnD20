@@ -44,7 +44,7 @@
 
   "LootTable2": {
     "Name": "2 Day Exploration",
-    "Range": [ 10, 30, 58, 81, 93, 98, 100 ],
+    "Range": [ 10, 30, 58, 80, 90, 95, 100 ],
     "Copper": [ "d100", "20d100", "30d100", "40d100", "50d100", "75d100", "75d100" ],
     "Silver": [ "0", "2d20", "4d20", "14d6", "21d6", "28d6", "28d6" ],
     "Gold": [ "0", "2d6*5", "2d6*10", "6d6*5", "6d6*10", "6d6*10", "6d6*10" ],
@@ -57,7 +57,7 @@
   },
   "LootTable3": {
     "Name": "3 Day Exploration",
-    "Range": [ 11, 30, 57, 80, 90, 97, 100 ],
+    "Range": [ 11, 30, 57, 80, 90, 95, 100 ],
     "Copper": [ "d100", "30d100", "45d100", "60d100", "75d100", "100d100", "100d100" ],
     "Silver": [ "0", "4d6", "8d6", "16d6", "24d6", "30d6", "30d6" ],
     "Gold": [ "0", "3d6*5", "3d6*10", "7d6*5", "7d6*10", "8d6*10", "8d6*10" ],
@@ -71,7 +71,7 @@
   },
   "LootTable4": {
     "Name": "4 Day Exploration",
-    "Range": [ 11, 29, 55, 79, 91, 96, 100 ],
+    "Range": [ 11, 29, 55, 79, 90, 95, 100 ],
     "Copper": [ "0", "50d100", "60d100", "75d100", "100d100", "150d100", "150d100" ],
     "Silver": [ "d6", "4d6", "9d6", "18d6", "27d6", "36d6", "36d6" ],
     "Gold": [ "0", "3d6*5", "3d6*10", "9d6*5", "9d6*10", "9d6*10", "9d6*10" ],
@@ -85,7 +85,7 @@
   },
   "LootTable5": {
     "Name": "5 Day Exploration",
-    "Range": [ 12, 28, 55, 79, 94, 99, 100 ],
+    "Range": [ 12, 28, 55, 79, 90, 95, 100 ],
     "Copper": [ "0", "6d100", "12d100", "25d100", "50d100", "75d100", "150d100" ],
     "Silver": [ "0", "5d6", "10d6", "20d6", "10d6", "20d6", "40d6" ],
     "Gold": [ "0", "2d6*5", "2d6*10", "5d6*5", "5d6*10", "5d6*10", "10d6*10" ],
@@ -99,31 +99,28 @@
 
   "MagicTableA": {
     "Name": "Magic Table A",
-    "Range": [ 40, 60, 70, 90, 94, 98, 99, 100 ],
-    "Rewards": [ "Potion0", "Scroll0", "Potion1", "Scroll1", "Scroll2", "Potion2", "Bag of Rocks", "Driftglobe" ]
+    "Range": [ 35, 60, 70, 80, 85, 95, 100 ],
+    "Rewards": [ "Potion0", "Scroll0", "Potion1", "Scroll1", "Scroll2", "Potion2","MagicConsumables0" ,"MagicItem0" ]
 
 
   },
 
   "MagicTableB": {
     "Name": "Magic Table B",
-    "Range": [ 15, 22, 29, 34, 39, 44, 49, 54, 59, 64, 67, 70, 73, 75, 77, 79, 81, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100 ],
-    "Rewards": [ "Potion of Greater Healing", "Potion0", "Potion0", "+1 Ammunition", "Potion1", "Potion1", "Potion1", "Potion of Water Breathing", "Scroll2", "Scroll3", "Potion1", "Potion2", "Bag of Rocks", "Keoghtom's Ointment", "Oil of slipperiness", "Dust of Disappearance", "Dust of Dryness", "Dust of Sneezing and Choking", "Elemental Gem", "Philter of Love", "Alchemy Jug", "Cap of Water Breathing", "Cloak of the Manta Ray", "Driftglobe", "Goggles of Night", "Helm of Comprehending Languages", "Immovable Rod", "Lantern of Revealing", "Mariner's armor", "Potion of Poison", "Robe of Useful Items", "Rope of Climbing", "Saddle of the cavalier", "Wand of Magic Detection", "Wand of Secrets" ]
+    "Range": [ 20, 30, 40, 50, 60, 70, 75, 90, 100],
+    "Rewards": [ "Potion of Greater Healing", "Potion0", "+1 Ammunition", "Potion1", "Scroll2", "Scroll3", "Potion2", "MagicConsumables1", "MagicItem1" ]
 
   },
   "MagicTableC": {
     "Name": "Magic Table C",
-    "Range": [ 15, 22, 27, 32, 37, 42, 47, 52, 57, 62, 67, 72, 75, 78, 81, 84, 87, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100 ],
-    "Rewards": [ "Potion of Superior Healing", "Scroll3", "+2 Ammunition", "Potion2", "Potion2", "Potion2", "Potion2", "Potion3", "Potion of Heroism", "Potion of Invulnerability", "Potion of Mind Reading", "Scroll4", "Elixir of Health", "Oil of Etherealness", "Potion of Fire Giant Strength", "Quaal's Feather Token", "Scroll of Protection", "Bag of Beans", "Bead of Force", "Chime of Opening", "Decanter of Endless Water", "Eyes of Minute Seeing", "Folding Boat", "Heward's Handy Haversack", "Horseshoes of Speed", "Necklace of Fireballs", "Periapt of Health", "A pair of Sending Stones" ]
-
+    "Range": [ 20, 30, 40, 50, 60, 70, 85, 100 ],
+    "Rewards": [ "Potion of Superior Healing", "Scroll3", "Scroll4", "Potion2", "Potion3", "+2 Ammunition", "MagicConsumables2", "MagicItem2" ]
 
   },
-
   "MagicTableD": {
     "Name": "Magic Table D",
-    "Range": [ 20, 40, 50, 60, 70, 80, 90, 95, 99, 100 ],
-    "Rewards": [ "Potion of Supreme Healing", "Potion2", "Potion3", "Scroll3", "Scroll4", "+3 Ammunition", "Ring of Water Walking", "Bag of Devouring", "Periapt of Wound Closure", "Winged boots" ]
-
+    "Range": [ 20, 40, 50, 60, 70, 80, 90,100],
+    "Rewards": [ "Potion of Supreme Healing", "Potion2", "Potion3", "Scroll3", "Scroll4", "+3 Ammunition", "MagicConsumables3", "MagicItem3" ]
   },
 
   "MagicTableX": {
@@ -145,33 +142,28 @@
 
   },
 
-
-
-
-
-
-  "PotionTable0": {
-    "Name": "Potion Table 0",
-    "Rewards": [ "Animal Friendship", "Climbing", "Diminution", "Hill Giant Strength", "Growth", "Mind Reading", "Heroism", "Water Breathing", "Poison", "Healing", "Healing", "Healing", "Healing", "Healing" ]
-  },
-
   "ResistanceTable": {
     "Name": "Resistance Table",
     "Rewards": [ "Acid Resistance", "Cold Resistance", "Fire Resistance", "Force Resistance", "Lightning Resistance", "Necrotic Resistance", "Poison Resistance", "Psychic Resistance", "Radiant Resistance", "Thunder Resistance" ]
 
   },
+
+  "PotionTable0": {
+    "Name": "Potion Table 0",
+    "Rewards": [ "Animal Friendship", "Climbing", "Hill Giant Strength", "Growth", "Heroism", "Water Breathing", "Poison", "Healing", "Healing", "Healing", "Healing", "Healing" ]
+  },
+  "PotionTable1": {
+    "Name": "Potion Table 1",
+    "Rewards": [ "Gaseous Form", "Clairvoyance", "Diminution", "Stone Giant Strength", "Frost Giant Strength", "Resistance" ]
+  },
   "PotionTable2": {
     "Name": "Potion Table 2",
-    "Rewards": [ "Flying", "Gaseous Form", "Fire Giant Strength", "Speed" ]
-
-
+    "Rewards": [ "Flying", "Invisibility", "Mind Reading", "Fire Giant Strength", "Speed" ]
   },
 
   "PotionTable3": {
     "Name": "Potion Table 3",
     "Rewards": [ "Cloud Giant Strength", "Supreme Healing", "Clairvoyance" ]
-
-
   },
 
 
@@ -182,41 +174,41 @@
 
   "ScrollTable0": {
     "Name": "Scroll Table 0",
-    "Rewards": [ "Acid Splash", "Blade Ward", "Chill Touch", "Control Flames", "Create Bonfire", "Eldritch Blast", "Fire Bolt", "Friends", "Guidance", "Light", "Mage Hand", "Mending", "Minor Illusion", "Mold Earth", "Poison Spray", "Prestidigitation", "Produce Flame", "Ray of Frost", "Resistance", "Shape Water", "Shocking Grasp", "Spare the Dying", "Thaumaturgy", "True Strike", "Vicious Mockery" ]
+    "Rewards": [ "Acid Splash", "Blade Ward", "Chill Touch", "Control Flames", "Create Bonfire", "Eldritch Blast", "Fire Bolt", "Friends", "Guidance", "Light", "Mage Hand", "Mending", "Minor Illusion", "Mold Earth", "Poison Spray", "Prestidigitation", "Produce Flame", "Ray of Frost", "Resistance", "Shape Water", "Shocking Grasp", "Spare the Dying", "Thaumaturgy", "True Strike", "Vicious Mockery", "Booming Blade", "Green-Flame Blade", "Lightning Lure", "Mind Sliver", "Sword Burst", ]
   },
 
   "ScrollTable1": {
     "Name": "Scroll Table 1",
-    "Rewards": [ "Absorb Elements", "Alarm", "Armor of Agathys", "Bane", "Bless", "Burning Hands", "Ceremony", "Charm Person", "Command", "Comprehend Languages", "Create or Destroy Water", "Cure Wounds", "Detect Magic", "Detect Poison and Disease", "Disguise Self", "Dissonant Whispers", "Entangle", "Faerie Fire", "False Life", "Goodberry", "Fog Cloud", "Grease", "Guiding Bolt", "Healing Word", "Hellish Rebuke", "Hunter's Mark", "Ice Knife", "Identify", "Illusory Script", "Inflict Wounds", "Jump", "Longstrider", "Mage Armor", "Magic Missile", "Purify Food and Drink", "Ray of Sickness", "Sanctuary", "Shield", "Shield of Faith", "Sleep", "Speak with Animals", "Thunderwave", "Witch Bolt" ]
+    "Rewards": [ "Absorb Elements", "Alarm", "Armor of Agathys", "Bane", "Bless", "Burning Hands", "Ceremony", "Charm Person", "Command", "Comprehend Languages", "Create or Destroy Water", "Cure Wounds", "Detect Magic", "Detect Poison and Disease", "Disguise Self", "Dissonant Whispers", "Entangle", "Faerie Fire", "False Life", "Goodberry", "Fog Cloud", "Grease", "Guiding Bolt", "Healing Word", "Hellish Rebuke", "Hunter's Mark", "Ice Knife", "Identify", "Illusory Script", "Inflict Wounds", "Jump", "Longstrider", "Mage Armor", "Magic Missile", "Purify Food and Drink", "Ray of Sickness", "Sanctuary", "Shield", "Shield of Faith", "Sleep", "Speak with Animals", "Thunderwave", "Witch Bolt", "Tasha's Caustic Brew" ]
 
   },
   "ScrollTable2": {
     "Name": "Scroll Table 2",
-    "Rewards": [ "Aid", "Alter Self", "Barkskin", "Blindness/Deafness", "Blur", "Calm Emotions", "Continual Flame", "Crown of Madness", "Darkness", "Darkvision", "Detect Thoughts", "Dragon's Breath", "Earthbind", "Enhance Ability", "Enlarge/Reduce", "Enthrall", "Flame Blade", "Flaming Sphere", "Gentle Repose", "Gust of Wind", "Heat Metal", "Hold Person", "Invisibility", "Knock", "Lesser Restoration", "Levitate", "Locate Object", "Magic Mouth", "Magic Weapon", "Mind Spike", "Mirror Image", "Misty Step", "Moonbeam", "Pass Without Trace", "Prayer of Healing", "Protection from Poison", "Ray of Enfeeblement", "Scorching Ray", "See Invisibility", "Shadow Blade", "Shatter", "Silence", "Spider Climb", "Suggestion", "Warding Bond", "Web", "Zone of Truth" ]
+    "Rewards": [ "Aid", "Alter Self", "Barkskin", "Blindness/Deafness", "Blur", "Calm Emotions", "Continual Flame", "Crown of Madness", "Darkness", "Darkvision", "Detect Thoughts", "Dragon's Breath", "Earthbind", "Enhance Ability", "Enlarge/Reduce", "Enthrall", "Flame Blade", "Flaming Sphere", "Gentle Repose", "Gust of Wind", "Heat Metal", "Hold Person", "Invisibility", "Knock", "Lesser Restoration", "Levitate", "Locate Object", "Magic Mouth", "Magic Weapon", "Mind Spike", "Mirror Image", "Misty Step", "Moonbeam", "Pass Without Trace", "Prayer of Healing", "Protection from Poison", "Ray of Enfeeblement", "Scorching Ray", "See Invisibility", "Shadow Blade", "Shatter", "Silence", "Spider Climb", "Suggestion", "Warding Bond", "Web", "Zone of Truth","Nathair's Mischief", "Rime's Binding Ice", "Summon Beast", "Tasha's Mind Whip"]
 
   },
   "ScrollTable3": {
     "Name": "Scroll Table 3",
-    "Rewards": [ "Animate Dead", "Aura of Vitality", "Beacon of Hope", "Bestow Curse", "Blink", "Call Lightning", "Clairvoyance", "Conjure Animals", "Counterspell", "Create Food and Water", "Daylight", "Dispel Magic", "Elemental Weapon", "Enemies Abound", "Fear", "Feign Death", "Fireball", "Flame Arrows", "Fly", "Gaseous Form", "Glyph of Warding", "Haste", "Hypnotic Pattern", "Tiny Hut", "Lightning Bolt", "Major Image", "Mass Healing Word", "Minute Meteors", "Nondetection", "Phantom Steed", "Plant Growth", "Protection from Energy", "Remove Curse", "Revivify", "Slow", "Speak with Dead", "Speak with Plants", "Spirit Guardians", "Stinking Cloud", "Thunder Step", "Tidal Wave", "Tongues", "Vampiric Touch", "Water Walk", "Wind Wall", "Water Breathing" ]
+    "Rewards": [ "Animate Dead", "Aura of Vitality", "Beacon of Hope", "Bestow Curse", "Blink", "Call Lightning", "Clairvoyance", "Conjure Animals", "Counterspell", "Create Food and Water", "Daylight", "Dispel Magic", "Elemental Weapon", "Enemies Abound", "Fear", "Feign Death", "Fireball", "Flame Arrows", "Fly", "Gaseous Form", "Glyph of Warding", "Haste", "Hypnotic Pattern", "Tiny Hut", "Lightning Bolt", "Major Image", "Mass Healing Word", "Minute Meteors", "Nondetection", "Phantom Steed", "Plant Growth", "Protection from Energy", "Remove Curse", "Revivify", "Slow", "Speak with Dead", "Speak with Plants", "Spirit Guardians", "Stinking Cloud", "Thunder Step", "Tidal Wave", "Tongues", "Vampiric Touch", "Water Walk", "Wind Wall", "Water Breathing", "Ashardalon's Stride","Intellect Fortress", "Spirit Shroud", "Summon Fey", "Summon Shadowspawn" ]
 
   },
   "ScrollTable4": {
     "Name": "Scroll Table 4",
-    "Rewards": [ "Arcane Eye", "Aura of Life", "Aura of Purity", "Banishment", "Black Tentacles", "Blight", "Charm Monster", "Compulsion", "Confusion", "Control Water", "Death Ward", "Dimension Door", "Divination", "Dominate Beast", "Elemental Bane", "Fabricate", "Find Greater Steed", "Fire Shield", "Freedom of Movement", "Grasping Vine", "Greater Invisibility", "Hallucinatory Terrain", "Ice Storm", "Locate Creature", "Private Sanctum", "Resilient Sphere", "Polymorph", "Stone Shape", "Stoneskin", "Storm Sphere", "Vitriolic Sphere", "Wall of Fire", "Watery Sphere", "Sickening Radiance" ]
+    "Rewards": [ "Arcane Eye", "Aura of Life", "Aura of Purity", "Banishment", "Black Tentacles", "Blight", "Charm Monster", "Compulsion", "Confusion", "Control Water", "Death Ward", "Dimension Door", "Divination", "Dominate Beast", "Elemental Bane", "Fabricate", "Find Greater Steed", "Fire Shield", "Freedom of Movement", "Grasping Vine", "Greater Invisibility", "Hallucinatory Terrain", "Ice Storm", "Locate Creature", "Private Sanctum", "Resilient Sphere", "Polymorph", "Stone Shape", "Stoneskin", "Storm Sphere", "Vitriolic Sphere", "Wall of Fire", "Watery Sphere", "Sickening Radiance", "Raulothim's Psychic Lance", "Summon Aberration", "Summon Construct", "Summon Elemental"]
 
   },
   "ScrollTable5": {
     "Name": "Scroll Table 5",
-    "Rewards": [ "Animate Objects", "Antilife Shell", "Arcane Hand", "Awaken", "Banishing Smite", "Circle of Power", "Cloudkill", "Commune", "Commune with Nature", "Cone of Cold", "Conjure Elemental", "Conjure Volley", "Contact Other Plane", "Contagion", "Control Winds", "Creation", "Danse Macabre", "Dawn", "Destructive Wave", "Dispel Evil and Good", "Dominate Person", "Dream", "Enervation", "Far Step", "Flame Strike", "Geas", "Greater Restoration", "Hallow", "Hold Monster", "Holy Weapon", "Immolation", "Infernal Calling", "Insect Plague", "Legend Lore", "Maelstrom", "Mass Cure Wounds", "Mislead", "Modify Memory", "Negative Energy Flood", "Passwall", "Planar Binding", "Raise Dead", "Rary's Telepathic Bond", "Reincarnate", "Scrying", "Seeming", "Skill Empowerment", "Steel Wind Strike", "Summon Celestial", "Swift Quiver", "Synaptic Static", "Telekinesis", "Telepathic Bond", "Teleportation Circle", "Temporal Shunt", "Transumute Rock", "Tree Stride", "Wall of Force", "Wall of Light", "Wall of Stone", "Wrath of Nature" ]
+    "Rewards": [ "Animate Objects", "Antilife Shell", "Arcane Hand", "Awaken", "Banishing Smite", "Circle of Power", "Cloudkill", "Commune", "Commune with Nature", "Cone of Cold", "Conjure Elemental", "Conjure Volley", "Contact Other Plane", "Contagion", "Control Winds", "Creation", "Danse Macabre", "Dawn", "Destructive Wave", "Dispel Evil and Good", "Dominate Person", "Dream", "Enervation", "Far Step", "Flame Strike", "Geas", "Greater Restoration", "Hallow", "Hold Monster", "Holy Weapon", "Immolation", "Infernal Calling", "Insect Plague", "Legend Lore", "Maelstrom", "Mass Cure Wounds", "Mislead", "Modify Memory", "Negative Energy Flood", "Passwall", "Planar Binding", "Raise Dead", "Rary's Telepathic Bond", "Reincarnate", "Scrying", "Seeming", "Skill Empowerment", "Steel Wind Strike", "Summon Celestial", "Swift Quiver", "Synaptic Static", "Telekinesis", "Telepathic Bond", "Teleportation Circle", "Temporal Shunt", "Transumute Rock", "Tree Stride", "Wall of Force", "Wall of Light", "Wall of Stone", "Wrath of Nature", "Summon Draconic Spirit" ]
 
   },
   "ScrollTable6": {
     "Name": "Scroll Table 6",
-    "Rewards": [ "Arcane Gate", "Blade Barrier", "Bones of the Earth", "Chain Lightning", "Circle of Death", "Contingency", "Create Homonculus", "Create Undead", "Disintegrate", "Find the Path", "Flesh to Stone", "Globe of Invulnerability", "Gravity Fissure", "Guards and Wards", "Harm", "Heal", "Heroes' Feast", "Instant Summons", "Investiture of Flame", "Investiture of Ice", "Investiture of Stone", "Investiture of Wind", "Magic Jar", "Mass Suggestion", "Mental Prison", "Move Earth", "Otiluke's Freezing Sphere", "Otto's Irresistible Dance", "Primordial Ward", "Programmed Illusion", "Scatter", "Soul Cage", "Summon Fiend", "Sunbeam", "Tenser's Transformation", "Transport via Plants", "True Seeing", "Wall of Ice", "Wall of Thorns", "Wind Walk", "Word of Recall" ]
+    "Rewards": [ "Arcane Gate", "Blade Barrier", "Bones of the Earth", "Chain Lightning", "Circle of Death", "Contingency", "Create Homonculus", "Create Undead", "Disintegrate", "Find the Path", "Flesh to Stone", "Globe of Invulnerability", "Gravity Fissure", "Guards and Wards", "Harm", "Heal", "Heroes' Feast", "Instant Summons", "Investiture of Flame", "Investiture of Ice", "Investiture of Stone", "Investiture of Wind", "Magic Jar", "Mass Suggestion", "Mental Prison", "Move Earth", "Otiluke's Freezing Sphere", "Otto's Irresistible Dance", "Primordial Ward", "Programmed Illusion", "Scatter", "Soul Cage", "Summon Fiend", "Sunbeam", "Tenser's Transformation", "Transport via Plants", "True Seeing", "Wall of Ice", "Wall of Thorns", "Wind Walk", "Word of Recall", "Fizban's Platinum Shield", "Tasha's Otherworldly Guise"]
   },
   "ScrollTable7": {
     "Name": "Scroll Table 7",
-    "Rewards": [ "Conjure Celestial", "Crown of Stars", "Delayed Blast Fireball", "Divine Word", "Etherealness", "Finger of Death", "Fire Storm", "Forcecage", "Magnificent Mansion", "Mirage Arcane", "Mordenkainen's Sword", "Plane Shift", "Power Word Pain", "Prismatic Spray", "Project Image", "Regenerate", "Resurrection", "Reverse Gravity", "Sequester", "Simulacrum", "Symbol", "Teleport", "Temple of the Gods", "Whirlwind" ]
+    "Rewards": [ "Conjure Celestial", "Crown of Stars", "Delayed Blast Fireball", "Divine Word", "Etherealness", "Finger of Death", "Fire Storm", "Forcecage", "Magnificent Mansion", "Mirage Arcane", "Mordenkainen's Sword", "Plane Shift", "Power Word Pain", "Prismatic Spray", "Project Image", "Regenerate", "Resurrection", "Reverse Gravity", "Sequester", "Simulacrum", "Symbol", "Teleport", "Temple of the Gods", "Whirlwind", "Draconic Transformation", "Dream of the Blue Veil" ]
   },
   "ScrollTable8": {
     "Name": "Scroll Table 8",
@@ -233,22 +225,22 @@
 
   "CommonItems": {
     "Name": "Common Item Table",
-    "Rewards": [ "Bead of Nourishment", "Bead of Refreshment", "Armblade", "Band of Loyalty", "Boots of False Tracks", "Breathing Bubble", "Candle of the Deep", "Charlatan's Die", "Chest of Preserving", "Cleansing Stone", "Cloak of Billowing", "Cloak of Many Fashions", "Clothes of Mending", "Clockwork Amulet", "Coin of Delving", "Dark Shard Amulet", "Dread Helm", "Ear Horn of Hearing", "Enduring Spellbook", "Erstaz Eye", "Everbright Lantern", "Feather Token", "Fernian Ash Focus", "Hat of Vermin", "Hat of Wizardry", "Heward's Handy Spice Pouch", "Horn of Silent Alarm", "Illuminator's Tattoo", "Imbued Wood Focus", "Instrument of Illusions", "Instrument of Scribing", "Irian Rosewood Focus", "Keycharm", "Kythrian Manchineel Focus", "Lamannian Oak Focus", "Lantern of Tracking", "Lock of Trickery", "Mabaran Ebony Focus", "Masquerade Tattoo", "Moodmark Paint", "Moon-Touched Sword", "Armblade", "Armor of Gleaming", "Band of Loyalty", "Mystery Key", "Orb of Direction", "Orb of Gonging", "Orb of Shielding", "Orb of Time", "Perfume of Bewitching", "Pipe of Rememberance", "Pipe of Smoke Monsters", "Pole of Angling", "Pole of Collapsing", "Pot of Awakening", "Potion of Climbing", "Potion of Comprehension", "Potion of Watchful Rest", "Prosthetic Limb", "Risian Pine Focus", "Rope of Mending", "Ruby of the War Mage", "Scribe's Pen", "Shavarran Birch Focus", "Shield of Expression", "Smoldering Armor", "Spellshard", "Spellwrought Tattoo", "Spyglass of Clairvoyance", "Staff of Adornment", "Staff of Birdcalls", "Staff of Flowers", "Talking Doll", "Tankard of Plenty", "Tankard of Sobriety", "Thermal Cube", "Unbreakable Arrow", "Veteran's Cane", "Walloping Ammunition", "Wand of Conducting", "Wand of Pyrotechnics", "Wand of Scowls", "Wand of Smiles", "Wand Sheath", "Xorian Wenge Focus" ]
+    "Rewards": [  "Armblade", "Band of Loyalty", "Boots of False Tracks", "Breathing Bubble", "Candle of the Deep", "Charlatan's Die", "Chest of Preserving", "Cleansing Stone", "Cloak of Billowing", "Cloak of Many Fashions", "Clothes of Mending", "Clockwork Amulet", "Coin of Delving", "Dark Shard Amulet", "Dread Helm", "Ear Horn of Hearing", "Enduring Spellbook", "Erstaz Eye", "Everbright Lantern", "Feather Token", "Fernian Ash Focus", "Hat of Vermin", "Hat of Wizardry", "Heward's Handy Spice Pouch", "Horn of Silent Alarm", "Illuminator's Tattoo", "Imbued Wood Focus", "Instrument of Illusions", "Instrument of Scribing", "Irian Rosewood Focus", "Keycharm", "Kythrian Manchineel Focus", "Lamannian Oak Focus", "Lantern of Tracking", "Lock of Trickery", "Mabaran Ebony Focus", "Masquerade Tattoo", "Moodmark Paint", "Moon-Touched Sword", "Armblade", "Armor of Gleaming", "Band of Loyalty", "Mystery Key", "Orb of Direction", "Orb of Gonging", "Orb of Shielding", "Orb of Time", "Perfume of Bewitching", "Pipe of Rememberance", "Pipe of Smoke Monsters", "Pole of Angling", "Pole of Collapsing", "Pot of Awakening", "Potion of Climbing", "Potion of Comprehension", "Potion of Watchful Rest", "Prosthetic Limb", "Risian Pine Focus", "Rope of Mending", "Ruby of the War Mage", "Scribe's Pen", "Shavarran Birch Focus", "Shield of Expression", "Smoldering Armor", "Spellshard", "Spyglass of Clairvoyance", "Staff of Adornment", "Staff of Birdcalls", "Staff of Flowers", "Talking Doll", "Tankard of Plenty", "Tankard of Sobriety", "Thermal Cube", "Unbreakable Arrow", "Veteran's Cane", "Walloping Ammunition", "Wand of Conducting", "Wand of Pyrotechnics", "Wand of Scowls", "Wand of Smiles", "Wand Sheath", "Xorian Wenge Focus", "SpellwroughtTattoo0", "SpellwroughtTattoo1" ]
 
   },
   "CommonConsumables": {
     "Name": "Common Consumable Table",
-    "Rewards": [ "Potion of Climbing", "Potion of Comprehension", "Potion of Healing", "Potion of Watchful Rest", "Walloping Ammunition" ]
+    "Rewards": [ "Bead of Nourishment", "Bead of Refreshment", "Potion of Climbing", "Potion of Comprehension", "Potion of Healing", "Potion of Watchful Rest", "Walloping Ammunition" ]
   },
 
 
   "UncommonItems": {
     "Name": "Uncommon Item Table",
-    "Rewards": [ "Adamantine Armor", "+1 Rhythm-Maker's Drum", "Alchemy Jug", "+1 Ammunition x5", "Amulet of Proof against Detection and Location", "+1 Amulet of the Devout", "Amulet of the Drunkard", "+1 Arcane Grimoire", "Bag of Bounty", "Bag of Holding", "Bag of Tricks", "Barrier Tattoo (Uncommon)", "+1 Bloodwell Vial", "+1 Boomerang", "Boots of Elvenkind", "Boots of Striding and Springing", "Boots of the Winterlands", "Bracers of Archery", "Brooch of Shielding", "Broom of Flying", "Cap of Water Breathing", "Circlet of Blasting", "Cloak of Elvenkind", "Cloak of Protection", "Cloak of the Manta Ray", "Coiling Grasp Tattoo", "Decanter of Endless Water", "Deck of Illusions", "Driftglobe", "Dust of Deliciousness", "Dust of Disappearance", "Dust of Dryness", "Dust of Sneezing and Choking", "Efficient Quiver", "Eldritch Claw Tattoo", "Elemental Gem", "Eversmoking Bottle", "Eyes of Charming", "Eyes of Minute Seeing", "Eyes of the Eagle", "Feywild Shard", "Figurine of Wondrous Power (Silver Raven)", "Gauntlets of Ogre Power", "Gem of Brightness", "Gloves of Missile Snaring", "Gloves of Swimming and Climbing", "Gloves of Thievery", "Goggles of Night", "Guardian Emblem", "Hat of Disguise", "Headband of Intellect", "Helm of Comprehending Languages", "Helm of Telepathy", "Immovable Rod", "Instrument of the Bards", "Javelin of Lightning", "Keoghtom's Ointment", "Lantern of Revealing", "Mariner's Armor", "Medallion of Thoughts", "Mind Carapace Armor", "Mithral Armor", "+1 Moon Sickle", "Nature's Mantle", "Necklace of Adaptation", "Oil of Slipperiness", "Pearl of Power", "Periapt of Health", "Periapt of Wound Closure", "Philter of Love", "Pipes of Haunting", "Pipes of the Sewers", "Potion of Animal Friendship", "Potion of Hill Giant Strength", "Potion of Growth", "Potion of Poison", "Potion of Resistance", "Potion of Water Breathing", "Restorative Ointment", "Ring of Jumping", "Ring of Mind Shielding", "Ring of Swimming", "Ring of Warmth", "Ring of Water Walking", "Rings of Shared Suffering", "Robe of Useful Items", "Rod of Retribution", "+1 Rod of the Pact Keeper", "Rope of Climbing", "+1 Shield", "Slippers of Spider Climbing", "Saddle of the Cavalier", "Sending Stones", "Sentinel Shield", "Skyblinder Staff", "Soul Coin", "Spell Gem (Lapis Lazuli)", "Spell Gem (Obsidian)", "Spellwrought Tattoo (2nd)", "Spellwrought Tattoo (3rd)", "Staff of the Python", "Staff of the Adder", "Stone of Good Luck (Luckstone)", "Sword of Vengeance", "Trident of Fish Command", "Wand of Magic Detection", "Wand of Magic Missiles", "Wand of Secrets", "+1 Wand of the War Mage", "Wand of Web", "+1 Weapon", "Weapon of Warning", "Wind Fan", "Winged Boots" ]
+    "Rewards": [ "Adamantine Armor", "+1 Rhythm-Maker's Drum", "Alchemy Jug",  "Amulet of Proof against Detection and Location", "+1 Amulet of the Devout", "Amulet of the Drunkard", "+1 Arcane Grimoire", "Bag of Bounty", "Bag of Holding", "Bag of Tricks", "Barrier Tattoo (Uncommon)", "+1 Bloodwell Vial", "+1 Boomerang", "Boots of Elvenkind", "Boots of Striding and Springing", "Boots of the Winterlands", "Bracers of Archery", "Brooch of Shielding", "Broom of Flying", "Cap of Water Breathing", "Circlet of Blasting", "Cloak of Elvenkind", "Cloak of Protection", "Cloak of the Manta Ray", "Coiling Grasp Tattoo", "Decanter of Endless Water", "Deck of Illusions", "Driftglobe", "Efficient Quiver", "Eldritch Claw Tattoo",  "Eversmoking Bottle", "Eyes of Charming", "Eyes of Minute Seeing", "Eyes of the Eagle", "Feywild Shard", "Figurine of Wondrous Power (Silver Raven)", "Gauntlets of Ogre Power", "Gem of Brightness", "Gloves of Missile Snaring", "Gloves of Swimming and Climbing", "Gloves of Thievery", "Goggles of Night", "Guardian Emblem", "Hat of Disguise", "Headband of Intellect", "Helm of Comprehending Languages", "Helm of Telepathy", "Immovable Rod", "Instrument of the Bards", "Javelin of Lightning", "Keoghtom's Ointment", "Lantern of Revealing", "Mariner's Armor", "Medallion of Thoughts", "Mind Carapace Armor", "Mithral Armor", "+1 Moon Sickle", "Nature's Mantle", "Necklace of Adaptation", "Oil of Slipperiness", "Pearl of Power", "Periapt of Health", "Periapt of Wound Closure", "Philter of Love", "Pipes of Haunting", "Pipes of the Sewers", "Potion of Animal Friendship", "Potion of Hill Giant Strength", "Potion of Growth", "Potion of Poison", "Potion of Resistance", "Potion of Water Breathing", "Restorative Ointment", "Ring of Jumping", "Ring of Mind Shielding", "Ring of Swimming", "Ring of Warmth", "Ring of Water Walking", "Rings of Shared Suffering", "Robe of Useful Items", "Rod of Retribution", "+1 Rod of the Pact Keeper", "Rope of Climbing", "+1 Shield", "Slippers of Spider Climbing", "Saddle of the Cavalier", "Sending Stones", "Sentinel Shield", "Skyblinder Staff", "Soul Coin", "Spell Gem (Lapis Lazuli)", "Spell Gem (Obsidian)", "Staff of the Python", "Staff of the Adder", "Stone of Good Luck (Luckstone)", "Sword of Vengeance", "Trident of Fish Command", "Wand of Magic Detection", "Wand of Magic Missiles", "Wand of Secrets", "+1 Wand of the War Mage", "Wand of Web", "+1 Weapon", "Weapon of Warning", "Wind Fan", "Winged Boots", "SpellwroughtTattoo2", "SpellwroughtTattoo3", "Dragonhide Belt +1", "Emerald Pen" ]
   },
   "UncommonConsumables": {
     "Name": "Uncommon Consumable Table",
-    "Rewards": [ "Deck of Illusions", "+1 Ammunition x5", "Dust of Disappearance", "Dust of Dryness", "Keoghtom's Ointment", "Oil of Slipperiness", "Philter of Love", "Restorative Ointment", "Potion of Greater Healing", "Dust of Deliciousness", "Dust of Sneezing and Choking" ]
+    "Rewards": [ "+1 Ammunition x5", "Deck of Illusions", "+1 Ammunition x5", "Dust of Disappearance", "Dust of Dryness", "Keoghtom's Ointment", "Oil of Slipperiness", "Philter of Love", "Restorative Ointment", "Potion of Greater Healing", "Dust of Deliciousness", "Dust of Sneezing and Choking", "Elemental Gem" ]
   },
   "ElementalGem": {
     "Name": "Elemental Gems",
@@ -263,11 +255,11 @@
 
   "RareItems": {
     "Name": "Rare Item Table",
-    "Rewards": [ "+2 Ammunition x5", "Alchemical Compendium", "Amulet of Health", "+2 Amulet of the Devout", "+2 Moon Sickle", "+2 Arcane Grimoire", "Armor of Resistance", "Armor of Vulnerability", "+1 Armor", "Arrow-Catching Shield", "Astral Shard", "Astromancy Archive", "Atlas of Endless Horizons", "Bag of Beans", "Barrier Tattoo (Rare)", "Battering Shield", "Bead of Force", "Bell Branch", "Belt of Dwarvenkind", "Belt of Hill Giant Strength", "Berserker Axe", "+2 Bloodwell Vial", "+2 Boomerang", "Boots of Levitation", "Boots of Speed", "Bowl of Commanding Water Elementals", "Bracers of Defence", "Brazier of Commanding Fire Elementals", "Butcher's Bib", "Cape of the Mountebank", "Censer of Controlling Air Elementals", "Chime of Opening", "Cloak of Displacement", "Cloak of the Bat", "Corpse Slayer", "Cube of Force", "Daern's Instant Fortress", "Dagger of Venom", "Devotee's Censer", "Dimensional Shackles", "Dragon Slayer", "Duplicitous Manuscript", "Elemental Essence Shard", "Elixir of Health", "Elven Chain", "Far Realm Shard", "Feather Token", "Figurine of Wondrous Power", "Flame Tongue", "Flying Chariot", "Folding Boat", "Fulminating Treatise", "Gem of Seeing", "Giant Slayer", "Glamoured Studded Leather", "Handy Haversack", "Heart Weaver's Primer", "Helm of Teleportation", "Helm of the Gods", "Heward's Handy Haversack", "Horn of Blasting", "Horn of Valhalla", "Horseshoes of Speed", "Instrument of the Bards (Cli Lyre)", "Instrument of the Bards (Canaith Mandolin)", "Ioun Stone", "Iron Bands of Bilarro", "Iron Bands of Binding", "Libram of Souls and Flesh", "Lyre of Building", "Mace of Disruption", "Mace of Smiting", "Mace of Terror", "Mantle of Spell Resistance", "Mind Blade", "Mind Lash", "Molten Bronze Skin", "Necklace of Fireballs", "Necklace of Prayer Beads", "Needle of Mending", "Oil of Etherealness", "Periapt of Proof against Poison", "Planecaller's Codex", "Portable Hole", "Potion of Aqueous Form", "Potion of Clairvoyance", "Potion of Diminuition", "Potion of Gaseous Form", "Potion of Stone Giant Strength", "Potion of Fire Giant Strength", "Potion of Heroism", "Potion of Invulnerability", "Potion of Mind Reading", "Protective Verses", "Reveler's Concertina", "+2 Rhythm-Maker's Drum", "Ring of Animal Influence", "Ring of Evasion", "Ring of Feather Falling", "Ring of Free Action", "Ring of Protection", "Ring of Resistance", "Ring of Spell Storing", "Ring of the Ram", "Ring of X-ray Vision", "Robe of Eyes", "Rod of Rulership", "+2 Rod of the Pact Keeper", "Rod of Entanglement", "Scroll of Protection (Against Crabs)", "Shadowfell Brand Tattoo", "Shadowfell Shard", "Shield of Far Sight", "Shield of Missile Attraction", "+2 Shield", "Siren Song Lyre", "Spell Gem (Bloodstone)", "Spell Gem (Quartz)", "Spellwrought Tattoo (4th)", "Spellwrought Tattoo (5th)", "Staff of Charming", "Staff of Healing", "Staff of Swarming Insects", "Staff of the Ivory Claw", "Staff of the Woodlands", "Staff of Withering", "Stone of Controlling Earth Elementals", "Sun Blade", "Sword of Life Stealing", "Sword of Wounding", "Tentacle Rod", "Two-Birds Sling", "+1 Vicious Rapier", "Vicious Weapon", "Wand of Binding", "Wand of Enemy Detection", "Wand of Fear", "Wand of Fireballs", "Wand of Lightning Bolts", "Wand of Paralysis", "+2 Wand of the War Mage", "Wand of Wonder", "+2 Weapon", "Wings of Flying" ]
+    "Rewards": [  "Alchemical Compendium", "Amulet of Health", "+2 Amulet of the Devout", "+2 Moon Sickle", "+2 Arcane Grimoire", "Armor of Resistance", "Armor of Vulnerability", "+1 Armor", "Arrow-Catching Shield", "Astral Shard", "Astromancy Archive", "Atlas of Endless Horizons", "Barrier Tattoo (Rare)", "Battering Shield", "Bell Branch", "Belt of Dwarvenkind", "Belt of Hill Giant Strength", "Berserker Axe", "+2 Bloodwell Vial", "+2 Boomerang", "Boots of Levitation", "Boots of Speed", "Bowl of Commanding Water Elementals", "Bracers of Defence", "Brazier of Commanding Fire Elementals", "Butcher's Bib", "Cape of the Mountebank", "Censer of Controlling Air Elementals", "Chime of Opening", "Cloak of Displacement", "Cloak of the Bat", "Corpse Slayer", "Cube of Force", "Daern's Instant Fortress", "Dagger of Venom", "Devotee's Censer", "Dimensional Shackles", "Dragon Slayer", "Duplicitous Manuscript", "Elemental Essence Shard", "Elixir of Health", "Elven Chain", "Far Realm Shard", "Feather Token", "Figurine of Wondrous Power", "Flame Tongue", "Flying Chariot", "Folding Boat", "Fulminating Treatise", "Gem of Seeing", "Giant Slayer", "Glamoured Studded Leather", "Handy Haversack", "Heart Weaver's Primer", "Helm of Teleportation", "Helm of the Gods", "Heward's Handy Haversack", "Horn of Blasting", "Horn of Valhalla", "Horseshoes of Speed", "Instrument of the Bards (Cli Lyre)", "Instrument of the Bards (Canaith Mandolin)", "Ioun Stone", "Iron Bands of Bilarro", "Iron Bands of Binding", "Libram of Souls and Flesh", "Lyre of Building", "Mace of Disruption", "Mace of Smiting", "Mace of Terror", "Mantle of Spell Resistance", "Mind Blade", "Mind Lash", "Molten Bronze Skin", "Needle of Mending", "Periapt of Proof against Poison", "Planecaller's Codex", "Portable Hole", "Protective Verses", "Reveler's Concertina", "+2 Rhythm-Maker's Drum", "Ring of Animal Influence", "Ring of Evasion", "Ring of Feather Falling", "Ring of Free Action", "Ring of Protection", "Ring of Resistance", "Ring of Spell Storing", "Ring of the Ram", "Ring of X-ray Vision", "Robe of Eyes", "Rod of Rulership", "+2 Rod of the Pact Keeper", "Rod of Entanglement", "Scroll of Protection (Against Crabs)", "Shadowfell Brand Tattoo", "Shadowfell Shard", "Shield of Far Sight", "Shield of Missile Attraction", "+2 Shield", "Siren Song Lyre", "Spell Gem (Bloodstone)", "Spell Gem (Quartz)", "Staff of Charming", "Staff of Healing", "Staff of Swarming Insects", "Staff of the Ivory Claw", "Staff of the Woodlands", "Staff of Withering", "Stone of Controlling Earth Elementals", "Sun Blade", "Sword of Life Stealing", "Sword of Wounding", "Tentacle Rod", "Two-Birds Sling", "+1 Vicious Rapier", "Vicious Weapon", "Wand of Binding", "Wand of Enemy Detection", "Wand of Fear", "Wand of Fireballs", "Wand of Lightning Bolts", "Wand of Paralysis", "+2 Wand of the War Mage", "Wand of Wonder", "+2 Weapon", "Wings of Flying", "SpellwroughtTattoo4", "SpellwroughtTattoo5", "Crystal Blade", "Dragonhide Belt +2","Dragon Wing Bow"]
   },
   "RareConsumables": {
     "Name": "Rare Consumable Table",
-    "Rewards": [ "Bead of Force", "Chime of Opening", "+2 Ammunition x5", "Oil of Etherealness" ]
+    "Rewards": [ "+2 Ammunition x5", "Bead of Force", "Chime of Opening", "+2 Ammunition x5", "Oil of Etherealness", "Bag of Beans", "Bead of Force", "Necklace of Fireballs", "Necklace of Prayer Beads", "Potion of Aqueous Form", "Potion of Clairvoyance", "Potion of Diminuition", "Potion of Gaseous Form", "Potion of Stone Giant Strength", "Potion of Fire Giant Strength", "Potion of Heroism", "Potion of Invulnerability", "Potion of Mind Reading" ]
   },
   "ElementalEssence": {
     "Name": "Elemental Essence Shard",
@@ -297,12 +289,12 @@
 
   "VRareItems": {
     "Name": "VRare Item Table",
-    "Rewards": [ "Absorbing Tattoo", "+3 Ammunition x5", "+3 Amulet of the Devout", "Amulet of the Planes", "Animated Shield", "+3 Arcane Grimoire", "Arcane Propulsion Arm", "+2 Armor", "Arrow of Crab Slaying", "Bag of Devouring", "Barrier Tattoo (Very Rare)", "Belt of Giant Strength", "+3 Bloodwell Vial", "+3 Boomerang", "Candle of Invocation", "Carpet of Flying", "Cauldron of Rebirth", "Cloak of Arachnida", "Crystal Ball", "Crystalline Chronicle", "Dancing Sword", "Demon Armor", "Dispelling Stone", "Efreeti Bottle", "Figuring of Wondrous Power (Obsidian Steed)", "Frost Brand", "Ghost Step Tattoo", "Helm of Brilliance", "Iron Horn of Valhalla", "Horseshoes of a Zephyr", "Hunter's Coat", "Illusionist's Braces", "Instrument of the Bards (Anstruth Harp)", "Ioun Stone", "Lifewell Tattoo", "Manual of Bodily Health", "Manual of Gainful Exercise", "Manual of Quickness of Action", "Marvelous Pigments", "Mirror of Life Trapping", "+3 Moon Sickle", "Nine Lives Stealer", "Oathbow", "Oil of Sharpness", "Potion of Flying", "Potion of Cloud Giant Strength", "Potion of Invisibility", "Potion of Longevity", "Potion of Speed", "Potion of Vitality", "+3 Rhythm-Maker's Drum", "Ring of Regeneration", "Ring of Shooting Stars", "Ring of Telekinesis", "Robe off Scintillating Colors", "Robe of Stars", "Rod of Absorption", "Rod of Alertness", "Rod of Security", "+3 Rod of the Pact Keeper", "Staff of Power", "Scimitar of Speed", "+3 Shield", "Sling Bullets of Althemone", "Spell Gem (Amber)", "Spell Gem (Jade)", "Spell Gem (Topaz)", "Spellguard Shield", "Staff of Dunamancy", "Staff of Fire", "Staff of Frost", "Staff of Striking", "Staff of Thunder and Lightning", "Sword of Sharpness", "Tome of Leadership and Influence", "Tome of Understanding", "Wand of Polymorph", "+3 Wand of the War Mage", "+3 Weapon" ]
+    "Rewards": [ "Absorbing Tattoo", "+3 Amulet of the Devout", "Amulet of the Planes", "Animated Shield", "+3 Arcane Grimoire", "Arcane Propulsion Arm", "+2 Armor", "Arrow of Crab Slaying", "Bag of Devouring", "Barrier Tattoo (Very Rare)", "Belt of Giant Strength", "+3 Bloodwell Vial", "+3 Boomerang", "Candle of Invocation", "Carpet of Flying", "Cauldron of Rebirth", "Cloak of Arachnida", "Crystal Ball", "Crystalline Chronicle", "Dancing Sword", "Demon Armor", "Dispelling Stone", "Efreeti Bottle", "Figuring of Wondrous Power (Obsidian Steed)", "Frost Brand", "Ghost Step Tattoo", "Helm of Brilliance", "Iron Horn of Valhalla", "Horseshoes of a Zephyr", "Hunter's Coat", "Illusionist's Braces", "Instrument of the Bards (Anstruth Harp)", "Ioun Stone", "Lifewell Tattoo", "Manual of Bodily Health", "Manual of Gainful Exercise", "Manual of Quickness of Action", "Marvelous Pigments", "Mirror of Life Trapping", "+3 Moon Sickle", "Nine Lives Stealer", "Oathbow",  "+3 Rhythm-Maker's Drum", "Ring of Regeneration", "Ring of Shooting Stars", "Ring of Telekinesis", "Robe off Scintillating Colors", "Robe of Stars", "Rod of Absorption", "Rod of Alertness", "Rod of Security", "+3 Rod of the Pact Keeper", "Staff of Power", "Scimitar of Speed", "+3 Shield", "Sling Bullets of Althemone", "Spell Gem (Amber)", "Spell Gem (Jade)", "Spell Gem (Topaz)", "Spellguard Shield", "Staff of Dunamancy", "Staff of Fire", "Staff of Frost", "Staff of Striking", "Staff of Thunder and Lightning", "Sword of Sharpness", "Tome of Leadership and Influence", "Tome of Understanding", "Wand of Polymorph", "+3 Wand of the War Mage", "+3 Weapon", "Amethyst Lodestone", "Dragonhide Belt +3", "Sapphire Buckler"]
 
   },
   "VRareConsumables": {
     "Name": "VRare Consumable Table",
-    "Rewards": [ "Candle of Invocation", "Efreeti Bottle", "Marvelous Pigments", "Oil of Sharpness" ]
+    "Rewards": [ "Candle of Invocation", "+3 Ammunition x5", "Efreeti Bottle", "Marvelous Pigments", "Oil of Sharpness", "Potion of Flying", "Potion of Cloud Giant Strength", "Potion of Invisibility", "Potion of Longevity", "Potion of Speed", "Potion of Vitality" ]
   },
   "AbsorbingTattoo": {
     "Name": "Absorbing Tattoo",
@@ -326,11 +318,11 @@
 
   "LegendaryItems": {
     "Name": "Legendary Item Table",
-    "Rewards": [ "Armor of Invulnerability", "+3 Armor", "Belt of Giant Strength", "Blackrazor", "Blood Fury Tattoo", "Cloak of Invisibility", "Crystal Ball", "Cubic Gate", "Defender", "Efreeti Chain", "Greater Silver Sword", "Hammer of Thunderbolts", "Holy Avenger", "Instrument of the Bards (Ollamh harp)", "Ioun Stone", "Iron Flask", "Luck Blade", "Moonblade", "Plate Armor of Etherealness", "Potion of Storm Giant Strength", "Pyxis of Pandemonium", "Ring of Elemental Command", "Ring of Djinni Summoning", "Ring of Invisibility", "Ring of Three Wishes", "Robe of the Archmagi", "Rod of Lordly Might", "Rod of Resurrection", "Scarab of Protection", "Sovereign Glue", "Spell Bottle", "Spell Gem", "Sphere of Annihilation", "Staff of the Magi", "Sword of Answering", "Talisman of Pure Good", "Talisman of the Sphere", "Talisman of Ultimate Evil", "Tome of the Stilled Tongue", "Universal Solvent", "Vorpal Sword", "Wave", "Whelm", "Well of Many Worlds" ]
+    "Rewards": [ "Armor of Invulnerability", "+3 Armor", "Belt of Giant Strength", "Blackrazor", "Blood Fury Tattoo", "Cloak of Invisibility", "Crystal Ball", "Cubic Gate", "Defender", "Efreeti Chain", "Greater Silver Sword", "Hammer of Thunderbolts", "Holy Avenger", "Instrument of the Bards (Ollamh harp)", "Ioun Stone", "Iron Flask", "Luck Blade", "Moonblade", "Plate Armor of Etherealness", "Pyxis of Pandemonium", "Ring of Elemental Command", "Ring of Djinni Summoning", "Ring of Invisibility", "Ring of Three Wishes", "Robe of the Archmagi", "Rod of Lordly Might", "Rod of Resurrection", "Scarab of Protection", "Sovereign Glue", "Spell Bottle", "Spell Gem", "Sphere of Annihilation", "Staff of the Magi", "Sword of Answering", "Talisman of Pure Good", "Talisman of the Sphere", "Talisman of Ultimate Evil", "Tome of the Stilled Tongue", "Vorpal Sword", "Wave", "Whelm", "Well of Many Worlds","Dragonlance","Gold Canary Figurine of Wondrous Power", "Flail of Tiamat", "Ruby Weave Gem", "Platinum Scarf", "Topaz Annihilator" ]
   },
   "LegendaryConsumables": {
     "Name": "Legendary Consumable Table",
-    "Rewards": [ "Ring of Three Wishes", "Scarab of Protection", "Sovereign Glue", "Universal Solvent" ]
+    "Rewards": [ "Scarab of Protection", "Sovereign Glue", "Universal Solvent", "Potion of Dragon's Majesty", "Potion of Storm Giant Strength" ]
   },
   "GiantBeltLegendary": {
     "Name": "Legendary Belt of Giant Strength",

@@ -118,15 +118,17 @@ client.on('message', message => {
         }
         else if (cmd == 'purge') {
 
-            let allowedRole = message.guild.roles.find("name", "GMs");
-            if (message.member.roles.has(allowedRole.id)) {
-                // allowed access to command
+            let allowedRole = message.guild.roles.find("name", "noobs lmao");
+            if (allowedRole != null) {
+                if (message.member.roles.has(allowedRole.id)) {
+                    // allowed access to command
 
-                clear(message);
-                sendmessageatplayer("Messages purged lol", message);
-            } else {
-                // not allowed access
-                sendmessageatplayer("You're too weak to use this command :(", message);
+                    clear(message);
+                    sendmessageatplayer("Messages purged lol", message);
+                } else {
+                    // not allowed access
+                    sendmessageatplayer("You're too weak to use this command :(", message);
+                }
             }
             return;
 
@@ -344,27 +346,25 @@ client.on('message', message => {
                 if (tempitem == "Armor of Resistance") {
                     tempitem = "Armor of " + RollScrollPotFromName("ResistanceTable");
                 }
-                if (tempitem == "Elemental Essence Shard") {
+                else if (tempitem == "Elemental Essence Shard") {
                     tempitem = RollScrollPotFromName("ElementalEssence");
                 }
-                if (tempitem == "Feather Token") {
+                else if (tempitem == "Feather Token") {
                     tempitem = RollScrollPotFromName("FeatherToken")
                 }
-                if (tempitem == "Figurine of Wondrous Power") {
+                else if (tempitem == "Figurine of Wondrous Power") {
                     tempitem = RollScrollPotFromName("FigurineRare")
                 }
-                if (tempitem == "Horn of Valhalla") {
+                else if (tempitem == "Horn of Valhalla") {
                     tempitem = RollScrollPotFromName("HornofValhalla")
                 }
-                if (tempitem == "Ioun Stone") {
+                else if (tempitem == "Ioun Stone") {
                     tempitem = RollScrollPotFromName("IounStoneRare")
                 }
-                if (tempitem == "Ring of Resistance") {
+                else if (tempitem == "Ring of Resistance") {
                     tempitem = "Ring of " + RollScrollPotFromName("ResistanceTable");
                 }
-                
-                
-                if (tempitem == "Instrument of the Bards") {
+                else if (tempitem == "Instrument of the Bards") {
                     tempitem = RollScrollPotFromName("BardInstrumentUncommon")
                 }
 
@@ -435,14 +435,13 @@ client.on('message', message => {
                 if (tempitem == "Absorbing Tattoo") {
                     tempitem = RollScrollPotFromName("AbsorbingTattoo");
                 }
-
-                if (tempitem == "Belt of Giant Strength") {
+                else if (tempitem == "Belt of Giant Strength") {
                     tempitem = RollScrollPotFromName("GiantBeltVRare");
                 }
-                if (tempitem == "Carpet of Flying") {
+                else if (tempitem == "Carpet of Flying") {
                     tempitem = RollScrollPotFromName("CarpetOfFlying")
                 }
-                if (tempitem == "Ioun Stone") {
+                else if (tempitem == "Ioun Stone") {
                     tempitem = RollScrollPotFromName("IounStoneVRare")
                 }
 
@@ -513,16 +512,16 @@ client.on('message', message => {
                 if (tempitem == "Belt of Giant Strength") {
                     tempitem = RollScrollPotFromName("GiantBeltLegendary");
                 }
-                if (tempitem == "Crystal Ball") {
+                else if (tempitem == "Crystal Ball") {
                     tempitem = RollScrollPotFromName("CrystalBalls");
                 }
-                if (tempitem == "Ioun Stone") {
+                else if (tempitem == "Ioun Stone") {
                     tempitem = RollScrollPotFromName("IounStoneLegendary")
                 }
-                if (tempitem == "Ring of Elemental Command") {
+                else if (tempitem == "Ring of Elemental Command") {
                     tempitem = RollScrollPotFromName("RingOfElementalCommand")
                 }
-                if (tempitem == "Spell Gem") {
+                else if (tempitem == "Spell Gem") {
                     tempitem = RollScrollPotFromName("SpellGems")
                 }
                 
@@ -699,11 +698,116 @@ client.on('message', message => {
                                     potTier = RolledItem[RolledItem.length - 1];
                                     potlist = "PotionTable" + potTier;
                                     RolledItem = "Potion of " + RollScrollPotFromName(potlist);
+
+                                    if (RolledItem == "Potion of Resistance") {
+                                        RolledItem = "Potion of " + RollScrollPotFromName("ResistanceTable");
+                                    }
                                 }
                                 else if (RolledItem.startsWith("Scroll") && !isNaN(RolledItem[RolledItem.length - 1])) {
                                     scrollTier = RolledItem[RolledItem.length - 1];
                                     scrolllist = "ScrollTable" + scrollTier;
                                     RolledItem = "Scroll of " + RollScrollPotFromName(scrolllist);
+                                }
+                                else if (RolledItem.startsWith("MagicConsumables") && !isNaN(RolledItem[RolledItem.length - 1])) {
+                                    ItemTier = RolledItem[RolledItem.length - 1];
+                                    if (ItemTier == "0") {
+                                        RolledItem = RollScrollPotFromName("CommonConsumables");
+                                    }
+                                    else if (ItemTier == "1") {
+                                        RolledItem = RollScrollPotFromName("UncommonConsumables");
+                                        if (RolledItem == "Elemental Gem") {
+                                            RolledItem = RollScrollPotFromName("ElementalGem");
+                                        }
+                                    }
+                                    else if (ItemTier == "2") {
+                                        RolledItem = RollScrollPotFromName("RareConsumables");
+                                    }
+                                    else if (ItemTier == "3") {
+                                        RolledItem = RollScrollPotFromName("VRareConsumables");
+                                    }
+                                    else if (ItemTier == "4") {
+                                        RolledItem = RollScrollPotFromName("LegendaryConsumables");
+                                    }
+                                }
+                                else if (RolledItem.startsWith("MagicItem") && !isNaN(RolledItem[RolledItem.length - 1])) {
+                                    ItemTier = RolledItem[RolledItem.length - 1];
+                                    if (ItemTier == "0") {
+                                        RolledItem = RollScrollPotFromName("CommonItems");
+                                    }
+                                    else if (ItemTier == "1") {
+                                        RolledItem = RollScrollPotFromName("UncommonItems");
+                                         if (RolledItem == "Instrument of the Bards") {
+                                            RolledItem = RollScrollPotFromName("BardInstrumentUncommon")
+                                        }
+                                        else if (RolledItem == "Potion of Resistance") {
+                                            RolledItem = "Potion of " + RollScrollPotFromName("ResistanceTable");
+                                        }
+                                    }
+                                    else if (ItemTier == "2") {
+                                        RolledItem = RollScrollPotFromName("RareItems");
+                                        if (RolledItem == "Armor of Resistance") {
+                                            RolledItem = "Armor of " + RollScrollPotFromName("ResistanceTable");
+                                        }
+                                        else if (RolledItem == "Elemental Essence Shard") {
+                                            RolledItem = RollScrollPotFromName("ElementalEssence");
+                                        }
+                                        else if (RolledItem == "Feather Token") {
+                                            RolledItem = RollScrollPotFromName("FeatherToken")
+                                        }
+                                        else if (RolledItem == "Figurine of Wondrous Power") {
+                                            RolledItem = RollScrollPotFromName("FigurineRare")
+                                        }
+                                        else if (RolledItem == "Horn of Valhalla") {
+                                            RolledItem = RollScrollPotFromName("HornofValhalla")
+                                        }
+                                        else if (RolledItem == "Ioun Stone") {
+                                            RolledItem = RollScrollPotFromName("IounStoneRare")
+                                        }
+                                        else if (RolledItem == "Ring of Resistance") {
+                                            RolledItem = "Ring of " + RollScrollPotFromName("ResistanceTable");
+                                        }
+                                        else if (RolledItem == "Instrument of the Bards") {
+                                            RolledItem = RollScrollPotFromName("BardInstrumentUncommon")
+                                        }
+                                    }
+                                    else if (ItemTier == "3") {
+                                        RolledItem = RollScrollPotFromName("VRareItems");
+                                        if (RolledItem == "Absorbing Tattoo") {
+                                            RolledItem = RollScrollPotFromName("AbsorbingTattoo");
+                                        }
+                                        else if (RolledItem == "Belt of Giant Strength") {
+                                            RolledItem = RollScrollPotFromName("GiantBeltVRare");
+                                        }
+                                        else if (RolledItem == "Carpet of Flying") {
+                                            RolledItem = RollScrollPotFromName("CarpetOfFlying")
+                                        }
+                                        else if (RolledItem == "Ioun Stone") {
+                                            RolledItem = RollScrollPotFromName("IounStoneVRare")
+                                        }
+                                    }
+                                    else if (ItemTier == "4") {
+                                        RolledItem = RollScrollPotFromName("LegendaryItems");
+                                        if (RolledItem == "Belt of Giant Strength") {
+                                            RolledItem = RollScrollPotFromName("GiantBeltLegendary");
+                                        }
+                                        else if (RolledItem == "Crystal Ball") {
+                                            RolledItem = RollScrollPotFromName("CrystalBalls");
+                                        }
+                                        else if (RolledItem == "Ioun Stone") {
+                                            RolledItem = RollScrollPotFromName("IounStoneLegendary")
+                                        }
+                                        else if (RolledItem == "Ring of Elemental Command") {
+                                            RolledItem = RollScrollPotFromName("RingOfElementalCommand")
+                                        }
+                                        else if (RolledItem == "Spell Gem") {
+                                            RolledItem = RollScrollPotFromName("SpellGems")
+                                        }
+                                    }
+                                    else if (RolledItem.startsWith("SpellwroughtTattoo") && !isNaN(RolledItem[RolledItem.length - 1])) {
+                                        TattooTier = RolledItem[RolledItem.length - 1];
+                                        scrolllist = "ScrollTable" + TattooTier;
+                                        RolledItem = "Spellwrought Tattoo (" + RollScrollPotFromName(scrolllist)+")";
+                                    }
                                 }
                                 MagicRewards.push(RolledItem);
                             }
@@ -752,35 +856,7 @@ client.on('message', message => {
     }
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 client.login(auth.token);
-
-
 
 var RollScrollPot = function (Table) {
     return Table.Rewards[randomint(1, Table.Rewards.length)-1];
@@ -849,18 +925,20 @@ var rolldice = function (text) {
     else {
         for (i = 0; i < args.length; i++) {
             if (args[i].length > 15) {
-                
                 return;
             }
+            else {
+                hasHashtag = false;
+            }
             for (o = 0; o < args[i].length; o++) {
-                if (args[i][o] == "$") {
-                    hasHashtag = true;
-                }
                 if (!hasHashtag) {
                     parsetxt += args[i][o];
                 }
                 else {
                     printtext += args[i][o];
+                }
+                if (args[i][o] == "$") {
+                    hasHashtag = true;
                 }
             }
 
