@@ -931,15 +931,17 @@ var rolldice = function (text) {
                 hasHashtag = false;
             }
             for (o = 0; o < args[i].length; o++) {
+                if (args[i][o] == "$") {
+                    hasHashtag = true;
+                }
                 if (!hasHashtag) {
                     parsetxt += args[i][o];
                 }
                 else {
+
                     printtext += args[i][o];
                 }
-                if (args[i][o] == "$") {
-                    hasHashtag = true;
-                }
+                
             }
 
         }
@@ -1059,6 +1061,7 @@ var rolldicedisplay = function (message, args) {
 
     }
     else {
+        startRecording = false;
         for (i = 0; i < args.length; i++) {
             if (args[i].length > 15) {
                 sendcodemessage("Number too big, brain too small :(", message);
@@ -1071,11 +1074,19 @@ var rolldicedisplay = function (message, args) {
                 if (!hasHashtag) {
                     parsetxt += args[i][o];
                 }
-                else {
+                else if (args[i][o] != "$"){
                     printtext += args[i][o];
                 }
+                
             }
-
+            if (hasHashtag) {
+                if (!startRecording ) {
+                    startRecording = true;
+                }
+                if (startRecording) {
+                    printtext += " ";
+                }
+            }
         }
 
         var n = parsetxt.length;
@@ -1172,17 +1183,11 @@ var rolldicedisplay = function (message, args) {
         if (eval(finaltext)) {
             var dis = displaytext + "\n\nTotal: " + eval(finaltext);
 
-
-
-
             if (dis.length < 1990) {
                 if (hasHashtag) {
                     dis = "```" + dis + "```";
 
-                    printtext.replace("$", "");
-
-
-                    dis += "\n" + printtext + "\n";
+                    dis += "\n **" + printtext + "**\n";
                     sendmessageatplayer(dis, message);
                 }
                 else {
