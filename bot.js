@@ -158,8 +158,17 @@ client.on('message', message => {
             else if (args[0] == 'add') {// addgold command selected
 
                 if (!isNaN(args[1])) {
-                    addGolddisplay(message, Number(args[1]));
-                    
+                    if (args[2] != null) {
+                        if (args[2][0] == '<') {//check gold of specific player
+                            var userid = args[2];
+                            userid = userid.replace(/[\\<>@#&!]/g, "");
+                            console.log(userid);
+                            addGolddisplayUser(message, Number(args[1]), userid);
+                        }
+                    }
+                    else {
+                        addGolddisplay(message, Number(args[1]));
+                    }
                 }
                 else {
                     sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
@@ -167,7 +176,17 @@ client.on('message', message => {
             }
             else if (args[0] == 'remove') {//remove command selected
                 if (!isNaN(args[1])) {
-                    removeGolddisplay(message, Number(args[1]));
+                    if (args[2] != null) {
+                        if (args[2][0] == '<') {//check gold of specific player
+                            var userid = args[2];
+                            userid = userid.replace(/[\\<>@#&!]/g, "");
+                            console.log(userid);
+                            removeGolddisplayUser(message, Number(args[1]), userid);
+                        }
+                    }
+                    else {
+                        removeGolddisplay(message, Number(args[1]));
+                    }
                 }
                 else {
                     sendmessage("Wrong syntax. Try `!gold help` for a list of commands.", message);
@@ -192,11 +211,7 @@ client.on('message', message => {
                     userid = userid.replace(/[\\<>@#&!]/g, "");
 
                     checkgolddisplay(message, userid);
-
-
                 }
-
-
             }
             else {  // just !g
                 checkgolddisplay(message, message.author.id);
@@ -1251,7 +1266,7 @@ var checkgolddisplay = function (message, userID) {
 }
 
 var addGolddisplay = function (message, x) {
-    var userId = message.author.id //user id here
+    var userId = message.author.id; //user id here
     if (!dataFile[userId]) { //this checks if data for the user has already been created
         dataFile[userId] = { Name: message.author.username, Gold: 0 }; //if not, create it
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
@@ -1274,8 +1289,33 @@ var addGolddisplay = function (message, x) {
     }
 }
 
+var addGolddisplayUser = function (message, x, authorID) {
+    if (!dataFile[authorID]) { //this checks if data for the user has already been created
+        let user = client.users.cache.get(authorID);
+        dataFile[authorID] = { Name: member.user.username, Gold: x }; //if not, create it
+        fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
+        var disp = "New user to this command, new file created.\n\n";
+        disp += "Adding " + x + "gp to " + user + "...\n\n" +
+            "**Total gold: __" + dataFile[authorID].Gold + "gp__**";
+        sendmessage(disp, message);
+    }
+    else {
+        var gp = Number(dataFile[authorID].Gold);
+        var ogp = gp;
+        var Name = dataFile[authorID].Name;
+        let user = client.users.get(authorID);
+        gp += x;
+        dataFile[authorID] = { Name: Name, Gold: gp };
+        fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
+        var q = "Adding " + x + "gp to " + user + "...\n\n" +
+            "*Original gold: " + ogp + "gp*\n\n" +
+            "**Total gold: __" + dataFile[authorID].Gold + "gp__**";
+        sendmessage(q, message);
+    }
+}
+
 var removeGolddisplay = function (message, x) {
-    var userId = message.author.id //user id here
+    var userId = message.author.id; //user id here
     if (!dataFile[userId]) { //this checks if data for the user has already been created
         dataFile[userId] = { Name: message.author.username, Gold: x }; //if not, create it
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
@@ -1295,6 +1335,36 @@ var removeGolddisplay = function (message, x) {
             var q = "Removing " + x + "gp from " + message.author + "...\n\n" +
                 "*Original gold: "+ ogp+"gp*\n\n"+
                 "**Total gold: __" + dataFile[userId].Gold + "gp__**";
+            sendmessage(q, message);
+        }
+        else {
+            sendmessage("Can't remove more gold than you have, b-baka.", message);
+        }
+    }
+}
+
+var removeGolddisplayUser = function (message, x, authorID) {
+    if (!dataFile[authorID]) { //this checks if data for the user has already been created
+        let user = client.users.get(authorID);
+        dataFile[authorID] = { Name: member.user.username, Gold: x }; //if not, create it
+        fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
+        var disp = "New user to this command, new file created.\n\n";
+        disp += "Can't remove more gold than " + user + "has. Setting to 0gp...\n\n" +
+            "**Total gold: __" + dataFile[authorID].Gold + "gp__**";
+        sendmessage(disp, message);
+    }
+    else {
+        var gp = Number(dataFile[authorID].Gold);
+        var ogp = gp;
+        var Name = dataFile[authorID].Name;
+        let user = client.users.get(authorID);
+        if (gp >= x) {
+            gp -= x;
+            dataFile[authorID] = { Name: Name, Gold: gp };
+            fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
+            var q = "Removing " + x + "gp from " + user + "...\n\n" +
+                "*Original gold: " + ogp + "gp*\n\n" +
+                "**Total gold: __" + dataFile[authorID].Gold + "gp__**";
             sendmessage(q, message);
         }
         else {
