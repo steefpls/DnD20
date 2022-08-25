@@ -25,6 +25,7 @@ var listPath = "./listdata.json";
 var listRead = fs.readFileSync(listPath);
 var listFile = JSON.parse(listRead); //ready for use
 
+client.login(auth.token);
 
 setInterval(function () {
     client.user.setActivity(" with tiddies", { type: 'PLAYING' });
@@ -36,13 +37,21 @@ client.on('ready', () => {
     client.user.setActivity(" with tiddies", { type: 'PLAYING' });
     console.log(`\nLogged in as ${client.user.tag} at:\n ${new Date(Date.now())}!\n\n`);
 })
-
+client.on('reconnecting', message => {;
+    console.log(`User Reconnecting at:\n ${new Date(Date.now())}!`);
+});
+client.on('disconnect', message => {
+    console.log(`User Disconnected at:\n ${new Date(Date.now())}!`);
+    client.destroy().then(() => client.login(auth.token));
+});
+client.on('resume', message => {
+    console.log(`Resumed Connection ${client.user.tag} at:\n ${new Date(Date.now())}!`);
+});
 client.on('messageUpdate', (oldMessage, newMessage) => {
     const messageauth = oldMessage.author;
     if (messageauth != "<@261302296103747584>") {
         if (oldMessage.channel.name === 'character-transaction-log' || oldMessage.channel.name === 'gold-transaction-log') {
             const sendtochannel = oldMessage.guild.channels.find(ch => ch.name === 'character-log-archive');
-            
             sendtochannel.send("**__Message edited from:__\n**  " + oldMessage.content + " \n\n__**To:**__\n " + newMessage.content + " \n\n _This message was edited by " + newMessage.author.username + " in <#" + newMessage.channel.id + ">_\n\n` `");
         }
     }
@@ -858,7 +867,7 @@ client.on('message', message => {
     }
 })
 
-client.login(auth.token);
+
 
 var RollScrollPot = function (Table) {
     return Table.Rewards[randomint(1, Table.Rewards.length)-1];
@@ -1179,9 +1188,7 @@ var rolldicedisplay = function (message, args) {
                 finaltext += txtlist[i] + " ";
                 displaytext += txtlist[i] + " ";
             }
-
         }
-
         if (eval(finaltext)) {
             var dis = displaytext + "\n\nTotal: " + eval(finaltext);
 
@@ -1195,13 +1202,11 @@ var rolldicedisplay = function (message, args) {
                 else {
                     sendcodemessageatplayer(dis, message);
                 }
-
             }
             else {
                 sendcodemessageatplayer("Wtf too many characters man, try less stuff", message);
             }
         }
-
     }
 }
 
@@ -1220,7 +1225,6 @@ var getUserIDfromAt = function (atUser) {
     var at = String(atUser);
     at = at.replace(/[\\<>@#&!]/g, "");
     return at;
-
 }
 
 var getAtfromMessage = function (message) {
@@ -1233,13 +1237,11 @@ var getUserIDfromMessage = function (message) {
     return id;
 }
 
-
 var checkgolddisplay = function (message, userID) {
     
     if (!dataFile[userID]) { //this checks if data for the user has already been created
         sendmessage("User does not exist, use the `!gold add 0` to create user.", message);
     }
-
     else {
         var gp = Number(dataFile[userID].Gold);
         var Name = dataFile[userID].Name;
@@ -1247,6 +1249,7 @@ var checkgolddisplay = function (message, userID) {
         sendmessage(q, message);
     }
 }
+
 var addGolddisplay = function (message, x) {
     var userId = message.author.id //user id here
     if (!dataFile[userId]) { //this checks if data for the user has already been created
@@ -1256,9 +1259,7 @@ var addGolddisplay = function (message, x) {
         disp += "Adding " + x + "gp to " + message.author + "...\n\n" +
             "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(disp, message);
-
     }
-
     else {
         var gp = Number(dataFile[userId].Gold);
         var ogp = gp;
@@ -1270,10 +1271,9 @@ var addGolddisplay = function (message, x) {
             "*Original gold: " + ogp + "gp*\n\n"+
             "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(q, message);
-
     }
-
 }
+
 var removeGolddisplay = function (message, x) {
     var userId = message.author.id //user id here
     if (!dataFile[userId]) { //this checks if data for the user has already been created
@@ -1283,9 +1283,7 @@ var removeGolddisplay = function (message, x) {
         disp += "Can't remove more gold than " + message.author + "has. Setting to 0gp...\n\n" +
             "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(disp, message);
-
     }
-
     else {
         var gp = Number(dataFile[userId].Gold);
         var ogp = gp;
@@ -1302,10 +1300,7 @@ var removeGolddisplay = function (message, x) {
         else {
             sendmessage("Can't remove more gold than you have, b-baka.", message);
         }
-        
-
     }
-
 }
 
 var setGolddisplay = function (message, x) {
@@ -1318,7 +1313,6 @@ var setGolddisplay = function (message, x) {
             "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(disp, message);
     }
-
     else {
         var gp = Number(dataFile[userId].Gold);
         var ogp = gp;
@@ -1330,9 +1324,7 @@ var setGolddisplay = function (message, x) {
             "*Original gold: " + ogp + "gp*\n\n"+
             "**Total gold: __" + dataFile[userId].Gold + "gp__**";
         sendmessage(d, message);
-
     }
-
 }
 
 var getGold = function (userId) {
@@ -1347,7 +1339,6 @@ var getGold = function (userId) {
         console.log(q);
         return gp;
     }
-
 }
 
 var addGold = function (userId, x) {
@@ -1365,9 +1356,7 @@ var addGold = function (userId, x) {
         var q = "Adding " + x + "gp to " + message.author + "...\n\n" +
             "Total gold: " + dataFile[userId].Gold + "gp";
         console.log(q);
-
     }
-
 }
 
 var removeGold = function (userId, x) {
@@ -1390,10 +1379,7 @@ var removeGold = function (userId, x) {
         else {
             console.log("Can't remove more gold than you have, baka.");
         }
-
-
     }
-
 }
 
 var setGold = function (userId, x) {
@@ -1411,12 +1397,8 @@ var setGold = function (userId, x) {
         var d = "Setting " + message.author + "'s gp to " + x + "...\n\n" +
             "Total gold: " + dataFile[userId].Gold + "gp";
         console.log(d);
-
     }
-
 }
-
-
 
 var randomint = function (x, y) {
     if (x == y) {
@@ -1439,15 +1421,12 @@ var sendmessage = function (x, message) {
 
     const channel = message.channel;
     channel.send(x);
-
 }
 
 var sendcodemessage = function (x, message) {
 
     const channel = message.channel;
     channel.send("```" + x + "```");
-
-
 }
 
 var sendmessageatplayer = function (x, message) {
@@ -1455,17 +1434,15 @@ var sendmessageatplayer = function (x, message) {
     const channel = message.channel;
     var ID = message.author;
     channel.send(ID +"\n"+x);
-
-
 }
+
 var sendcodemessageatplayer = function (x, message) {
 
     const channel = message.channel;
     var ID = message.author;
     channel.send( ID  +"\n```" + x + "```");
-
-
 }
+
 async function clear(message) {
     message.delete();
     const fetched = await message.channel.fetchMessages({ limit: 99 });
@@ -1473,7 +1450,6 @@ async function clear(message) {
 }
 
 var convertToGold = function (plat, gold, silv, copp) {
-
     copp += 10 * silv + 100 * gold + 1000 * plat;
     silv = 0;
     gold = 0;
@@ -1484,7 +1460,6 @@ var convertToGold = function (plat, gold, silv, copp) {
 
     gold = Math.floor(silv / 10);
     silv = silv % 10;
-
 
     return [gold, silv, copp];
 }
