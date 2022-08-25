@@ -207,8 +207,9 @@ client.on('message', message => {
                     "`!g add x` - Adds 'x'gp to you.\n" +
                     "`!g remove x` - Removes 'x'gp from you.\n" +
                     "`!g set x` - Set your gold to 'x'gp.\n" +
-                    "`!g help` - Displays gold commands.\n";
-                sendmessage(m, message);
+                    "`!g help` - Displays gold commands.\n" +
+                    "`Append @username to any command to use it on a specific user.`\n";
+                    sendmessage(m, message);
 
             }
             else if (args[0]) {//check gold of specific player
