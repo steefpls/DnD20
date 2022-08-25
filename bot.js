@@ -27,11 +27,12 @@ var listFile = JSON.parse(listRead); //ready for use
 
 
 setInterval(function () {
-    console.log(`Pulling ${client.channels.get("792913101460340776").name} data to stay active\n\n`);
-    console.log(`Bot is online at:\n ${new Date(Date.now())}!\n\n`);    
-}, 60000);
+    client.user.setActivity(" with tiddies", { type: 'PLAYING' });
+    console.log(`Bot Status set to` + statusName+` Bot is online at:\n ${new Date(Date.now())}!\n\n`);    
+}, 1800000);
 
 client.on('ready', () => {
+    client.user.setStatus("Eating PHAT Ass");
     console.log(`\nLogged in as ${client.user.tag} at:\n ${new Date(Date.now())}!\n\n`);
 })
 
