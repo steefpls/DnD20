@@ -29,7 +29,7 @@ client.login(auth.token);
 
 setInterval(function () {
     client.user.setActivity(" with tiddies", { type: 'PLAYING' });
-    console.log(`Bot Status set to` + statusName+` Bot is online at:\n ${new Date(Date.now())}!\n\n`);    
+    console.log(`Bot Status set to "PLAYING with tiddies" Bot is online at:\n ${new Date(Date.now())}!\n\n`);    
 }, 1800000);
 
 client.on('ready', () => {
