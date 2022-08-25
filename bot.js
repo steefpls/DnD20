@@ -33,6 +33,7 @@ setInterval(function () {
 
 client.on('ready', () => {
     client.user.setStatus("Eating PHAT Ass");
+    client.user.setActivity(" with tiddies", { type: 'PLAYING' });
     console.log(`\nLogged in as ${client.user.tag} at:\n ${new Date(Date.now())}!\n\n`);
 })
 
