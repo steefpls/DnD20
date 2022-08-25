@@ -1276,7 +1276,7 @@ var checkgolddisplay = function (message, userID) {
 
 var addGolddisplayUser = function (message, x, authorID) {
     if (!dataFile[authorID]) { //this checks if data for the user has already been created
-        let user = client.users.cache.get(authorID);
+        let user = client.users.get(authorID);
         dataFile[authorID] = { Name: user.username, Gold: x }; //if not, create it
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var disp = "New user to this command, new file created.\n\n";
