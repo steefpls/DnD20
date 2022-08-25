@@ -21,14 +21,6 @@
 
   },
 
-
-
-
-
-
-
-
-
   "LootTable1": {
     "Name": "1 Day Exploration",
     "Range": [ 10, 30, 60, 84, 95, 99, 100 ],
@@ -39,7 +31,6 @@
 
     "MagicTables": [ "0", "0", "0", "0", "A", "A", "A,B" ],
     "MagicTimes": [ "0", "0", "0", "0", "d2", "d4", "d4,1" ]
-
   },
 
   "LootTable2": {
@@ -52,9 +43,8 @@
 
     "MagicTables": [ "0", "0", "0", "A", "A", "A,B", "A,B" ],
     "MagicTimes": [ "0", "0", "0", "1", "d2", "d4,1", "d6,d4" ]
-
-
   },
+
   "LootTable3": {
     "Name": "3 Day Exploration",
     "Range": [ 11, 30, 57, 80, 90, 95, 100 ],
@@ -65,10 +55,8 @@
 
     "MagicTables": [ "0", "0", "A", "A", "A,B", "A,B", "A,B" ],
     "MagicTimes": [ "0", "0", "1", "d2", "d4,1", "d6,d4", "d8,d6" ]
-
-
-
   },
+
   "LootTable4": {
     "Name": "4 Day Exploration",
     "Range": [ 11, 29, 55, 79, 90, 95, 100 ],
@@ -79,10 +67,8 @@
 
     "MagicTables": [ "0", "A", "A", "A", "A,B", "A,B", "A,B,C" ],
     "MagicTimes": [ "0", "1", "d2", "d4", "d6,d2", "d8,d4", "d10,d6,d2" ]
-
-
-
   },
+
   "LootTable5": {
     "Name": "5 Day Exploration",
     "Range": [ 12, 28, 55, 79, 90, 95, 100 ],
@@ -93,30 +79,26 @@
 
     "MagicTables": [ "X", "Z", "A", "A", "A,B", "A,B,C", "A,B,C,D" ],
     "MagicTimes": [ "1", "1", "1", "d2", "d4,1", "d6,d2,1", "d10,d4,d2,1" ]
-
-
   },
 
   "MagicTableA": {
     "Name": "Magic Table A",
     "Range": [ 35, 60, 70, 80, 85, 95, 100 ],
     "Rewards": [ "Potion0", "Scroll0", "Potion1", "Scroll1", "Scroll2", "Potion2","MagicConsumables0" ,"MagicItem0" ]
-
-
   },
 
   "MagicTableB": {
     "Name": "Magic Table B",
-    "Range": [ 20, 30, 40, 50, 60, 70, 75, 90, 100],
+    "Range": [ 20, 30, 40, 50, 60, 70, 75, 90, 100 ],
     "Rewards": [ "Potion of Greater Healing", "Potion0", "+1 Ammunition", "Potion1", "Scroll2", "Scroll3", "Potion2", "MagicConsumables1", "MagicItem1" ]
-
   },
+
   "MagicTableC": {
     "Name": "Magic Table C",
     "Range": [ 20, 30, 40, 50, 60, 70, 85, 100 ],
     "Rewards": [ "Potion of Superior Healing", "Scroll3", "Scroll4", "Potion2", "Potion3", "+2 Ammunition", "MagicConsumables2", "MagicItem2" ]
-
   },
+
   "MagicTableD": {
     "Name": "Magic Table D",
     "Range": [ 20, 40, 50, 60, 70, 80, 90,100],
@@ -127,35 +109,35 @@
     "Name": "The injury table",
     "Range": [ 30, 100 ],
     "Rewards": [ "You suffer a heavy injury.", "You suffer a moderate injury." ]
-
   },
+
   "MagicTableY": {
     "Name": "The injury table",
     "Range": [ 30, 100 ],
     "Rewards": [ "You suffer a moderate injury.", "You suffer a light injury." ]
-
   },
+
   "MagicTableZ": {
     "Name": "The injury table",
     "Range": [ 50, 100 ],
     "Rewards": [ "You suffer a light injury.", "You manage to dodge RNG's wrath and suffer no injuries." ]
-
   },
 
   "ResistanceTable": {
     "Name": "Resistance Table",
     "Rewards": [ "Acid Resistance", "Cold Resistance", "Fire Resistance", "Force Resistance", "Lightning Resistance", "Necrotic Resistance", "Poison Resistance", "Psychic Resistance", "Radiant Resistance", "Thunder Resistance" ]
-
   },
 
   "PotionTable0": {
     "Name": "Potion Table 0",
     "Rewards": [ "Animal Friendship", "Climbing", "Hill Giant Strength", "Growth", "Heroism", "Water Breathing", "Poison", "Healing", "Healing", "Healing", "Healing", "Healing" ]
   },
+
   "PotionTable1": {
     "Name": "Potion Table 1",
     "Rewards": [ "Gaseous Form", "Clairvoyance", "Diminution", "Stone Giant Strength", "Frost Giant Strength", "Resistance" ]
   },
+
   "PotionTable2": {
     "Name": "Potion Table 2",
     "Rewards": [ "Flying", "Invisibility", "Mind Reading", "Fire Giant Strength", "Speed" ]
@@ -165,12 +147,6 @@
     "Name": "Potion Table 3",
     "Rewards": [ "Cloud Giant Strength", "Supreme Healing", "Clairvoyance" ]
   },
-
-
-
-
-
-
 
   "ScrollTable0": {
     "Name": "Scroll Table 0",
