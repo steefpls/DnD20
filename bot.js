@@ -1,9 +1,11 @@
 
-var Discord = require('discord.js');
+const { Client } = require('discord.js');
+// Initialize Discord Bot
+const client = new Client({ intents: ["Guilds"] });
+
 var logger = require('winston');
 var auth = require('./auth.json');
 require('dotenv').config();
-
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -12,8 +14,13 @@ logger.add(new logger.transports.Console, {
 
 logger.level = 'debug';
 
-// Initialize Discord Bot
-const client = new Discord.Client();
+client.login(auth.token).then(() => {
+    console.log(`\nLogged in as ${client.user.username} at:\n ${new Date(Date.now())}!\n`);
+    client.user.setActivity(" with tiddies", { type: 'PLAYING' });
+})
+
+
+
 
 //File save system
 const fs = require('fs') //importing file save
@@ -25,17 +32,25 @@ var listPath = "./listdata.json";
 var listRead = fs.readFileSync(listPath);
 var listFile = JSON.parse(listRead); //ready for use
 
-client.login(auth.token);
+
 
 setInterval(function () {
-    client.user.setActivity(" with tiddies", { type: 'PLAYING' });
-    console.log(`Bot Status set to "PLAYING with tiddies" Bot is online at:\n ${new Date(Date.now())}!\n\n`);    
+    client.login(auth.token).then(() => {
+        console.log(`\nLogged in as ${client.user.username} at:\n ${new Date(Date.now())}!\n`);
+        client.user.setActivity(" with tiddies", { type: 'PLAYING' });
+    }) 
 }, 1800000);
 
+client.on('unhandledRejection', error => {
+    console.error('Unhandled promise rejection:', error);
+});
+
+client.on('shardError', error => {
+    console.error('A websocket connection encountered an error:', error);
+});
+
 client.on('ready', () => {
-    client.user.setStatus("Eating PHAT Ass");
-    client.user.setActivity(" with tiddies", { type: 'PLAYING' });
-    console.log(`\nLogged in as ${client.user.tag} at:\n ${new Date(Date.now())}!\n\n`);
+    console.log(`Client ready!`);
 })
 client.on('reconnecting', message => {;
     console.log(`User Reconnecting at:\n ${new Date(Date.now())}!`);

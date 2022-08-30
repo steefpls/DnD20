@@ -1,11 +1,10 @@
 {
   "name": "DnD20",
-  "version": "1.0.0",
-  "description": "A downtime handling bot for PSF Westmarches.",
+  "version": "2.0.0",
+  "description": "A personal Discord Bot, mainly for DnD.",
   "main": "bot.js",
   "author": "Steef",
   "dependencies": {
-    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
     "save": "^2.4.0",
