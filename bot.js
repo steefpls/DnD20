@@ -260,7 +260,7 @@ client.on('message', message => {
                     timesList[List1.indexOf(CommonItemList[k])] = timesList[List1.indexOf(CommonItemList[k])] + 1;
                 }
             }
-
+            
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.CommonPrice);
                 if (listFile["CommonConsumables"].Rewards.includes(List1[h])) {
@@ -280,7 +280,28 @@ client.on('message', message => {
             ShopText += "__Rolling on Uncommon Magic Items Table " + table.UncommonTimes + " **( " + UncommonNo + " )**" + " times.__\n\n";
             //Rolling on uncommon table
             for (k = 0; k < UncommonNo; k++) {
-                var tempitem = generateUncommonShopItem();
+                var tempitem = table.Uncommon[rolldice("1d" + (table.Uncommon.length)) - 1];
+
+                if (tempitem == "Spellscroll2") {
+                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable2");
+                }
+                else if (tempitem == "Spellscroll3") {
+                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable3");
+                }
+                else if (tempitem == "UncommonItem") {
+                    tempitem = RollScrollPotFromName("UncommonItems");
+                }
+
+
+                if (tempitem == "Potion of Resistance") {
+                    tempitem = "Potion of " + RollScrollPotFromName("ResistanceTable");
+                }
+                if (tempitem == "Elemental Gem") {
+                    tempitem = RollScrollPotFromName("ElementalGem");
+                }
+                if (tempitem == "Instrument of the Bards") {
+                    tempitem = RollScrollPotFromName("BardInstrumentUncommon")
+                }
                 UncommonItemList.push(tempitem);
             }
             //Sorting UncommonItemlist
@@ -295,6 +316,7 @@ client.on('message', message => {
                     timesList[List1.indexOf(UncommonItemList[k])] = timesList[List1.indexOf(UncommonItemList[k])] + 1;
                 }
             }
+            
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.UncommonPrice);
 
@@ -336,10 +358,9 @@ client.on('message', message => {
                     timesList[List1.indexOf(RareItemList[k])] = timesList[List1.indexOf(RareItemList[k])] + 1;
                 }
             }
-
+            
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.RarePrice);
-
                 if (listFile["RareConsumables"].Rewards.includes(List1[h])) {
                     newnewprice = Math.ceil((2 * newnewprice) / 3);
                 }
@@ -427,12 +448,6 @@ client.on('message', message => {
                     timesList[List1.indexOf(LegendaryItemList[k])] = timesList[List1.indexOf(LegendaryItemList[k])] + 1;
                 }
             }
-            //Pushing item multiples to the list
-            //var pricelist = [];
-            //for (i = 0; i < List1.length; i++) {
-            //    pricelist.push( rolldice(table.CommonPrice));
-            //}
-
 
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.LegendaryPrice);
@@ -451,14 +466,8 @@ client.on('message', message => {
             }
             //-------------------Legendary END---------------------
 
-
-
-
-
             //Push final Message
             sendmessage(ShopText, message);
-
-
         }
 
         else if (cmd == 'explore' || cmd == 'e') {
@@ -629,37 +638,10 @@ client.on('message', message => {
                                         RolledItem = generateRareItem();
                                     }
                                     else if (ItemTier == "3") {
-                                        RolledItem = RollScrollPotFromName("VRareItems");
-                                        if (RolledItem == "Absorbing Tattoo") {
-                                            RolledItem = RollScrollPotFromName("AbsorbingTattoo");
-                                        }
-                                        else if (RolledItem == "Belt of Giant Strength") {
-                                            RolledItem = RollScrollPotFromName("GiantBeltVRare");
-                                        }
-                                        else if (RolledItem == "Carpet of Flying") {
-                                            RolledItem = RollScrollPotFromName("CarpetOfFlying")
-                                        }
-                                        else if (RolledItem == "Ioun Stone") {
-                                            RolledItem = RollScrollPotFromName("IounStoneVRare")
-                                        }
+                                        RolledItem = generateVRareItem();
                                     }
                                     else if (ItemTier == "4") {
-                                        RolledItem = RollScrollPotFromName("LegendaryItems");
-                                        if (RolledItem == "Belt of Giant Strength") {
-                                            RolledItem = RollScrollPotFromName("GiantBeltLegendary");
-                                        }
-                                        else if (RolledItem == "Crystal Ball") {
-                                            RolledItem = RollScrollPotFromName("CrystalBalls");
-                                        }
-                                        else if (RolledItem == "Ioun Stone") {
-                                            RolledItem = RollScrollPotFromName("IounStoneLegendary")
-                                        }
-                                        else if (RolledItem == "Ring of Elemental Command") {
-                                            RolledItem = RollScrollPotFromName("RingOfElementalCommand")
-                                        }
-                                        else if (RolledItem == "Spell Gem") {
-                                            RolledItem = RollScrollPotFromName("SpellGems")
-                                        }
+                                        RolledItem = RolledItem = generateVRareItem();
                                     }
                                     else if (RolledItem.startsWith("SpellwroughtTattoo") && !isNaN(RolledItem[RolledItem.length - 1])) {
                                         TattooTier = RolledItem[RolledItem.length - 1];
@@ -1189,22 +1171,21 @@ var generateCommonShopItem = function () {
     }
     if (tempitem == "Commonitem0") {
         tempitem = generateCommonItem();
+        if (tempitem.startsWith("SpellwroughtTattoo") && !isNaN(tempitem[tempitem.length - 1])) {
+            TattooTier = tempitem[tempitem.length - 1];
+            scrolllist = "ScrollTable" + TattooTier;
+            tempitem = "Spellwrought Tattoo (" + RollScrollPotFromName(scrolllist) + ")";
+        }
     }
     return tempitem;
 }
 var generateCommonItem = function (){
     var tempitem = RollScrollPotFromName("CommonItems");
-
-    if (tempitem.startsWith("SpellwroughtTattoo") && !isNaN(RolledItem[RolledItem.length - 1])) {
-        TattooTier = RolledItem[RolledItem.length - 1];
-        scrolllist = "ScrollTable" + TattooTier;
-        tempitem = "Spellwrought Tattoo (" + RollScrollPotFromName(scrolllist) + ")";
-    }
     return tempitem;
 }
 var generateUncommonShopItem = function () {
     var table = listFile["ShopTable"];
-    var tempitem = table.Uncommon[rolldice("1d" + (table.Common.length)) - 1];
+    var tempitem = table.Uncommon[rolldice("1d" + (table.Uncommon.length)) - 1];
     if (tempitem == "Spellscroll2") {
         tempitem = generateSpellScroll(2);
     }
@@ -1213,6 +1194,11 @@ var generateUncommonShopItem = function () {
     }
     else if (tempitem == "UncommonItem") {
         tempitem = generateUncommonItem();
+        if (tempitem.startsWith("SpellwroughtTattoo") && !isNaN(tempitem[tempitem.length - 1])) {
+            TattooTier = tempitem[tempitem.length - 1];
+            scrolllist = "ScrollTable" + TattooTier;
+            tempitem = "Spellwrought Tattoo (" + RollScrollPotFromName(scrolllist) + ")";
+        }
     }
     return tempitem;
 }
@@ -1234,15 +1220,20 @@ var generateUncommonItem = function () {
 
 var generateRareShopItem = function () {
     var table = listFile["ShopTable"];
-    var tempitem = table.Rare[rolldice("1d" + (table.Common.length)) - 1];
-    if (tempitem == "Spellscroll4") {
-        tempitem = generateSpellScroll(2);
+    var tempitem = table.Rare[rolldice("1d" + (table.Rare.length)) - 1];
+    if (tempitem == "SpellScroll4") {
+        tempitem = generateSpellScroll(4);
     }
-    else if (tempitem == "Spellscroll5") {
-        tempitem = generateSpellScroll(3);
+    else if (tempitem == "SpellScroll5") {
+        tempitem = generateSpellScroll(5);
     }
     else if (tempitem == "RareItem") {
         tempitem = generateRareItem();
+        if (tempitem.startsWith("SpellwroughtTattoo") && !isNaN(tempitem[tempitem.length - 1])) {
+            TattooTier = tempitem[tempitem.length - 1];
+            scrolllist = "ScrollTable" + TattooTier;
+            tempitem = "Spellwrought Tattoo (" + RollScrollPotFromName(scrolllist) + ")";
+        }
     }
     return tempitem;
 }
@@ -1278,18 +1269,23 @@ var generateRareItem = function () {
 
 var generateVRareShopItem = function () {
     var table = listFile["ShopTable"];
-    var tempitem = table.VRare[rolldice("1d" + (table.Common.length)) - 1];
+    var tempitem = table.VRare[rolldice("1d" + (table.VRare.length)) - 1];
     if (tempitem == "SpellScroll6") {
-        tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable6");
+        tempitem = generateSpellScroll(6);
     }
     else if (tempitem == "SpellScroll7") {
-        tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable7");
+        tempitem = generateSpellScroll(7);
     }
     else if (tempitem == "SpellScroll8") {
-        tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable8");
+        tempitem = generateSpellScroll(8);
     }
     else if (tempitem == "VRareItem") {
         tempitem = generateVRareItem();
+        if (tempitem.startsWith("SpellwroughtTattoo") && !isNaN(tempitem[tempitem.length - 1])) {
+            TattooTier = tempitem[tempitem.length - 1];
+            scrolllist = "ScrollTable" + TattooTier;
+            tempitem = "Spellwrought Tattoo (" + RollScrollPotFromName(scrolllist) + ")";
+        }
     }
     return tempitem;
 }
@@ -1314,10 +1310,15 @@ var generateLegendaryShopItem = function () {
     var table = listFile["ShopTable"];
     var tempitem = table.Legendary[rolldice("1d" + (table.Legendary.length)) - 1];
     if (tempitem == "SpellScroll9") {
-        tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable9");
+        tempitem = generateSpellScroll(9);
     }
     else if (tempitem == "LegendaryItem") {
         tempitem = generateLegendaryItem();
+        if (tempitem.startsWith("SpellwroughtTattoo") && !isNaN(tempitem[tempitem.length - 1])) {
+            TattooTier = tempitem[tempitem.length - 1];
+            scrolllist = "ScrollTable" + TattooTier;
+            tempitem = "Spellwrought Tattoo (" + RollScrollPotFromName(scrolllist) + ")";
+        }
     }
     return tempitem;
 }
@@ -1345,9 +1346,11 @@ var generateLegendaryItem = function () {
 
 var generateSpellScroll = function (level) {
     var tempscroll = "ScrollTable" + level;
-    console.log(tempscroll);
+    
     var tempitem = "Scroll of " + RollScrollPotFromName(tempscroll);
+    console.log("Generated " + tempitem);
     return tempitem;
+    
 }
 var getGold = function (userId) {
     if (!dataFile[userId]) { //this checks if data for the user has already been created
