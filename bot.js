@@ -547,7 +547,7 @@ client.on('message', message => {
                 }
 
                 if (rewardstext == "") {
-                    rewardstext = "Absolutely nothing :(";
+                    rewardstext = "Absolutely nothing :(\n";
                 }
                 else {
                     rewardstext += "\nTotal gold value: \n";
@@ -585,7 +585,13 @@ client.on('message', message => {
                     for (k = 0; k < RolledTables.length; k++) {
                         var TableToRollOn = RolledTables[k];
                         noOfTimes = rolldice(RolledTimes[k]);
-                        rewardstext += "Rolling on Magic table " + RolledTables[k] + ", " + "(" + noOfTimes + ") " + RolledTimes[k] + " time(s).\n";
+                        if (TableToRollOn == "X" || TableToRollOn == "Y" || TableToRollOn == "Z") {
+                            rewardstext += "Rolling on Injury table " + TableToRollOn + ", " + "(" + noOfTimes + ") " + RolledTimes[k] + " time(s).\n";
+                        }
+                        else {
+                            rewardstext += "Rolling on Magic table " + TableToRollOn + ", " + "(" + noOfTimes + ") " + RolledTimes[k] + " time(s).\n";
+                        }
+                       
                         MagicTable = "MagicTable" + TableToRollOn;
 
                         for (s = 0; s < noOfTimes; s++) {

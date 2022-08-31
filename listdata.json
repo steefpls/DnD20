@@ -106,19 +106,19 @@
   },
 
   "MagicTableX": {
-    "Name": "The injury table",
+    "Name": "Injury Table X",
     "Range": [ 30, 100 ],
     "Rewards": [ "You suffer a heavy injury.", "You suffer a moderate injury." ]
   },
 
   "MagicTableY": {
-    "Name": "The injury table",
+    "Name": "Injury Table Y",
     "Range": [ 30, 100 ],
     "Rewards": [ "You suffer a moderate injury.", "You suffer a light injury." ]
   },
 
   "MagicTableZ": {
-    "Name": "The injury table",
+    "Name": "Injury Table Z",
     "Range": [ 50, 100 ],
     "Rewards": [ "You suffer a light injury.", "You manage to dodge RNG's wrath and suffer no injuries." ]
   },
@@ -265,7 +265,7 @@
 
   "VRareItems": {
     "Name": "VRare Item Table",
-    "Rewards": [ "Absorbing Tattoo", "+3 Amulet of the Devout", "Amulet of the Planes", "Animated Shield", "+3 Arcane Grimoire", "Arcane Propulsion Arm", "+2 Armor", "Arrow of Crab Slaying", "Bag of Devouring", "Barrier Tattoo (Very Rare)", "Belt of Giant Strength", "+3 Bloodwell Vial", "+3 Boomerang", "Candle of Invocation", "Carpet of Flying", "Cauldron of Rebirth", "Cloak of Arachnida", "Crystal Ball", "Crystalline Chronicle", "Dancing Sword", "Demon Armor", "Dispelling Stone", "Efreeti Bottle", "Figuring of Wondrous Power (Obsidian Steed)", "Frost Brand", "Ghost Step Tattoo", "Helm of Brilliance", "Iron Horn of Valhalla", "Horseshoes of a Zephyr", "Hunter's Coat", "Illusionist's Braces", "Instrument of the Bards (Anstruth Harp)", "Ioun Stone", "Lifewell Tattoo", "Manual of Bodily Health", "Manual of Gainful Exercise", "Manual of Quickness of Action", "Marvelous Pigments", "Mirror of Life Trapping", "+3 Moon Sickle", "Nine Lives Stealer", "Oathbow",  "+3 Rhythm-Maker's Drum", "Ring of Regeneration", "Ring of Shooting Stars", "Ring of Telekinesis", "Robe off Scintillating Colors", "Robe of Stars", "Rod of Absorption", "Rod of Alertness", "Rod of Security", "+3 Rod of the Pact Keeper", "Staff of Power", "Scimitar of Speed", "+3 Shield", "Sling Bullets of Althemone", "Spell Gem (Amber)", "Spell Gem (Jade)", "Spell Gem (Topaz)", "Spellguard Shield", "Staff of Dunamancy", "Staff of Fire", "Staff of Frost", "Staff of Striking", "Staff of Thunder and Lightning", "Sword of Sharpness", "Tome of Leadership and Influence", "Tome of Understanding", "Wand of Polymorph", "+3 Wand of the War Mage", "+3 Weapon", "Amethyst Lodestone", "Dragonhide Belt +3", "Sapphire Buckler"]
+    "Rewards": [ "Absorbing Tattoo", "+3 Amulet of the Devout", "Amulet of the Planes", "Animated Shield", "+3 Arcane Grimoire", "Arcane Propulsion Arm", "+2 Armor", "Arrow of Crab Slaying", "Bag of Devouring", "Barrier Tattoo (Very Rare)", "Belt of Giant Strength", "+3 Bloodwell Vial", "+3 Boomerang", "Candle of Invocation", "Carpet of Flying", "Cauldron of Rebirth", "Cloak of Arachnida", "Crystal Ball", "Crystalline Chronicle", "Dancing Sword", "Demon Armor", "Dispelling Stone", "Efreeti Bottle", "Figuring of Wondrous Power (Obsidian Steed)", "Frost Brand", "Ghost Step Tattoo", "Helm of Brilliance", "Iron Horn of Valhalla", "Horseshoes of a Zephyr", "Hunter's Coat", "Illusionist's Braces", "Instrument of the Bards (Anstruth Harp)", "Ioun Stone", "Lifewell Tattoo", "Manual of Bodily Health", "Manual of Gainful Exercise", "Manual of Quickness of Action", "Marvelous Pigments", "Mirror of Life Trapping", "+3 Moon Sickle", "Nine Lives Stealer", "Oathbow",  "+3 Rhythm-Maker's Drum", "Ring of Regeneration", "Ring of Shooting Stars", "Ring of Telekinesis", "Robe of Scintillating Colors", "Robe of Stars", "Rod of Absorption", "Rod of Alertness", "Rod of Security", "+3 Rod of the Pact Keeper", "Staff of Power", "Scimitar of Speed", "+3 Shield", "Sling Bullets of Althemone", "Spell Gem (Amber)", "Spell Gem (Jade)", "Spell Gem (Topaz)", "Spellguard Shield", "Staff of Dunamancy", "Staff of Fire", "Staff of Frost", "Staff of Striking", "Staff of Thunder and Lightning", "Sword of Sharpness", "Tome of Leadership and Influence", "Tome of Understanding", "Wand of Polymorph", "+3 Wand of the War Mage", "+3 Weapon", "Amethyst Lodestone", "Dragonhide Belt +3", "Sapphire Buckler"]
 
   },
   "VRareConsumables": {
