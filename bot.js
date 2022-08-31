@@ -3,24 +3,13 @@ const { Client } = require('discord.js');
 // Initialize Discord Bot
 const client = new Client({ intents: ["Guilds"] });
 
-var logger = require('winston');
 var auth = require('./auth.json');
 require('dotenv').config();
-// Configure logger settings
-logger.remove(logger.transports.Console);
-logger.add(new logger.transports.Console, {
-    colorize: true
-});
-
-logger.level = 'debug';
 
 client.login(auth.token).then(() => {
     console.log(`\nLogged in as ${client.user.username} at:\n ${new Date(Date.now())}!\n`);
     client.user.setActivity(" with tiddies", { type: 'PLAYING' });
 })
-
-
-
 
 //File save system
 const fs = require('fs') //importing file save
@@ -35,10 +24,11 @@ var listFile = JSON.parse(listRead); //ready for use
 
 
 setInterval(function () {
-    client.login(auth.token).then(() => {
+    client.destroy().then(() => {
+        client.login(auth.token);
         console.log(`\nLogged in as ${client.user.username} at:\n ${new Date(Date.now())}!\n`);
         client.user.setActivity(" with tiddies", { type: 'PLAYING' });
-    }) 
+    });
 }, 1800000);
 
 client.on('unhandledRejection', error => {
@@ -240,12 +230,8 @@ client.on('message', message => {
             }
             return;
         }
+            // NEWSHOP
         else if (cmd == 'newshop' || cmd == 'ns') {
-
-
-
-            //sendmessageatplayer(message.member, message);
-            //return;
 
             var ShopText = "";
             var ShopItems = [];
@@ -259,18 +245,7 @@ client.on('message', message => {
             ShopText += "__Rolling on Common Magic Items Table " + table.CommonTimes + " **( " + CommonNo + " )**" + " times.__\n\n";
             //Rolling on common table
             for (k = 0; k < CommonNo; k++) {
-                var tempitem = table.Common[rolldice("1d" + (table.Common.length)) - 1];
-                if (tempitem == "SpellScroll0") {
-                    tempitem = "Scroll of "+ RollScrollPotFromName("ScrollTable0");
-                }
-                if (tempitem == "SpellScroll1") {
-                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable1");
-                }
-                if (tempitem == "Commonitem0") {
-                    tempitem = RollScrollPotFromName("CommonItems");
-                }
-                
-
+                var tempitem = generateCommonShopItem();
                 CommonItemList.push(tempitem);
             }
             //Sorting CommonItemList
@@ -285,12 +260,6 @@ client.on('message', message => {
                     timesList[List1.indexOf(CommonItemList[k])] = timesList[List1.indexOf(CommonItemList[k])] + 1;
                 }
             }
-            //Pushing item multiples to the list
-            //var pricelist = [];
-            //for (i = 0; i < List1.length; i++) {
-            //    pricelist.push( rolldice(table.CommonPrice));
-            //}
-            
 
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.CommonPrice);
@@ -311,30 +280,7 @@ client.on('message', message => {
             ShopText += "__Rolling on Uncommon Magic Items Table " + table.UncommonTimes + " **( " + UncommonNo + " )**" + " times.__\n\n";
             //Rolling on uncommon table
             for (k = 0; k < UncommonNo; k++) {
-                var tempitem = table.Uncommon[rolldice("1d" + (table.Uncommon.length)) - 1];
-
-                if (tempitem == "Spellscroll2") {
-                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable2");
-                }
-                else if (tempitem == "Spellscroll3") {
-                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable3");
-                }
-                else if (tempitem == "UncommonItem") {
-                    tempitem = RollScrollPotFromName("UncommonItems");
-                }
-
-
-                if (tempitem == "Potion of Resistance") {
-                    tempitem = "Potion of " + RollScrollPotFromName("ResistanceTable");
-                }
-                if (tempitem == "Elemental Gem") {
-                    tempitem = RollScrollPotFromName("ElementalGem");
-                }
-                if (tempitem == "Instrument of the Bards") {
-                    tempitem = RollScrollPotFromName("BardInstrumentUncommon")
-                }
-
-
+                var tempitem = generateUncommonShopItem();
                 UncommonItemList.push(tempitem);
             }
             //Sorting UncommonItemlist
@@ -349,9 +295,6 @@ client.on('message', message => {
                     timesList[List1.indexOf(UncommonItemList[k])] = timesList[List1.indexOf(UncommonItemList[k])] + 1;
                 }
             }
-          
-
-
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.UncommonPrice);
 
@@ -378,45 +321,7 @@ client.on('message', message => {
             ShopText += "__Rolling on Rare Magic Items Table " + table.RareTimes + " **( " + RareNo + " )**" + " times.__\n\n";
             //Rolling on Rare table
             for (k = 0; k < RareNo; k++) {
-                var tempitem = table.Rare[rolldice("1d" + (table.Rare.length)) - 1];
-
-                if (tempitem == "SpellScroll4") {
-                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable4");
-                }
-                else if (tempitem == "SpellScroll5") {
-                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable5");
-                }
-                else if (tempitem == "RareItem") {
-                    tempitem = RollScrollPotFromName("RareItems");
-                }
-
-
-                if (tempitem == "Armor of Resistance") {
-                    tempitem = "Armor of " + RollScrollPotFromName("ResistanceTable");
-                }
-                else if (tempitem == "Elemental Essence Shard") {
-                    tempitem = RollScrollPotFromName("ElementalEssence");
-                }
-                else if (tempitem == "Feather Token") {
-                    tempitem = RollScrollPotFromName("FeatherToken")
-                }
-                else if (tempitem == "Figurine of Wondrous Power") {
-                    tempitem = RollScrollPotFromName("FigurineRare")
-                }
-                else if (tempitem == "Horn of Valhalla") {
-                    tempitem = RollScrollPotFromName("HornofValhalla")
-                }
-                else if (tempitem == "Ioun Stone") {
-                    tempitem = RollScrollPotFromName("IounStoneRare")
-                }
-                else if (tempitem == "Ring of Resistance") {
-                    tempitem = "Ring of " + RollScrollPotFromName("ResistanceTable");
-                }
-                else if (tempitem == "Instrument of the Bards") {
-                    tempitem = RollScrollPotFromName("BardInstrumentUncommon")
-                }
-
-
+                var tempitem = generateRareShopItem();
                 RareItemList.push(tempitem);
             }
             //Sorting RareItemList
@@ -431,12 +336,6 @@ client.on('message', message => {
                     timesList[List1.indexOf(RareItemList[k])] = timesList[List1.indexOf(RareItemList[k])] + 1;
                 }
             }
-            //Pushing item multiples to the list
-            //var pricelist = [];
-            //for (i = 0; i < List1.length; i++) {
-            //    pricelist.push( rolldice(table.CommonPrice));
-            //}
-
 
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.RarePrice);
@@ -465,36 +364,7 @@ client.on('message', message => {
             ShopText += "__Rolling on VRare Magic Items Table " + table.VRareTimes + " **( " + VRareNo + " )**" + " times.__\n\n";
             //Rolling on Rare table
             for (k = 0; k < VRareNo; k++) {
-                var tempitem = table.VRare[rolldice("1d" + (table.VRare.length)) - 1];
-
-                if (tempitem == "SpellScroll6") {
-                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable6");
-                }
-                else if (tempitem == "SpellScroll7") {
-                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable7");
-                }
-                else if (tempitem == "SpellScroll8") {
-                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable8");
-                }
-                else if (tempitem == "VRareItem") {
-                    tempitem = RollScrollPotFromName("VRareItems");
-                }
-
-                if (tempitem == "Absorbing Tattoo") {
-                    tempitem = RollScrollPotFromName("AbsorbingTattoo");
-                }
-                else if (tempitem == "Belt of Giant Strength") {
-                    tempitem = RollScrollPotFromName("GiantBeltVRare");
-                }
-                else if (tempitem == "Carpet of Flying") {
-                    tempitem = RollScrollPotFromName("CarpetOfFlying")
-                }
-                else if (tempitem == "Ioun Stone") {
-                    tempitem = RollScrollPotFromName("IounStoneVRare")
-                }
-
-
-
+                var tempitem = generateVRareShopItem();
                 VRareItemList.push(tempitem);
             }
             //Sorting VRareItemList
@@ -509,12 +379,6 @@ client.on('message', message => {
                     timesList[List1.indexOf(VRareItemList[k])] = timesList[List1.indexOf(VRareItemList[k])] + 1;
                 }
             }
-            //Pushing item multiples to the list
-            //var pricelist = [];
-            //for (i = 0; i < List1.length; i++) {
-            //    pricelist.push( rolldice(table.CommonPrice));
-            //}
-
 
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.VRarePrice);
@@ -547,31 +411,7 @@ client.on('message', message => {
             }
             //Rolling on Legendary table
             for (k = 0; k < LegendaryNo; k++) {
-                var tempitem = table.Legendary[rolldice("1d" + (table.Legendary.length)) - 1];
-
-                if (tempitem == "SpellScroll9") {
-                    tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable9");
-                }
-               
-                else if (tempitem == "LegendaryItem") {
-                    tempitem = RollScrollPotFromName("LegendaryItems");
-                }
-
-                if (tempitem == "Belt of Giant Strength") {
-                    tempitem = RollScrollPotFromName("GiantBeltLegendary");
-                }
-                else if (tempitem == "Crystal Ball") {
-                    tempitem = RollScrollPotFromName("CrystalBalls");
-                }
-                else if (tempitem == "Ioun Stone") {
-                    tempitem = RollScrollPotFromName("IounStoneLegendary")
-                }
-                else if (tempitem == "Ring of Elemental Command") {
-                    tempitem = RollScrollPotFromName("RingOfElementalCommand")
-                }
-                else if (tempitem == "Spell Gem") {
-                    tempitem = RollScrollPotFromName("SpellGems")
-                }
+                var tempitem = generateLegendaryShopItem();
                 
                 LegendaryItemList.push(tempitem);
             }
@@ -721,7 +561,7 @@ client.on('message', message => {
                 }
 
                 if (table.MagicTables[tier] != 0) {
-
+                    // explore
                     rewardstext += "---------------------------------------\n";
                     var RolledTables = table.MagicTables[tier];
                     var RolledTimes = table.MagicTimes[tier];
@@ -780,43 +620,13 @@ client.on('message', message => {
                                 else if (RolledItem.startsWith("MagicItem") && !isNaN(RolledItem[RolledItem.length - 1])) {
                                     ItemTier = RolledItem[RolledItem.length - 1];
                                     if (ItemTier == "0") {
-                                        RolledItem = RollScrollPotFromName("CommonItems");
+                                        RolledItem = generateCommonItem();
                                     }
                                     else if (ItemTier == "1") {
-                                        RolledItem = RollScrollPotFromName("UncommonItems");
-                                         if (RolledItem == "Instrument of the Bards") {
-                                            RolledItem = RollScrollPotFromName("BardInstrumentUncommon")
-                                        }
-                                        else if (RolledItem == "Potion of Resistance") {
-                                            RolledItem = "Potion of " + RollScrollPotFromName("ResistanceTable");
-                                        }
+                                        RolledItem = generateUncommonItem();
                                     }
                                     else if (ItemTier == "2") {
-                                        RolledItem = RollScrollPotFromName("RareItems");
-                                        if (RolledItem == "Armor of Resistance") {
-                                            RolledItem = "Armor of " + RollScrollPotFromName("ResistanceTable");
-                                        }
-                                        else if (RolledItem == "Elemental Essence Shard") {
-                                            RolledItem = RollScrollPotFromName("ElementalEssence");
-                                        }
-                                        else if (RolledItem == "Feather Token") {
-                                            RolledItem = RollScrollPotFromName("FeatherToken")
-                                        }
-                                        else if (RolledItem == "Figurine of Wondrous Power") {
-                                            RolledItem = RollScrollPotFromName("FigurineRare")
-                                        }
-                                        else if (RolledItem == "Horn of Valhalla") {
-                                            RolledItem = RollScrollPotFromName("HornofValhalla")
-                                        }
-                                        else if (RolledItem == "Ioun Stone") {
-                                            RolledItem = RollScrollPotFromName("IounStoneRare")
-                                        }
-                                        else if (RolledItem == "Ring of Resistance") {
-                                            RolledItem = "Ring of " + RollScrollPotFromName("ResistanceTable");
-                                        }
-                                        else if (RolledItem == "Instrument of the Bards") {
-                                            RolledItem = RollScrollPotFromName("BardInstrumentUncommon")
-                                        }
+                                        RolledItem = generateRareItem();
                                     }
                                     else if (ItemTier == "3") {
                                         RolledItem = RollScrollPotFromName("VRareItems");
@@ -1368,7 +1178,177 @@ var setGolddisplayUser = function (message, x, authorID) {
         sendmessage(d, message);
     }
 }
+var generateCommonShopItem = function () {
+    var table = listFile["ShopTable"];
+    var tempitem = table.Common[rolldice("1d" + (table.Common.length)) - 1];
+    if (tempitem == "SpellScroll0") {
+        tempitem = generateSpellScroll(0);
+    }
+    if (tempitem == "SpellScroll1") {
+        tempitem = generateSpellScroll(1);
+    }
+    if (tempitem == "Commonitem0") {
+        tempitem = generateCommonItem();
+    }
+    return tempitem;
+}
+var generateCommonItem = function (){
+    var tempitem = RollScrollPotFromName("CommonItems");
 
+    if (tempitem.startsWith("SpellwroughtTattoo") && !isNaN(RolledItem[RolledItem.length - 1])) {
+        TattooTier = RolledItem[RolledItem.length - 1];
+        scrolllist = "ScrollTable" + TattooTier;
+        tempitem = "Spellwrought Tattoo (" + RollScrollPotFromName(scrolllist) + ")";
+    }
+    return tempitem;
+}
+var generateUncommonShopItem = function () {
+    var table = listFile["ShopTable"];
+    var tempitem = table.Uncommon[rolldice("1d" + (table.Common.length)) - 1];
+    if (tempitem == "Spellscroll2") {
+        tempitem = generateSpellScroll(2);
+    }
+    else if (tempitem == "Spellscroll3") {
+        tempitem = generateSpellScroll(3);
+    }
+    else if (tempitem == "UncommonItem") {
+        tempitem = generateUncommonItem();
+    }
+    return tempitem;
+}
+var generateUncommonItem = function () {
+    var tempitem = RollScrollPotFromName("UncommonItems");
+
+    if (tempitem == "Potion of Resistance") {
+        tempitem = "Potion of " + RollScrollPotFromName("ResistanceTable");
+    }
+    if (tempitem == "Elemental Gem") {
+        tempitem = RollScrollPotFromName("ElementalGem");
+    }
+    if (tempitem == "Instrument of the Bards") {
+        tempitem = RollScrollPotFromName("BardInstrumentUncommon")
+    }
+
+    return tempitem;
+}
+
+var generateRareShopItem = function () {
+    var table = listFile["ShopTable"];
+    var tempitem = table.Rare[rolldice("1d" + (table.Common.length)) - 1];
+    if (tempitem == "Spellscroll4") {
+        tempitem = generateSpellScroll(2);
+    }
+    else if (tempitem == "Spellscroll5") {
+        tempitem = generateSpellScroll(3);
+    }
+    else if (tempitem == "RareItem") {
+        tempitem = generateRareItem();
+    }
+    return tempitem;
+}
+var generateRareItem = function () {
+    var tempitem = RollScrollPotFromName("RareItems");
+
+    if (tempitem == "Armor of Resistance") {
+        tempitem = "Armor of " + RollScrollPotFromName("ResistanceTable");
+    }
+    else if (tempitem == "Elemental Essence Shard") {
+        tempitem = RollScrollPotFromName("ElementalEssence");
+    }
+    else if (tempitem == "Feather Token") {
+        tempitem = RollScrollPotFromName("FeatherToken")
+    }
+    else if (tempitem == "Figurine of Wondrous Power") {
+        tempitem = RollScrollPotFromName("FigurineRare")
+    }
+    else if (tempitem == "Horn of Valhalla") {
+        tempitem = RollScrollPotFromName("HornofValhalla")
+    }
+    else if (tempitem == "Ioun Stone") {
+        tempitem = RollScrollPotFromName("IounStoneRare")
+    }
+    else if (tempitem == "Ring of Resistance") {
+        tempitem = "Ring of " + RollScrollPotFromName("ResistanceTable");
+    }
+    else if (tempitem == "Instrument of the Bards") {
+        tempitem = RollScrollPotFromName("BardInstrumentUncommon")
+    }
+    return tempitem;
+}
+
+var generateVRareShopItem = function () {
+    var table = listFile["ShopTable"];
+    var tempitem = table.VRare[rolldice("1d" + (table.Common.length)) - 1];
+    if (tempitem == "SpellScroll6") {
+        tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable6");
+    }
+    else if (tempitem == "SpellScroll7") {
+        tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable7");
+    }
+    else if (tempitem == "SpellScroll8") {
+        tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable8");
+    }
+    else if (tempitem == "VRareItem") {
+        tempitem = generateVRareItem();
+    }
+    return tempitem;
+}
+var generateVRareItem = function () {
+    var tempitem = RollScrollPotFromName("VRareItems");
+    if (tempitem == "Absorbing Tattoo") {
+        tempitem = RollScrollPotFromName("AbsorbingTattoo");
+    }
+    else if (tempitem == "Belt of Giant Strength") {
+        tempitem = RollScrollPotFromName("GiantBeltVRare");
+    }
+    else if (tempitem == "Carpet of Flying") {
+        tempitem = RollScrollPotFromName("CarpetOfFlying")
+    }
+    else if (tempitem == "Ioun Stone") {
+        tempitem = RollScrollPotFromName("IounStoneVRare")
+    }
+    return tempitem;
+}
+
+var generateLegendaryShopItem = function () {
+    var table = listFile["ShopTable"];
+    var tempitem = table.Legendary[rolldice("1d" + (table.Legendary.length)) - 1];
+    if (tempitem == "SpellScroll9") {
+        tempitem = "Scroll of " + RollScrollPotFromName("ScrollTable9");
+    }
+    else if (tempitem == "LegendaryItem") {
+        tempitem = generateLegendaryItem();
+    }
+    return tempitem;
+}
+var generateLegendaryItem = function () {
+    var tempitem = RollScrollPotFromName("LegendaryItems");
+
+    if (tempitem == "Belt of Giant Strength") {
+        tempitem = RollScrollPotFromName("GiantBeltLegendary");
+    }
+    else if (tempitem == "Crystal Ball") {
+        tempitem = RollScrollPotFromName("CrystalBalls");
+    }
+    else if (tempitem == "Ioun Stone") {
+        tempitem = RollScrollPotFromName("IounStoneLegendary")
+    }
+    else if (tempitem == "Ring of Elemental Command") {
+        tempitem = RollScrollPotFromName("RingOfElementalCommand")
+    }
+    else if (tempitem == "Spell Gem") {
+        tempitem = RollScrollPotFromName("SpellGems")
+    }
+
+    return tempitem;
+}
+
+var generateSpellScroll = function (level) {
+    var tempscroll = "ScrollTable" + level;
+    console.log(tempscroll);
+    var tempitem = "Scroll of " + RollScrollPotFromName(tempscroll);
+    return tempitem;
+}
 var getGold = function (userId) {
     if (!dataFile[userId]) { //this checks if data for the user has already been created
         console.log("User not in database :(");
