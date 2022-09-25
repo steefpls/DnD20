@@ -1,11 +1,11 @@
 {
   "ShopTable": {
     "Name": "Shop Tables",
-    "Common": [ "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Potion of Healing", "Potion of Healing", "Potion of Healing", "SpellScroll0", "SpellScroll1" ],
-    "Uncommon": [ "UncommonItem", "UncommonItem", "UncommonItem", "UncommonItem", "UncommonItem", "UncommonItem", "UncommonItem", "UncommonItem", "Potion of Greater Healing", "Potion of Greater Healing", "Potion of Greater Healing", "Spellscroll2", "Spellscroll3" ],
-    "Rare": [ "RareItem", "RareItem", "RareItem", "RareItem", "RareItem", "RareItem", "RareItem", "RareItem", "Potion of Superior Healing", "Potion of Superior Healing", "Potion of Superior Healing", "SpellScroll4", "SpellScroll5" ],
-    "VRare": [ "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "Potion of Supreme Healing", "Potion of Supreme Healing", "Potion of Supreme Healing", "Potion of Supreme Healing", "SpellScroll6", "SpellScroll7", "SpellScroll8" ],
-    "Legendary": [ "LegendaryItem", "LegendaryItem", "SpellScroll9" ],
+    "Common": [ "Commonitem0", "Commonitem0", "Commonitem0", "Commonitem0", "Potion of Healing", "Potion of Healing", "Potion of Healing", "Potion of Healing", "SpellScroll0", "SpellScroll1" ],
+    "Uncommon": [ "UncommonItem", "UncommonItem", "UncommonItem", "UncommonItem", "Potion of Greater Healing", "Potion of Greater Healing", "Potion of Greater Healing", "Spellscroll2", "Spellscroll3" ],
+    "Rare": [ "RareItem", "RareItem", "RareItem", "RareItem", "Potion of Superior Healing", "Potion of Superior Healing", "Potion of Superior Healing", "SpellScroll4", "SpellScroll5" ],
+    "VRare": [ "VRareItem", "VRareItem", "VRareItem", "VRareItem", "VRareItem", "Potion of Supreme Healing", "Potion of Supreme Healing", "Potion of Supreme Healing", "Potion of Supreme Healing", "Potion of Supreme Healing", "Potion of Supreme Healing", "SpellScroll6", "SpellScroll7", "SpellScroll8" ],
+    "Legendary": [ "LegendaryItem", "SpellScroll9", "SpellScroll9" ],
 
     "CommonTimes": [ "5d4" ],
     "UncommonTimes": [ "3d4" ],
@@ -16,7 +16,7 @@
     "CommonPrice": [ "1d50+50" ],
     "UncommonPrice": [ "1d250+150" ],
     "RarePrice": [ "1d1000+500" ],
-    "VRarePrice": [ "1d1500+1500" ],
+    "VRarePrice": [ "1d1500+2500" ],
     "LegendaryPrice": [ "1d5000+5000" ]
 
   },

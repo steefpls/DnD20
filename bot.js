@@ -237,12 +237,13 @@ client.on('message', message => {
             var ShopItems = [];
             var table = listFile["ShopTable"];
 
+            //ShopText += "_Generating New Shop..._\n\n";
             ShopText += "_Generating New Shop..._\n\n";
 
             //--------------------------Common Table Calculation Code--------------------------
             var CommonItemList = [];
             var CommonNo = rolldice(table.CommonTimes);
-            ShopText += "__Rolling on Common Magic Items Table " + table.CommonTimes + " **( " + CommonNo + " )**" + " times.__\n\n";
+            ShopText += "__**Common Magic Items**__\n";
             //Rolling on common table
             for (k = 0; k < CommonNo; k++) {
                 var tempitem = generateCommonShopItem();
@@ -260,24 +261,82 @@ client.on('message', message => {
                     timesList[List1.indexOf(CommonItemList[k])] = timesList[List1.indexOf(CommonItemList[k])] + 1;
                 }
             }
-            
+            var potionList = [];
+            var potionTimesList = [];
+            var potionPriceList = [];
+            var scrollList = [];
+            var scrollTimesList = [];
+            var scrollPriceList = [];
+            var consumableList = [];
+            var consumableTimesList = [];
+            var consumablePriceList = [];
+            var itemList = [];
+            var itemTimesList = [];
+            var itemPriceList = [];
+
+            // Sorting items into lists
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.CommonPrice);
-                if (listFile["CommonConsumables"].Rewards.includes(List1[h])) {
+                if (List1[h].includes("Potion of Healing")) {
                     newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    potionList.unshift(List1[h]);
+                    potionTimesList.unshift(timesList[h]);
+                    potionPriceList.unshift(newnewprice);
+                }
+                else if (List1[h].includes("Potion")) {
+                    newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    potionList.push(List1[h]);
+                    potionTimesList.push(timesList[h]);
+                    potionPriceList.push(newnewprice);
                 }
                 else if (List1[h].includes("Scroll of")) {
                     newnewprice = Math.ceil((newnewprice) / 2);
+                    scrollList.push(List1[h]);
+                    scrollTimesList.push(timesList[h]);
+                    scrollPriceList.push(newnewprice);
                 }
-
-                ShopText += "_"+timesList[h] + "x_\t" + List1[h] + "\t" +"_"+ newnewprice + "gp_\n";
+                else if (listFile["CommonConsumables"].Rewards.includes(List1[h])) {
+                    newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    consumableList.push(List1[h]);
+                    consumableTimesList.push(timesList[h]);
+                    consumablePriceList.push(newnewprice);
+                }
+                else
+                {
+                    itemList.push(List1[h]);
+                    itemTimesList.push(timesList[h]);
+                    itemPriceList.push(newnewprice);
+                }
             }
+
+            // Add items to shoptext in order
+
+            if (potionList.length + scrollList.length + consumableList.length > 0) {
+                ShopText += "___Consumables___\n"
+                for (var i = 0; i < potionList.length; i++) {
+                    ShopText += "_" + potionTimesList[i] + "x_\t" + potionList[i] + "\t" + "_" + potionPriceList[i] + "gp_\n";
+                }
+                for (var i = 0; i < scrollList.length; i++) {
+                    ShopText += "_" + scrollTimesList[i] + "x_\t" + scrollList[i] + "\t" + "_" + scrollPriceList[i] + "gp_\n";
+                }
+                for (var i = 0; i < consumableList.length; i++) {
+                    ShopText += "_" + consumableTimesList[i] + "x_\t" + consumableList[i] + "\t" + "_" + consumablePriceList[i] + "gp_\n";
+                }
+            }
+
+            if (itemList.length > 0) {
+                ShopText += "___Items___\n"
+                for (var i = 0; i < itemList.length; i++) {
+                    ShopText += "_" + itemTimesList[i] + "x_\t" + itemList[i] + "\t" + "_" + itemPriceList[i] + "gp_\n";
+                }
+            }
+            
             //-------------------COMMON END---------------------
             ShopText += "\n"
             //--------------------------Uncommon Table Calculation Code--------------------------
             var UncommonItemList = [];
             var UncommonNo = rolldice(table.UncommonTimes);
-            ShopText += "__Rolling on Uncommon Magic Items Table " + table.UncommonTimes + " **( " + UncommonNo + " )**" + " times.__\n\n";
+            ShopText += "__**Uncommon Magic Items**__\n";
             //Rolling on uncommon table
             for (k = 0; k < UncommonNo; k++) {
                 var tempitem = table.Uncommon[rolldice("1d" + (table.Uncommon.length)) - 1];
@@ -316,31 +375,81 @@ client.on('message', message => {
                     timesList[List1.indexOf(UncommonItemList[k])] = timesList[List1.indexOf(UncommonItemList[k])] + 1;
                 }
             }
-            
+            var potionList = [];
+            var potionTimesList = [];
+            var potionPriceList = [];
+            var scrollList = [];
+            var scrollTimesList = [];
+            var scrollPriceList = [];
+            var consumableList = [];
+            var consumableTimesList = [];
+            var consumablePriceList = [];
+            var itemList = [];
+            var itemTimesList = [];
+            var itemPriceList = [];
+
+            // Sorting items into lists
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.UncommonPrice);
-
-                if (listFile["UncommonConsumables"].Rewards.includes(List1[h])) {
+                if (List1[h].includes("Potion of Greater Healing")) {
                     newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    potionList.unshift(List1[h]);
+                    potionTimesList.unshift(timesList[h]);
+                    potionPriceList.unshift(newnewprice);
+                }
+                else if (List1[h].includes("Potion")) {
+                    newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    potionList.push(List1[h]);
+                    potionTimesList.push(timesList[h]);
+                    potionPriceList.push(newnewprice);
                 }
                 else if (List1[h].includes("Scroll of")) {
                     newnewprice = Math.ceil((newnewprice) / 2);
+                    scrollList.push(List1[h]);
+                    scrollTimesList.push(timesList[h]);
+                    scrollPriceList.push(newnewprice);
                 }
-                else if (List1[h].includes("Potion of")) {
+                else if (listFile["UncommonConsumables"].Rewards.includes(List1[h]) || List1[h].includes("Elemental Gem")) {
                     newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    consumableList.push(List1[h]);
+                    consumableTimesList.push(timesList[h]);
+                    consumablePriceList.push(newnewprice);
                 }
-                else if (List1[h].includes("Elemental Gem")) {
-                    newnewprice = Math.ceil((2 * newnewprice) / 3);
+                else {
+                    itemList.push(List1[h]);
+                    itemTimesList.push(timesList[h]);
+                    itemPriceList.push(newnewprice);
                 }
-
-                ShopText += "_" + timesList[h] + "x_\t" + List1[h] + "\t" + "_" + newnewprice + "gp_\n";
             }
+
+            // Add items to shoptext in order
+
+            if (potionList.length + scrollList.length + consumableList.length > 0) {
+                ShopText += "___Consumables___\n"
+                for (var i = 0; i < potionList.length; i++) {
+                    ShopText += "_" + potionTimesList[i] + "x_\t" + potionList[i] + "\t" + "_" + potionPriceList[i] + "gp_\n";
+                }
+                for (var i = 0; i < scrollList.length; i++) {
+                    ShopText += "_" + scrollTimesList[i] + "x_\t" + scrollList[i] + "\t" + "_" + scrollPriceList[i] + "gp_\n";
+                }
+                for (var i = 0; i < consumableList.length; i++) {
+                    ShopText += "_" + consumableTimesList[i] + "x_\t" + consumableList[i] + "\t" + "_" + consumablePriceList[i] + "gp_\n";
+                }
+            }
+
+            if (itemList.length > 0) {
+                ShopText += "___Items___\n"
+                for (var i = 0; i < itemList.length; i++) {
+                    ShopText += "_" + itemTimesList[i] + "x_\t" + itemList[i] + "\t" + "_" + itemPriceList[i] + "gp_\n";
+                }
+            }
+            
             //-------------------Uncommon END---------------------
             ShopText += "\n"
             //--------------------------Rare Table Calculation Code--------------------------
             var RareItemList = [];
             var RareNo = rolldice(table.RareTimes);
-            ShopText += "__Rolling on Rare Magic Items Table " + table.RareTimes + " **( " + RareNo + " )**" + " times.__\n\n";
+            ShopText += "__**Rare Magic Items**__\n";
             //Rolling on Rare table
             for (k = 0; k < RareNo; k++) {
                 var tempitem = generateRareShopItem();
@@ -358,31 +467,81 @@ client.on('message', message => {
                     timesList[List1.indexOf(RareItemList[k])] = timesList[List1.indexOf(RareItemList[k])] + 1;
                 }
             }
-            
+            var potionList = [];
+            var potionTimesList = [];
+            var potionPriceList = [];
+            var scrollList = [];
+            var scrollTimesList = [];
+            var scrollPriceList = [];
+            var consumableList = [];
+            var consumableTimesList = [];
+            var consumablePriceList = [];
+            var itemList = [];
+            var itemTimesList = [];
+            var itemPriceList = [];
+
+            // Sorting items into lists
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.RarePrice);
-                if (listFile["RareConsumables"].Rewards.includes(List1[h])) {
+                if (List1[h].includes("Potion of Greater Healing")) {
                     newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    potionList.unshift(List1[h]);
+                    potionTimesList.unshift(timesList[h]);
+                    potionPriceList.unshift(newnewprice);
+                }
+                else if (List1[h].includes("Potion")) {
+                    newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    potionList.push(List1[h]);
+                    potionTimesList.push(timesList[h]);
+                    potionPriceList.push(newnewprice);
                 }
                 else if (List1[h].includes("Scroll of")) {
                     newnewprice = Math.ceil((newnewprice) / 2);
+                    scrollList.push(List1[h]);
+                    scrollTimesList.push(timesList[h]);
+                    scrollPriceList.push(newnewprice);
                 }
-                else if (List1[h].includes("Potion of")) {
+                else if (listFile["RareConsumables"].Rewards.includes(List1[h]) || List1[h].includes("Feather Token")) {
                     newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    consumableList.push(List1[h]);
+                    consumableTimesList.push(timesList[h]);
+                    consumablePriceList.push(newnewprice);
                 }
-                else if (List1[h].includes("Feather Token")) {
-                    newnewprice = Math.ceil((2 * newnewprice) / 3);
+                else {
+                    itemList.push(List1[h]);
+                    itemTimesList.push(timesList[h]);
+                    itemPriceList.push(newnewprice);
                 }
-
-
-                ShopText += "_" + timesList[h] + "x_\t" + List1[h] + "\t" + "_" + newnewprice + "gp_\n";
             }
+
+            // Add items to shoptext in order
+
+            if (potionList.length + scrollList.length + consumableList.length > 0) {
+                ShopText += "___Consumables___\n"
+                for (var i = 0; i < potionList.length; i++) {
+                    ShopText += "_" + potionTimesList[i] + "x_\t" + potionList[i] + "\t" + "_" + potionPriceList[i] + "gp_\n";
+                }
+                for (var i = 0; i < scrollList.length; i++) {
+                    ShopText += "_" + scrollTimesList[i] + "x_\t" + scrollList[i] + "\t" + "_" + scrollPriceList[i] + "gp_\n";
+                }
+                for (var i = 0; i < consumableList.length; i++) {
+                    ShopText += "_" + consumableTimesList[i] + "x_\t" + consumableList[i] + "\t" + "_" + consumablePriceList[i] + "gp_\n";
+                }
+            }
+
+            if (itemList.length > 0) {
+                ShopText += "___Items___\n"
+                for (var i = 0; i < itemList.length; i++) {
+                    ShopText += "_" + itemTimesList[i] + "x_\t" + itemList[i] + "\t" + "_" + itemPriceList[i] + "gp_\n";
+                }
+            }
+            
             //-------------------RARE END---------------------
             ShopText += "\n"
             //--------------------------VRare Table Calculation Code--------------------------
             var VRareItemList = [];
             var VRareNo = rolldice(table.VRareTimes);
-            ShopText += "__Rolling on VRare Magic Items Table " + table.VRareTimes + " **( " + VRareNo + " )**" + " times.__\n\n";
+            ShopText += "__**Very Rare Magic Items**__\n";
             //Rolling on Rare table
             for (k = 0; k < VRareNo; k++) {
                 var tempitem = generateVRareShopItem();
@@ -400,24 +559,75 @@ client.on('message', message => {
                     timesList[List1.indexOf(VRareItemList[k])] = timesList[List1.indexOf(VRareItemList[k])] + 1;
                 }
             }
+            var potionList = [];
+            var potionTimesList = [];
+            var potionPriceList = [];
+            var scrollList = [];
+            var scrollTimesList = [];
+            var scrollPriceList = [];
+            var consumableList = [];
+            var consumableTimesList = [];
+            var consumablePriceList = [];
+            var itemList = [];
+            var itemTimesList = [];
+            var itemPriceList = [];
 
+            // Sorting items into lists
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.VRarePrice);
-
-                if (listFile["VRareConsumables"].Rewards.includes(List1[h])) {
+                if (List1[h].includes("Potion of Supreme Healing")) {
                     newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    potionList.unshift(List1[h]);
+                    potionTimesList.unshift(timesList[h]);
+                    potionPriceList.unshift(newnewprice);
+                }
+                else if (List1[h].includes("Potion")) {
+                    newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    potionList.push(List1[h]);
+                    potionTimesList.push(timesList[h]);
+                    potionPriceList.push(newnewprice);
                 }
                 else if (List1[h].includes("Scroll of")) {
                     newnewprice = Math.ceil((newnewprice) / 2);
+                    scrollList.push(List1[h]);
+                    scrollTimesList.push(timesList[h]);
+                    scrollPriceList.push(newnewprice);
                 }
-                else if (List1[h].includes("Potion of")) {
+                else if (listFile["VRareConsumables"].Rewards.includes(List1[h])) {
                     newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    consumableList.push(List1[h]);
+                    consumableTimesList.push(timesList[h]);
+                    consumablePriceList.push(newnewprice);
                 }
-                
-
-
-                ShopText += "_" + timesList[h] + "x_\t" + List1[h] + "\t" + "_" + newnewprice + "gp_\n";
+                else {
+                    itemList.push(List1[h]);
+                    itemTimesList.push(timesList[h]);
+                    itemPriceList.push(newnewprice);
+                }
             }
+
+            // Add items to shoptext in order
+
+            if (potionList.length + scrollList.length + consumableList.length > 0) {
+                ShopText += "___Consumables___\n"
+                for (var i = 0; i < potionList.length; i++) {
+                    ShopText += "_" + potionTimesList[i] + "x_\t" + potionList[i] + "\t" + "_" + potionPriceList[i] + "gp_\n";
+                }
+                for (var i = 0; i < scrollList.length; i++) {
+                    ShopText += "_" + scrollTimesList[i] + "x_\t" + scrollList[i] + "\t" + "_" + scrollPriceList[i] + "gp_\n";
+                }
+                for (var i = 0; i < consumableList.length; i++) {
+                    ShopText += "_" + consumableTimesList[i] + "x_\t" + consumableList[i] + "\t" + "_" + consumablePriceList[i] + "gp_\n";
+                }
+            }
+
+            if (itemList.length > 0) {
+                ShopText += "___Items___\n"
+                for (var i = 0; i < itemList.length; i++) {
+                    ShopText += "_" + itemTimesList[i] + "x_\t" + itemList[i] + "\t" + "_" + itemPriceList[i] + "gp_\n";
+                }
+            }
+
             //-------------------VRARE END---------------------
 
             ShopText += "\n"
@@ -425,10 +635,10 @@ client.on('message', message => {
             var LegendaryItemList = [];
             var LegendaryNo = rolldice(table.LegendaryTimes);
             if (LegendaryNo != undefined) {
-                ShopText += "__Rolling on Legendary Magic Items Table " + table.LegendaryTimes + " **( " + LegendaryNo + " )**" + " times.__\n\n";
+                ShopText += "__**Legendary Magic Item**__\n";
             }
             else {
-                ShopText += "__No Legendary Magic Items this week :(__\n\n";
+                ShopText += "_No Legendary Magic Item this week :(_\n\n";
             }
             //Rolling on Legendary table
             for (k = 0; k < LegendaryNo; k++) {
@@ -448,22 +658,69 @@ client.on('message', message => {
                     timesList[List1.indexOf(LegendaryItemList[k])] = timesList[List1.indexOf(LegendaryItemList[k])] + 1;
                 }
             }
+            var potionList = [];
+            var potionTimesList = [];
+            var potionPriceList = [];
+            var scrollList = [];
+            var scrollTimesList = [];
+            var scrollPriceList = [];
+            var consumableList = [];
+            var consumableTimesList = [];
+            var consumablePriceList = [];
+            var itemList = [];
+            var itemTimesList = [];
+            var itemPriceList = [];
 
+            // Sorting items into lists
             for (h = 0; h < List1.length; h++) {
                 var newnewprice = rolldice(table.LegendaryPrice);
-
-                if (listFile["LegendaryConsumables"].Rewards.includes(List1[h])) {
+                if (List1[h].includes("Potion")) {
                     newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    potionList.push(List1[h]);
+                    potionTimesList.push(timesList[h]);
+                    potionPriceList.push(newnewprice);
                 }
                 else if (List1[h].includes("Scroll of")) {
                     newnewprice = Math.ceil((newnewprice) / 2);
+                    scrollList.push(List1[h]);
+                    scrollTimesList.push(timesList[h]);
+                    scrollPriceList.push(newnewprice);
                 }
-                else if (List1[h].includes("Potion of")) {
+                else if (listFile["LegendaryConsumables"].Rewards.includes(List1[h])) {
                     newnewprice = Math.ceil((2 * newnewprice) / 3);
+                    consumableList.push(List1[h]);
+                    consumableTimesList.push(timesList[h]);
+                    consumablePriceList.push(newnewprice);
                 }
-
-                ShopText += "_" + timesList[h] + "x_\t" + List1[h] + "\t" + "_" + newnewprice + "gp_\n";
+                else {
+                    itemList.push(List1[h]);
+                    itemTimesList.push(timesList[h]);
+                    itemPriceList.push(newnewprice);
+                }
             }
+
+            // Add items to shoptext in order
+
+            if (potionList.length + scrollList.length + consumableList.length > 0) {
+                ShopText += "___Consumables___\n"
+                for (var i = 0; i < potionList.length; i++) {
+                    ShopText += "_" + potionTimesList[i] + "x_\t" + potionList[i] + "\t" + "_" + potionPriceList[i] + "gp_\n";
+                }
+                for (var i = 0; i < scrollList.length; i++) {
+                    ShopText += "_" + scrollTimesList[i] + "x_\t" + scrollList[i] + "\t" + "_" + scrollPriceList[i] + "gp_\n";
+                }
+                for (var i = 0; i < consumableList.length; i++) {
+                    ShopText += "_" + consumableTimesList[i] + "x_\t" + consumableList[i] + "\t" + "_" + consumablePriceList[i] + "gp_\n";
+                }
+            }
+
+            if (itemList.length > 0) {
+                ShopText += "___Items___\n"
+                for (var i = 0; i < itemList.length; i++) {
+                    ShopText += "_" + itemTimesList[i] + "x_\t" + itemList[i] + "\t" + "_" + itemPriceList[i] + "gp_\n";
+                }
+            }
+            
             //-------------------Legendary END---------------------
 
             //Push final Message
@@ -1354,20 +1611,14 @@ var generateSpellScroll = function (level) {
     var tempscroll = "ScrollTable" + level;
     
     var tempitem = "Scroll of " + RollScrollPotFromName(tempscroll);
-    console.log("Generated " + tempitem);
     return tempitem;
     
 }
 var getGold = function (userId) {
-    if (!dataFile[userId]) { //this checks if data for the user has already been created
-        console.log("User not in database :(");
-    }
-
-    else {
+    if (dataFile[userId]) {
         var gp = Number(dataFile[userId].Gold);
         var Name = dataFile[userId].Name;
         var q = Name + " has " + gp + "gp.";
-        console.log(q);
         return gp;
     }
 }
@@ -1375,7 +1626,6 @@ var getGold = function (userId) {
 var addGold = function (userId, x) {
     if (!dataFile[userId]) { //this checks if data for the user has already been created
         var disp = "User does not exist.";
-        console.log(disp);
     }
 
     else {
@@ -1386,14 +1636,12 @@ var addGold = function (userId, x) {
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var q = "Adding " + x + "gp to " + message.author + "...\n\n" +
             "Total gold: " + dataFile[userId].Gold + "gp";
-        console.log(q);
     }
 }
 
 var removeGold = function (userId, x) {
     if (!dataFile[userId]) { //this checks if data for the user has already been created
         var disp = "User does not exist, use the `!gold add` to create user.";
-        console.log(disp);
     }
 
     else {
@@ -1405,10 +1653,6 @@ var removeGold = function (userId, x) {
             fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
             var q = "Removing " + x + "gp from " + message.author + "...\n\n" +
                 "Total gold: " + dataFile[userId].Gold + "gp";
-            console.log(q);
-        }
-        else {
-            console.log("Can't remove more gold than you have, baka.");
         }
     }
 }
@@ -1416,7 +1660,6 @@ var removeGold = function (userId, x) {
 var setGold = function (userId, x) {
     if (!dataFile[userId]) { //this checks if data for the user has already been created
         var disp = "User does not exist, use the `!gold add` to create user.";
-        console.log(disp);
     }
 
     else {
@@ -1427,7 +1670,6 @@ var setGold = function (userId, x) {
         fs.writeFileSync(dataPath, JSON.stringify(dataFile, null, 2));
         var d = "Setting " + message.author + "'s gp to " + x + "...\n\n" +
             "Total gold: " + dataFile[userId].Gold + "gp";
-        console.log(d);
     }
 }
 
