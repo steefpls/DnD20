@@ -138,9 +138,7 @@ client.on('message', message => {
             if (allowedRole != null) {
                 if (message.member.roles.has(allowedRole.id)) {
                     // allowed access to command
-
                     clear(message);
-                    sendmessageatplayer("Messages purged lol", message);
                 } else {
                     // not allowed access
                     sendmessageatplayer("You're too weak to use this command :(", message);
@@ -1718,8 +1716,7 @@ var sendcodemessageatplayer = function (x, message) {
 
 async function clear(message) {
     message.delete();
-    const fetched = await message.channel.fetchMessages({ limit: 99 });
-    message.channel.bulkDelete(fetched);
+    message.channel.bulkDelete(await message.channel.fetchMessages({ limit: 99 }));
 }
 
 var convertToGold = function (plat, gold, silv, copp) {
