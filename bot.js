@@ -2,7 +2,9 @@
 const { Client } = require('discord.js');
 // Initialize Discord Bot
 const client = new Client({ intents: ["Guilds"] });
-
+const { MessageEmbed } = require( "discord.js");
+const ytdl = require('ytdl-core');
+var servers = {};
 var auth = require('./auth.json');
 require('dotenv').config();
 
@@ -20,15 +22,21 @@ var dataFile = JSON.parse(dataRead); //ready for use
 var listPath = "./listdata.json";
 var listRead = fs.readFileSync(listPath);
 var listFile = JSON.parse(listRead); //ready for use
-
+var isPlaying = false;
 
 
 setInterval(function () {
-    client.destroy().then(() => {
-        client.login(auth.token);
-        console.log(`\nLogged in as ${client.user.username} at:\n ${new Date(Date.now())}!\n`);
-        client.user.setActivity(" with tiddies", { type: 'PLAYING' });
-    });
+    if (!isPlaying) {
+        client.destroy().then(() => {
+            client.login(auth.token);
+            console.log(`\nLogged in as ${client.user.username} at:\n ${new Date(Date.now())}!\n`);
+            client.user.setActivity(" with tiddies", { type: 'PLAYING' });
+        });
+    }
+    else {
+        console.log(`\nDid not relog because bot was playing music.\n`);
+    }
+    
 }, 1800000);
 
 client.on('unhandledRejection', error => {
@@ -85,7 +93,83 @@ client.on('message', message => {
             sendcodemessage('pong!', message);
             return;
         }
-        
+        else if (cmd == 'play' || cmd == 'p') {
+
+            function play(connection, message) {
+                var server = servers[message.guild.id];
+                server.dispatcher = connection.playStream(ytdl(server.queue[0], { filter: "audioonly" }));
+
+                server.queue.shift();
+                server.dispatcher.on("end", function () {
+                    if (server.queue[0]) {
+                        sendcodemessage("Playing Song:");
+                        sendmessage(server.queue[0], message);
+                        play(connection, message);
+                    }
+                    else {
+                        if (message.guild.voiceConnection) {
+                            sendcodemessage("Disconnecting due to empty queue", message);
+                            message.guild.voiceConnection.disconnect();
+                            isPlaying = false;
+                        }
+                        connection.disconnect();
+                    }
+                });
+            }
+
+            if (args[0] == null) {
+                sendcodemessage('What the fuck do you want me to play? You have to type that in, dipshit.', message);
+                return;
+            }
+            else {
+                if (!message.member.voiceChannel) {
+                    sendcodemessage("You're not in a fucking voice channel, dipshit.", message);
+                    return;
+                }
+                else {
+                    isPlaying = true;
+                    if (!servers[message.guild.id]) servers[message.guild.id] = {
+                        queue: []
+                    }
+                    var server = servers[message.guild.id];
+
+                    sendcodemessage('Added song to Queue.', message);
+                    server.queue.push(args[0]);
+
+                    if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function (connection) {
+                        sendcodemessage("Playing Song:");
+                        sendmessage(server.queue[0], message);
+                        play(connection, message);
+                    })
+
+                }
+            }
+            return;
+        }
+        else if (cmd == 'skip') {
+            var server = servers[message.guild.id];
+            if (server.dispatcher) {
+                sendcodemessage('Skipping Song...', message);
+                server.dispatcher.end();
+            }
+
+        }
+        else if (cmd == 'stop') {
+            var server = servers[message.guild.id];
+            if (message.guild.voiceConnection) {
+                for (var i = server.queue.length - 1; i >= 0; i--) {
+                    server.queue.splice(i, 1);
+                }
+                server.dispatcher.end();
+                sendcodemessage("Stopped the queue.", message);
+            }
+            if (message.guild.voiceConnection) {
+                sendcodemessage("Disconnecting", message);
+                message.guild.voiceConnection.disconnect();
+                isPlaying = false;
+            }
+        }
+
         else if (cmd == 'br') {
 
             sendmessage('``` ```', message);
