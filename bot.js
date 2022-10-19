@@ -102,7 +102,7 @@ client.on('message', message => {
                 server.queue.shift();
                 server.dispatcher.on("end", function () {
                     if (server.queue[0]) {
-                        sendcodemessage("Playing Song:");
+                        sendcodemessage("Playing Song:",message);
                         sendmessage(server.queue[0], message);
                         play(connection, message);
                     }
@@ -137,7 +137,7 @@ client.on('message', message => {
                     server.queue.push(args[0]);
 
                     if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function (connection) {
-                        sendcodemessage("Playing Song:");
+                        sendcodemessage("Playing Song:", message);
                         sendmessage(server.queue[0], message);
                         play(connection, message);
                     })
